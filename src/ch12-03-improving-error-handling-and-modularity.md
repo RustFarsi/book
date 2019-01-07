@@ -350,7 +350,7 @@ next listing.
 
 ```rust,ignore
 impl Config {
-    fn new(args: &[String]) -> Result<Config, &'static str> {
+    fn new(args: &[String]) -> Result<Config, &str> {
         if args.len() < 3 {
             return Err("not enough arguments");
         }
@@ -367,10 +367,7 @@ impl Config {
 `Config::new`</span>
 
 Our `new` function now returns a `Result` with a `Config` instance in the
-success case and a `&'static str` in the error case. Recall from [“The Static
-Lifetime”][the-static-lifetime]<!-- ignore --> section in Chapter 10 that
-`&'static str` is the type of string literals, which is our error message type
-for now.
+success case and a `&str` in the error case.
 
 We’ve made two changes in the body of the `new` function: instead of calling
 `panic!` when the user doesn’t pass enough arguments, we now return an `Err`
@@ -617,7 +614,7 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn new(args: &[String]) -> Result<Config, &'static str> {
+    pub fn new(args: &[String]) -> Result<Config, &str> {
         // --snip--
     }
 }

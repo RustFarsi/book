@@ -35,3 +35,7 @@ body.ayu .not_desired_behavior {
 body {
   direction: rtl;
 }
+
+p {
+  line-height: 2em;
+}

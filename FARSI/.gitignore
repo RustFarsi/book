@@ -4,8 +4,5 @@ book/
 .DS_Store
 target
 tmp
-ferris.css
-ferris.js
-theme
 book
 

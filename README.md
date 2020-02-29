@@ -1,25 +1,10 @@
-# The Rust Programming Language
+# The Rust Programming Language (Farsi Translation)
 
-[![Build Status](https://travis-ci.com/rust-lang/book.svg?branch=master)](https://travis-ci.com/rust-lang/book)
+This repository contains the source of the Farsi(Persian) translation of "The Rust Programming Language" book.
 
-This repository contains the source of "The Rust Programming Language" book.
+The translated markdown files are in the FARSI directory. All other files of the project(except for this README.md) have remained intact and compatible with the original english version.
 
-[The book is available in dead-tree form from No Starch Press][nostarch].
-
-[nostarch]: https://nostarch.com/rust
-
-You can also read the book for free online. Please see the book as shipped with
-the latest [stable], [beta], or [nightly] Rust releases. Be aware that issues
-in those versions may have been fixed in this repository already, as those
-releases are updated less frequently.
-
-[stable]: https://doc.rust-lang.org/stable/book/
-[beta]: https://doc.rust-lang.org/beta/book/
-[nightly]: https://doc.rust-lang.org/nightly/book/
-
-See the [releases] to download just the code of all the code listings that appear in the book.
-
-[releases]: https://github.com/rust-lang/book/releases
+[the original book](https://github.com/rust-lang/book/)
 
 ## Requirements
 
@@ -35,29 +20,30 @@ $ cargo install mdbook --vers [version-num]
 
 ## Building
 
-To build the book, type:
+To build the farsi version of the book, type:
 
 ```bash
+$ cd FARSI
 $ mdbook build
 ```
 
-The output will be in the `book` subdirectory. To check it out, open it in
+The output will be in the `FARSI/book` subdirectory. To check it out, open it in
 your web browser.
 
 _Firefox:_
 ```bash
-$ firefox book/index.html                       # Linux
-$ open -a "Firefox" book/index.html             # OS X
-$ Start-Process "firefox.exe" .\book\index.html # Windows (PowerShell)
-$ start firefox.exe .\book\index.html           # Windows (Cmd)
+$ firefox FARSI/book/index.html                       # Linux
+$ open -a "Firefox" FARSI/book/index.html             # OS X
+$ Start-Process "firefox.exe" .\FARSI\book\index.html # Windows (PowerShell)
+$ start firefox.exe .\FARSI\book\index.html           # Windows (Cmd)
 ```
 
 _Chrome:_
 ```bash
-$ google-chrome book/index.html                 # Linux
-$ open -a "Google Chrome" book/index.html       # OS X
-$ Start-Process "chrome.exe" .\book\index.html  # Windows (PowerShell)
-$ start chrome.exe .\book\index.html            # Windows (Cmd)
+$ google-chrome FARSI/book/index.html                 # Linux
+$ open -a "Google Chrome" FARSI/book/index.html       # OS X
+$ Start-Process "chrome.exe" .\FARSI\book\index.html  # Windows (PowerShell)
+$ start chrome.exe .\FARSI\book\index.html            # Windows (Cmd)
 ```
 
 To run the tests:
@@ -68,25 +54,7 @@ $ mdbook test
 
 ## Contributing
 
-We'd love your help! Please see [CONTRIBUTING.md][contrib] to learn about the
-kinds of contributions we're looking for.
+Send a pull request with your modifications to the **FARSI/** directory.
+The translations must be intelligible.
 
-[contrib]: https://github.com/rust-lang/book/blob/master/CONTRIBUTING.md
-
-### Translations
-
-We'd love help translating the book! See the [Translations] label to join in
-efforts that are currently in progress. Open a new issue to start working on
-a new language! We're waiting on [mdbook support] for multiple languages
-before we merge any in, but feel free to start!
-
-[Translations]: https://github.com/rust-lang/book/issues?q=is%3Aopen+is%3Aissue+label%3ATranslations
-[mdbook support]: https://github.com/rust-lang-nursery/mdBook/issues/5
-
-## Spellchecking
-
-To scan source files for spelling errors, you can use the `spellcheck.sh`
-script. It needs a dictionary of valid words, which is provided in
-`dictionary.txt`. If the script produces a false positive (say, you used word
-`BTreeMap` which the script considers invalid), you need to add this word to
-`dictionary.txt` (keep the sorted order for consistency).
+Please do not modify anything outside of the FARSI directory.

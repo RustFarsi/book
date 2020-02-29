@@ -1,48 +1,39 @@
-# The Rust Programming Language
+# زبان برنامه‌نویسی Rust
 
-*by Steve Klabnik and Carol Nichols, with contributions from the Rust Community*
+*نویسندگان: Steve Klabnik و  Carol Nichols و مشارکت‌های جامعه Rust*
 
-This version of the text assumes you’re using Rust 1.41.0 or later with
-`edition="2018"` in *Cargo.toml* of all projects to use Rust 2018 Edition
-idioms. See the [“Installation” section of Chapter 1][install]<!-- ignore -->
-to install or update Rust, and see the new [Appendix E][editions]<!-- ignore
---> for information on editions.
+*ترجمه: پوریا مختاری*
 
-The 2018 Edition of the Rust language includes a number of improvements that
-make Rust more ergonomic and easier to learn. This iteration of the book
-contains a number of changes to reflect those improvements:
+این نسخه از کتاب مطابق ویرایش ۱٫۴۱٫۰ زبان Rust تهیه شده  و برای تطابق با کتاب
+باید متن `edition="2018"`را در فایل تنظیمات Cargo.toml خود داشته باشید.
+ برای نصب یا بروزرسانی Rust بخش [«راهنمای نصب - فصل اول»][install] و برای اطلاعات
+  بیشتر درمورد ویرایش‌های مختلف زبان [«ضمیمه ث»][editions] را ببینید.
 
-- Chapter 7, “Managing Growing Projects with Packages, Crates, and Modules,”
-  has been mostly rewritten. The module system and the way paths work in the
-  2018 Edition were made more consistent.
-- Chapter 10 has new sections titled “Traits as Parameters” and “Returning
-  Types that Implement Traits” that explain the new `impl Trait` syntax.
-- Chapter 11 has a new section titled “Using `Result<T, E>` in Tests” that
-  shows how to write tests that use the `?` operator.
-- The “Advanced Lifetimes” section in Chapter 19 was removed because compiler
-  improvements have made the constructs in that section even rarer.
-- The previous Appendix D, “Macros,” has been expanded to include procedural
-  macros and was moved to the “Macros” section in Chapter 19.
-- Appendix A, “Keywords,” also explains the new raw identifiers feature that
-  enables code written in the 2015 Edition and the 2018 Edition to interoperate.
-- Appendix D is now titled “Useful Development Tools” and covers recently
-  released tools that help you write Rust code.
-- We fixed a number of small errors and imprecise wording throughout the book.
-  Thank you to the readers who reported them!
+ویرایش ۲۰۱۸ کتاب شامل تغییراتی است که Rust را ارگونومیک تر کرده و یادگیری زبان را آسان تر می‌کند.
+تغییرات این نسخه به شرح زیر است:
 
-Note that any code in earlier iterations of *The Rust Programming Language*
-that compiled will continue to compile without `edition="2018"` in the
-project’s *Cargo.toml*, even as you update the Rust compiler version you’re
-using. That’s Rust’s backward compatibility guarantees at work!
+- فصل ۷، قسمت «مدیریت پروژه‌های در خال پیشرفت، جعبه‌ها(Crates) و ماژول‌ها» باز‌نویسی شده است.
+   تناقض سیستم ماژول‌ها و طرز کار راه‌ها در نسخه ۲۰۱۸ برطرف شده است.
+- فصل ۱۰، بخش‌های «ویژگی به عنوان پارامتر» و «برگرداندن تایپ‌هایی که ویژگی‌هارا پیاده سازی می‌کنند» که ترکیب جدید
+  `impl Trait` را معرفی می‌کنند اضافه شده‌اند.
+- فصل ۱۱، بخش «استفاده از `Result<T, E>` در تست‌ها» اضافه شده  که نحوه نوشتن تست‌ها با علامت
+  `?` را نشان می‌دهد.
+- بخش «طول‌عمر، مباحث پیشرفته» در فصل ۱۹ حذف شده. علت حذف بهبود در کامپایلر جدید است که چنین
+   شرایطی را حتی کمیاب‌تر از قبل می‌کند.
+- به ضمیمه قبلی ت «ماکرو‌ها، » قسمت ماکرو‌های روندی(procedural) اضافه شده است و کل ضمیمه به فصل ۱۹ منتقل شده.
+- ضمیمه الف، «کلمات کلیدی» شناساگر‌های جدید را توضیح می‌دهند که برای کار کردن کد های ویرایش های ۲۰۱۵ و ۲۰۱۸ باهم استفاده می‌شوند.
+- عنوان ضمیمه ت به «ابزار مفید توسعه» تغییر یافته و ابزار‌های اخیراً منتشر شده برای نوشتن کد Rust را پوشش می‌دهد.
+- برحی ایرادات لغوی و نوشتاری و برخی جملات غیردقیق نیز با تشکر از خوانندگانی که گزارش کرده‌اند برطرف شدند.
 
-The HTML format is available online at
+درنظر داشته باشید که هر کدی که بر اساس نسخه های قبلی «زبان برنامه نویسی Rust» نوشته و کامپایل شده باشند،
+ همچنان بدون افزودن `edition=2018` در فایل تنظیمات Cargo.toml کامپایل خواهند شد. حتی اگر کامپایل خود را بروزرسانی کنید.
+ این موضوع به خوبی سازگاری کامپایلر جدید را با کد‌های قدیمی در Rust نشان می‌دهد!
+
+
+نسخه زبان اصلی کتاب با فرمت HTML از لینک زیر قابل دسترسی است:
 [https://doc.rust-lang.org/stable/book/](https://doc.rust-lang.org/stable/book/)
-and offline with installations of Rust made with `rustup`; run `rustup docs
---book` to open.
 
-This text is available in [paperback and ebook format from No Starch
-Press][nsprust].
+همچنین اگر از  `rustup` استفاده کرده‌اید می‌توانید از دستور `rustup docs --book` برای خواندن نسخه زبان اصلی استفاده کنید.
 
 [install]: ch01-01-installation.html
 [editions]: appendix-05-editions.html
-[nsprust]: https://nostarch.com/rust

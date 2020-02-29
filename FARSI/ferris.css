@@ -31,3 +31,7 @@ body.ayu .not_desired_behavior {
 .ferris-explain {
   width: 100px;
 }
+
+body {
+  direction: rtl;
+}

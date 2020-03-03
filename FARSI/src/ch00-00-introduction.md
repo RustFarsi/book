@@ -1,87 +1,73 @@
-# Introduction
+# مقدمه
 
-> Note: This edition of the book is the same as [The Rust Programming
-> Language][nsprust] available in print and ebook format from [No Starch
-> Press][nsp].
+به *زبان برنامه‌نویسی Rust*، کتابی برای معرفی زبان Rust خوش‌آمدید.
+این زبان به شما کمک می‌کند که برنامه‌های سریع‌تر و قابل اتکا بنویسید.
+انعطاف پذیری برنامه‌نویسی سطح بالا و قدرت کنترل سطح پایین معمولاً در طراحی
+ زبان‌های برنامه‌نویسی با هم در تضاد هستند. Rust این تضاد را به چالش می‌کشد.
+ با ایجاد تعادل در ظرفیت تکنیکی و تجربه راحت توسعه دهنده، Rust اجازه می‌دهد
+ بدون دردسر های شایع در این سطح به کنترل جزئیات سطح 
+ پایین(مثل مدیریت حافظه) بپردازید.
 
-[nsprust]: https://nostarch.com/rust
-[nsp]: https://nostarch.com/
+##  Rust به درد چه کسانی می‌خورد؟
 
-Welcome to *The Rust Programming Language*, an introductory book about Rust.
-The Rust programming language helps you write faster, more reliable software.
-High-level ergonomics and low-level control are often at odds in programming
-language design; Rust challenges that conflict. Through balancing powerful
-technical capacity and a great developer experience, Rust gives you the option
-to control low-level details (such as memory usage) without all the hassle
-traditionally associated with such control.
+Rust برای دلایل متنوعی برای بسیاری از افراد ایدآل است. به چند دلیل اصلی می‌پردازیم.
 
-## Who Rust Is For
+### گروه‌های توسعه دهندگان
 
-Rust is ideal for many people for a variety of reasons. Let’s look at a few of
-the most important groups.
+زبان Rust نشان داده که ابزاری پربار برای همکاری بین گروه‌های بزرگ توسعه دهندگان
+با سطوح مختلف دانش و تسط بر برنامه‌نویسی سیستم است. کد سطح پایین
+در برابر خطا‌های نامحسوس بسیاری آسیب پذیر است که در اکثر زبان‌های دیگر فقط با
+ تست‌های زیاد و فراگیر، بررسی دقیق و بازبینی توسعه دهندگان با تجربه قابل برطرف
+ کردن است. در Rust کامپایلر نقش دروازه‌بانی را ایفا می‌کند که از کامپایل شدن
+ کد‌های شامل چنین خطاهایی مثل خطا‌های همزمانی (Concurrency) جلوگیری می‌کند.
+ گروهی که از چنین قابلیتی استفاده کند می‌تواند به جای درگیری با این خطاها وقت خود را
+ صرف ساختن منطق برنامه کند.
 
-### Teams of Developers
+Rust همچنین ابزار‌های مرسوم توسعه نرم‌افزار امروزی را به دنیای برنامه‌نویسی سیستم می‌آورد:
 
-Rust is proving to be a productive tool for collaborating among large teams of
-developers with varying levels of systems programming knowledge. Low-level code
-is prone to a variety of subtle bugs, which in most other languages can be
-caught only through extensive testing and careful code review by experienced
-developers. In Rust, the compiler plays a gatekeeper role by refusing to
-compile code with these elusive bugs, including concurrency bugs. By working
-alongside the compiler, the team can spend their time focusing on the program’s
-logic rather than chasing down bugs.
+* کارگو(Cargo)، مدیربسته و ابزار ساخت فایل اجرایی، اضافه کردن، کامپایل کردن و مدیریت
+پیشنیاز‌ها را ساده و بی‌دردسر می‌کند و به آنها در اکوسیستم Rust یکپارچگی می‌بخشد.
+* Rustfmt ثبات نحوه کد نویسی بین توسعه‌دهندگان را تضمین می‌کند.
+* سرور زبان Rust ادغام زبان را با محیط‌های توسعه (IDE) برای کامل کردن خودکار کد و نشان دادن
+خطا‌ها را ممکن می‌سازد.
 
-Rust also brings contemporary developer tools to the systems programming world:
+با استفاده از این ابزار‌ها و سایر ابزار‌های اکوسیستم Rust، توسعه‌دهندگان در نوشتن کد‌های سطح سیستم
+پربار خواهند بود.
 
-* Cargo, the included dependency manager and build tool, makes adding,
-  compiling, and managing dependencies painless and consistent across the Rust
-  ecosystem.
-* Rustfmt ensures a consistent coding style across developers.
-* The Rust Language Server powers Integrated Development Environment (IDE)
-  integration for code completion and inline error messages.
 
-By using these and other tools in the Rust ecosystem, developers can be
-productive while writing systems-level code.
+### دانشجویان
 
-### Students
+Rust برای دانشجویان و کسانی که یادگیری مفاهیم سیستم برایشان جالب است نیز ساخته شده است.
+با استفاده از Rust، افراد بسیاری مباحثی مانند توسعه سیستم‌های عامل را فراگرفته‌اند. جامعه نیز استقبال
+بسیاری برای پاسخگویی به سوالات دانشجویان دارد. با تلاش‌هایی مثل تألیف این کتاب، تیم‌های Rust
+درنظر دارند مباحث سیستم را برای افراد بیشتری، به ویژه برنامه‌نویسان تازه کار، قابل دسترسی کنند.
 
-Rust is for students and those who are interested in learning about systems
-concepts. Using Rust, many people have learned about topics like operating
-systems development. The community is very welcoming and happy to answer
-student questions. Through efforts such as this book, the Rust teams want to
-make systems concepts more accessible to more people, especially those new to
-programming.
+### شرکت‌ها
 
-### Companies
+صد‌ها شرکت بزرگ و کوچک از Rust برای تولید ابزارهای مختلف استفاده می‌کنند.
+ابزار‌هایی مثل ابزار خط فرمان، وب سرویس‌ها، ابزار DevOps، دستگاه‌های سیار، آنالیز
+صدا و تصویر، کدگذاری، رمزارز‌ها، بیوانفورماتیک، موتور‌های جستجو، برنامه‌های مربوط به اینترنت چیز‌ها
+، یادگیری ماشین و حتی قسمت‌های مهمی از مرورگر فایرفاکس.
 
-Hundreds of companies, large and small, use Rust in production for a variety of
-tasks. Those tasks include command line tools, web services, DevOps tooling,
-embedded devices, audio and video analysis and transcoding, cryptocurrencies,
-bioinformatics, search engines, Internet of Things applications, machine
-learning, and even major parts of the Firefox web browser.
 
-### Open Source Developers
+### توسعه‌دهندگان نرم‌افزار‌های متن‌باز
 
-Rust is for people who want to build the Rust programming language, community,
-developer tools, and libraries. We’d love to have you contribute to the Rust
-language.
+Rust متعلق به کسانی است که علاقه‌مند به مشارکت در ساخت زبان، جامعه، ابزار توسعه و کتابخانه ها باشند.
+اگر در ساخت زبان Rust کمک کنید بسیار خوشحال خواهیم شد.
 
-### People Who Value Speed and Stability
+### افرادی که به سرعت و پایداری اهمیت می‌دهند
 
-Rust is for people who crave speed and stability in a language. By speed, we
-mean the speed of the programs that you can create with Rust and the speed at
-which Rust lets you write them. The Rust compiler’s checks ensure stability
-through feature additions and refactoring. This is in contrast to the brittle
-legacy code in languages without these checks, which developers are often
-afraid to modify. By striving for zero-cost abstractions, higher-level features
-that compile to lower-level code as fast as code written manually, Rust
-endeavors to make safe code be fast code as well.
+Rust برای کسانی مناسب است که در یک زبان برنامه‌نویسی سرعت و پایداری را مدنظر دارند.
+منظور از سرعت فقط سرعت اجرای برنامه‌هایی که با Rust می‌سازید نیست؛ بلکه سرعتی که Rust به شما اجازه می‌دهد برنامه بنویسید نیز مدنظر است.
+بررسی‌های کامپایلر Rust، پایداری را حین افزودن امکانات و ویژگی‌های جدید و بهینه‌سازی یک برنامه تضمین می‌کند. این دقیقا برعکس کد های ناپایدار
+قدیمی در زبان‌هایی که این بررسی‌هارا انجام نمی‌دهند و معمولاً باعث ایجاد وحشت هنگام تغییر قسمتی از برنامه می‌شوند. با تاکید روی انتزاعی‌سازی بدون
+هزینه (zero-cost)، امکانات سطح بالاتر که به کد سطح پایین با سرعت قبلی کامپایل می‌شوند، Rust علاوه بر پایداری سرعت را نیز تضمین می‌کند.
 
-The Rust language hopes to support many other users as well; those mentioned
-here are merely some of the biggest stakeholders. Overall, Rust’s greatest
-ambition is to eliminate the trade-offs that programmers have accepted for
-decades by providing safety *and* productivity, speed *and* ergonomics. Give
-Rust a try and see if its choices work for you.
+زبان Rust پشتیبانی از کاربران بیشتری را هم در نظر دارد؛ موارد ذکر شده بالا تنها بخش کوچکی از ذینفعان هستند.
+درکل می‌توان گفت که بزرگ‌ترین بلند پروازی Rust از بین بردن معامله ایست که برنامه‌نویس‌ها سالهاست که پذیرفته‌اند.
+مبادله *سرعت* و *سازندگی* و *امنیت* و *انعطاف پذیری* که Rust همراه با هم ارائه می‌دهد.
+Rust را امتحان کنید و ببینید که آیا این ویژگی‌ها برای شما مناسب است یا خیر.
+
 
 ## Who This Book Is For
 

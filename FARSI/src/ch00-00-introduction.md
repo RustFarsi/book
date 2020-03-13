@@ -78,35 +78,26 @@ Rust را امتحان کنید و ببینید که آیا این ویژگی‌
 ## چگونه از کتاب استفاده کنم
 
 فرض بر این است که کتاب را از اول به آخر می‌خوانید. فصل‌های عقب‌تر از مفاهیم فصل‌های قبل از خودشان در طرح مباحث
-جدید استفاده می‌کنند و فصل‌هایی نیز ممکن است وارد جزئیات موضوعی نشوند؛ معمولاً به جزئیات بیشتر آن موضوع در فصل‌های بعد پرداخته می‌شود.
+جدید استفاده می‌کنند و فصل‌هایی نیز ممکن است وارد جزئیات موضوعی نشوند؛ معمولاً به جزئیات بیشتر در فصل‌های بعد پرداخته می‌شود.
 
 دو نوع فصل در این کتاب خواهید دید: فصل‌های مفهومی و فصل‌های پروژه محور. در فصول مفهومی، مبحثی را از زبان Rust می‌آموزید. 
 در فصول پروژه محور اما برنامه‌های کوچکی با استفاده از مباحثی که آموخته‌اید می‌سازیم. فصول ۲، ۱۲ و ۲۰ فصول پروژه محور هستند و باقی مفهمومی می‌باشند.
 
 فصل ۱ نحوه نصب Rust و نوشتن برنامه "Hello World"، استفاده از کارگو مدیربسته و ابزار توسعه Rust را نشان می‌دهد.
-فصل ۲ یک مقدمه عملی به زبان Rust ارائه می‌کند. 
+فصل ۲ یک مقدمه عملی به زبان Rust ارائه می‌کند. این فصل مفاهیم را در سطح بالا پوشش می‌دهد که فصل‌های بعد جزئیات بیشتری
+ارائه می‌دهند. اگر می‌خواهید فوراً دست‌به‌کار شوید، می‌توانید از فصل ۲ شروع کنید. شاید بخواهید از فصل ۳ رد شوید که مربوط
+به قابلیت‌های Rust که مشابه زبان‌های دیگر هستند است و به فصل ۴ بروید تا «سیستم مالکیت» Rust را یاد بگیرید.
+اگر در یاد گرفتن وسواس دارید و روی یادگیری جزئیات هر موضوعی قبل از شروع موضوع بعد تاکید دارید، ممکن است بخواهید
+از فصل ۲ رد شده و فصل ۳ را قبل از آن تمام کنید و  با بازگشت به فصل ۲ جزئیاتی را که یادگرفته اید روی یک پروژه عملی کنید.
 
-Chapter 1 explains how to install Rust, how to write a “Hello, world!” program,
-and how to use Cargo, Rust’s package manager and build tool. Chapter 2 is a
-hands-on introduction to the Rust language. Here we cover concepts at a high
-level, and later chapters will provide additional detail. If you want to get
-your hands dirty right away, Chapter 2 is the place for that. At first, you
-might even want to skip Chapter 3, which covers Rust features similar to those
-of other programming languages, and head straight to Chapter 4 to learn about
-Rust’s ownership system. However, if you’re a particularly meticulous learner
-who prefers to learn every detail before moving on to the next, you might want
-to skip Chapter 2 and go straight to Chapter 3, returning to Chapter 2 when
-you’d like to work on a project applying the details you’ve learned.
+فصل ۵ در مورد structها و متود‌ها صحبت می‌کند. فصل ۶ حاوی enumها، عبارت‌های `match` و کنترل `if let` می‌باشد.
+از struct و enum برای ساخت تایپ‌های جدید استفاده می‌کنید.
 
-Chapter 5 discusses structs and methods, and Chapter 6 covers enums, `match`
-expressions, and the `if let` control flow construct. You’ll use structs and
-enums to make custom types in Rust.
+در فصل ۷، درمورد سیستم ماژول‌های Rust یادمی‌گیرید و با قوانین حریم‌خصوصی برای سازمان دادن کد‌ها و رابط برنامه‌نویسی عمومی(API)
+آن آشنا می‌شوید. فصل ۸ در مورد برخی ساختمان‌داده‌ها صحبت می‌کنیم که در کتابخانه استاندارد ارائه می‌شوند. مانند بردارها(vectors)، رشته‌ها
+و جدول hash. فصل ۹ فلسفه و تکنیک رسیدگی به خطاها در Rust را بررسی می‌کند.
 
-In Chapter 7, you’ll learn about Rust’s module system and about privacy rules
-for organizing your code and its public Application Programming Interface
-(API). Chapter 8 discusses some common collection data structures that the
-standard library provides, such as vectors, strings, and hash maps. Chapter 9
-explores Rust’s error-handling philosophy and techniques.
+
 
 Chapter 10 digs into generics, traits, and lifetimes, which give you the power
 to define code that applies to multiple types. Chapter 11 is all about testing,

@@ -97,68 +97,52 @@ Rust را امتحان کنید و ببینید که آیا این ویژگی‌
 آن آشنا می‌شوید. فصل ۸ در مورد برخی ساختمان‌داده‌ها صحبت می‌کنیم که در کتابخانه استاندارد ارائه می‌شوند. مانند بردارها(vectors)، رشته‌ها
 و جدول hash. فصل ۹ فلسفه و تکنیک رسیدگی به خطاها در Rust را بررسی می‌کند.
 
+فصل ۱۰ وارد مباحث generic، خصیصه‌ها و طول عمر می‌شود که شما را قادر می‌سازد کد‌هایی که با تایپ‌های متفاوت کار ‌کنند بنویسید.
+فصل ۱۱ درباره تست است. حتی با وجود تضمین امنیت Rust باید مطمئن شوید که منطق برنامه‌تان صحیح است. در فصل ۱۲ برخی از
+قابلیت‌های برنامه تحت خط‌فرمان `grep` را پیاده‌سازی می‌کنیم. `grep` برنامه‌ای است که با استفاده از آن می‌توان
+متون را درون فایل‌ها جستجو کرد لذا، بسیاری از مفاهیمی که در فصول پیش بررسی کرده‌ایم را به کار‌ خواهیم برد.
 
+فصل ۱۳ Closure‌ها و iteratorها را واشکافی می‌کند: قابلیت‌هایی در Rust که از برنامه‌نویسی تابعی (Functional) نشئت می‌گیرد. 
+در فصل ۱۴ عمیق تر کارگو را بررسی خواهیم کرد و درباره بهترین شیوه‌ها برای به اشتراک‌گذاری کتابخانه‌ها با دیگران صحبت می‌کنیم.
+فصل ۱۵ نیز اشاره‌گر‌های هوشمند را در کتابخانه استاندارد بررسی می‌کند و خصیصه‌هایی را فراهم ‌می‌سازد که از عملکرد آنها استفاده کنیم.
 
-Chapter 10 digs into generics, traits, and lifetimes, which give you the power
-to define code that applies to multiple types. Chapter 11 is all about testing,
-which even with Rust’s safety guarantees is necessary to ensure your program’s
-logic is correct. In Chapter 12, we’ll build our own implementation of a subset
-of functionality from the `grep` command line tool that searches for text
-within files. For this, we’ll use many of the concepts we discussed in the
-previous chapters.
+در فصل ۱۶ مدل‌های برنامه‌نویسی هم‌زمان(Concurrent) را بررسی می کنیم و درباره اینکه چطور Rust به شما کمک می‌کند که بدون ترس
+از چند رشته پردازنده در برنامه خود بهره ببرید.
+فصل ۱۷ اصطلاحات Rust را با اصول برنامه‌نویسی شیء گرا که با آنها آشنا هستید مقایسه می‌کند.
 
-Chapter 13 explores closures and iterators: features of Rust that come from
-functional programming languages. In Chapter 14, we’ll examine Cargo in more
-depth and talk about best practices for sharing your libraries with others.
-Chapter 15 discusses smart pointers that the standard library provides and the
-traits that enable their functionality.
+فصل ۱۸ مرجعی از الگو‌ها و پیدا کردن آنها می‌باشد که روش‌های قدرتمندی برای مطرح کردن ایده‌ها در برنامه‌های Rust هستند.
+فصل ۱۹ مجموعه‌ای از مباحث پیشرفته جالب شامل کد ناامن Rust، ماکرو‌ها، و اطلاعات بیشتر از طول عمر، خصیصه‌ها، تایپ‌ها، توابع و Closure‌ها می‌باشد.
 
-In Chapter 16, we’ll walk through different models of concurrent programming
-and talk about how Rust helps you to program in multiple threads fearlessly.
-Chapter 17 looks at how Rust idioms compare to object-oriented programming
-principles you might be familiar with.
+در فصل ۲۰ پروژه‌ای شامل یک وب‌سرور سطح پایین با پردازش چند‌رشته‌ای پیاده‌سازی خواهیم کرد!
 
-Chapter 18 is a reference on patterns and pattern matching, which are powerful
-ways of expressing ideas throughout Rust programs. Chapter 19 contains a
-smorgasbord of advanced topics of interest, including unsafe Rust, macros, and
-more about lifetimes, traits, types, functions, and closures.
+درنهایت، چند ضمیمه اطلاعاتd مفید درباره زبان به ‌شکل مرجع ارائه می‌کند. ضمیمه الف در مورد کلمات کلیدی Rust،
+ضمیمه ب درمورد اپراتور‌ها و نماد‌ها، ضمیمه پ در مورد خصیصه‌های قابل اشتقاق از کتابخانه استاندارد، ضمیمه ت درباره چند ابزار توسعه مفید و ضمیمه ث
+ درمورد نسخه‌های مختلف Rust توضیح می‌دهند
 
-In Chapter 20, we’ll complete a project in which we’ll implement a low-level
-multithreaded web server!
-
-Finally, some appendixes contain useful information about the language in a
-more reference-like format. Appendix A covers Rust’s keywords, Appendix B
-covers Rust’s operators and symbols, Appendix C covers derivable traits
-provided by the standard library, Appendix D covers some useful development
-tools, and Appendix E explains Rust editions.
-
-There is no wrong way to read this book: if you want to skip ahead, go for it!
-You might have to jump back to earlier chapters if you experience any
-confusion. But do whatever works for you.
+هیچ روشی ‌در خواندن این کتاب اشتباه نیست: اگر می‌خواهید قسمت‌هایی را رد کنید راحت باشید!
+اگر در فهم مطلبی گیج شدید، ممکن است بخواهید به فصل های قبلی برگردید. هر طور که راحتید از کتاب استفاده کنید.
 
 <span id="ferris"></span>
 
-An important part of the process of learning Rust is learning how to read the
-error messages the compiler displays: these will guide you toward working code.
-As such, we’ll provide many examples that don’t compile along with the error
-message the compiler will show you in each situation. Know that if you enter
-and run a random example, it may not compile! Make sure you read the
-surrounding text to see whether the example you’re trying to run is meant to
-error. Ferris will also help you distinguish code that isn’t meant to work:
+یک بخش مهم از روند یادگیری Rust، یادگرفتن خواندن خطا‌های کامپایلر است: خطاها شما را به رسیدن به برنامه خوب راهنمایی ‌می‌کنند.
+به این دلیل، مثال های زیادی که کامپایل نمی‌شوند به همراه پیام‌های خطای خروجی کامپایلر در هر مورد را به شما نشان می‌دهیم.
+توجه داشته باشید که اگر مثالی تصادفی را انتخاب و کامپایل کنید ممکن است موفق نشوید. مطمئن شوید که متن اطراف مثال را بخوانید 
+تا مشخص شود که آیا آن مثال به صورت عمدی با خطا نوشته شده است یا خیر. «فریس» هم به شما کمک می‌کند که کدی که قرار نیست
+کامپایل شود را بشناسید:
 
-| Ferris                                                                 | Meaning                                          |
+
+| فریس                                                                 | معنی                                          |
 |------------------------------------------------------------------------|--------------------------------------------------|
-| <img src="img/ferris/does_not_compile.svg" class="ferris-explain"/>    | This code does not compile!                      |
-| <img src="img/ferris/panics.svg" class="ferris-explain"/>              | This code panics!                                |
-| <img src="img/ferris/unsafe.svg" class="ferris-explain"/>              | This code block contains unsafe code.            |
-| <img src="img/ferris/not_desired_behavior.svg" class="ferris-explain"/>| This code does not produce the desired behavior. |
+| <img src="img/ferris/does_not_compile.svg" class="ferris-explain"/>    | کد کامپایل نمی‌شود!                             |
+| <img src="img/ferris/panics.svg" class="ferris-explain"/>              | کد پنیک می‌کند!                                |
+| <img src="img/ferris/unsafe.svg" class="ferris-explain"/>              | این بلاک کد حاوی کد نا‌امن است.                    |
+| <img src="img/ferris/not_desired_behavior.svg" class="ferris-explain"/>| این کد نتیجه مورد نظر را ندارد.                      |
 
-In most situations, we’ll lead you to the correct version of any code that
-doesn’t compile.
+در اکثر مواقع، شما را به نسخه درست کدی که کامپایل نمی‌شود راهنمایی خواهیم کرد.
 
-## Source Code
+## کد منبع
 
-The source files from which this book is generated can be found on
-[GitHub][book].
+کد منبع این کتاب به زبان اصلی در آدرس زیر موجود است.
+[گیت‌هاب][book].
 
 [book]: https://github.com/rust-lang/book/tree/master/src

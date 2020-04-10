@@ -49,3 +49,17 @@ function attachFerris (element, type) {
 
   element.parentElement.insertBefore(a, element)
 }
+
+function addCss(fileName) {
+
+  var head = document.head;
+  var link = document.createElement("link");
+
+  link.type = "text/css";
+  link.rel = "stylesheet";
+  link.href = fileName;
+
+  head.appendChild(link);
+}
+
+addCss('https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel.css');

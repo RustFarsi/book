@@ -1,135 +1,105 @@
-## Installation
+## نصب
 
-The first step is to install Rust. We’ll download Rust through `rustup`, a
-command line tool for managing Rust versions and associated tools. You’ll need
-an internet connection for the download.
+اولین قدم نصب Rust است. ما برای دانلود Rust از `rustup` استفاده می‌کنیم که یک ابزار خط فرمان برای مدیریت 
+نسخه‌های مختلف زبان و ابزار آن است. برای اینکار به اتصال اینترنت نیاز دارید.
+> نکته: اگر  به دلایلی ترجیح می‌دهید از `rustup` استفاده نکنید لطفا [صفحه نصب](https://www.rust-lang.org/tools/install)
+> را برای گزینه‌های دیگر ببینید.
 
-> Note: If you prefer not to use `rustup` for some reason, please see [the Rust
-> installation page](https://www.rust-lang.org/tools/install) for other options.
+با این راهنما آخرین نسخه پایدار کامپایلر Rust را نصب می‌کنید.
+پایداری Rust تضمین می‌کند که تمام مثال‌های کتاب توسط نسخه‌های جدیدتر کامپایلر نیز کامپایل بشوند.
+البته چون Rust معمولا خطا‌ها و پیام‌های کامپایلر را بهبود می‌بخشد خروجی ممکن است کمی بین نسخه‌ها فرق داشته باشد.
+به عبارت دیگر هر نسخه پایدار جدید‌تر از این راهنما باید مطابق کتاب کار کند.
 
-The following steps install the latest stable version of the Rust compiler.
-Rust’s stability guarantees ensure that all the examples in the book that
-compile will continue to compile with newer Rust versions. The output might
-differ slightly between versions, because Rust often improves error messages
-and warnings. In other words, any newer, stable version of Rust you install
-using these steps should work as expected with the content of this book.
+> ### نمایش دستورات خط فرمان
+> در این فصل و در طی کتاب دستوراتی که باید در خط فرمان(ترمینال) وارد شوند را معرفی می‌کنیم. این دستورات در اول خط
+> با علامت `$` شروع می‌شوند. لازم نیست این علامت را اول دستور وارد کنید؛ این علامت فقط نشان‌دهنده شروع دستور است.
+> خطوطی که با `$` شروع نشوند معمولا خروجی دستور قبلی هستند. علاوه بر این دستورات مربوط به PowerShell نیز با علامت `<` شروع می‌شوند.
 
-> ### Command Line Notation
->
-> In this chapter and throughout the book, we’ll show some commands used in the
-> terminal. Lines that you should enter in a terminal all start with `$`. You
-> don’t need to type in the `$` character; it indicates the start of each
-> command. Lines that don’t start with `$` typically show the output of the
-> previous command. Additionally, PowerShell-specific examples will use `>`
-> rather than `$`.
+### نصب `rustup` روی لینوکس یا مک
 
-### Installing `rustup` on Linux or macOS
-
-If you’re using Linux or macOS, open a terminal and enter the following command:
+اگر از لینوکس یا مک استفاده می‌کنید، یک ترمینال باز کنید و دستور زیر را وارد کنید:
 
 ```text
 $ curl https://sh.rustup.rs -sSf | sh
 ```
 
-The command downloads a script and starts the installation of the `rustup`
-tool, which installs the latest stable version of Rust. You might be prompted
-for your password. If the install is successful, the following line will appear:
+این دستور اسکریپت نصب `rustup` را دانلود کرده و آنرا اجرا می‌کند. که در نهایت موجب نصب آخرین نسخه پایدار Rust می‌شود.
+ممکن است در طی این فرایند رمزعبور شما درخواست شود. اگر فرایند نصب موفقیت‌آمیز باشد پیام زیر را خواهید دید:
 
 ```text
 Rust is installed now. Great!
 ```
 
-If you prefer, feel free to download the script and inspect it before running
-it.
+در صورت تمایل می‌توانید اسکریپت را دانلود و محتویاتش را قبل از اجرا بررسی نمایید.
 
-The installation script automatically adds Rust to your system PATH after your
-next login. If you want to start using Rust right away instead of restarting
-your terminal, run the following command in your shell to add Rust to your
-system PATH manually:
+اسکریپت نصب در ورود بعدی بصورت خودکار Rust را به متغیر PATH سیستم شما اضافه می‌کند. اگر می‌خواهید بدون راه‌اندازی 
+مجدد ترمینال از Rust استفاده کنید این دستور را در خط فرمان برای اضافه کردن دستی به PATH وارد نمایید:
 
 ```text
 $ source $HOME/.cargo/env
 ```
 
-Alternatively, you can add the following line to your *~/.bash_profile*:
+یا این خط را به فایل *~/.bash_profile* خودتان اضافه کنید.
 
 ```text
 $ export PATH="$HOME/.cargo/bin:$PATH"
 ```
 
-Additionally, you’ll need a linker of some kind. It’s likely one is already
-installed, but when you try to compile a Rust program and get errors indicating
-that a linker could not execute, that means a linker isn’t installed on your
-system and you’ll need to install one manually. C compilers usually come with
-the correct linker. Check your platform’s documentation for how to install a C
-compiler. Also, some common Rust packages depend on C code and will need a C
-compiler. Therefore, it might be worth installing one now.
+علاوه بر این نیاز به یک لینکر هم دارید که به احتمال قوی روی سیستم نصب باشد. اما اگر طی کامپایل کردن برنامه‌ها پیام خطایی شامل Linker 
+نمایش داده شد مشخص است که هیچ لینکری روی سیستم شما نصب نشده. پس نیاز دارید به صورت دستی نصب کنید. کامپایلر‌های C معمولاً با خود
+لینکر نیز نصب می‌کنند. مستندات پلتفرم خودتان را برای نحوه نصب یک کامپایلر C مطالعه کنید. همچنین برخی بسته‌های Rust به کد C نیاز دارند و 
+نصب کامپایلر C برای استفاده از آنها ضروری است پس نصب آن ایده خوبی است.
 
-### Installing `rustup` on Windows
+### نصب `rutup` روی ویندوز
 
-On Windows, go to [https://www.rust-lang.org/tools/install][install] and follow
-the instructions for installing Rust. At some point in the installation, you’ll
-receive a message explaining that you’ll also need the C++ build tools for
-Visual Studio 2013 or later. The easiest way to acquire the build tools is to
-install [Build Tools for Visual Studio 2019][visualstudio]. The tools are in
-the Other Tools and Frameworks section.
+در ویندوز به  [https://www.rust-lang.org/tools/install][install] مراجعه کرده و دستورالعمل آنرا برای نصب Rust دنبال کنید.
+در طی روند نصب پیامی دریافت خواهید کرد که به C++ build tools for Visual Studio 2013 یا نسخه جدیدتر آن نیز احتیاج دارید.
+راحت‌ترین راه برای نصب آنها اینجا [Build Tools for Visual Studio 2019][visualstudio] می‌باشد. این ابزار در بخش Other Tools and Frameworks قابل دریافت هستند.
 
 [install]: https://www.rust-lang.org/tools/install
 [visualstudio]: https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2019
 
-The rest of this book uses commands that work in both *cmd.exe* and PowerShell.
-If there are specific differences, we’ll explain which to use.
+ادامه این کتاب از دستوراتی که هم در *cmd.exe* و هم در PowerShell کار می‌کند استفاده می‌کند. اگر تفاوت خاصی باشد حتما ذکر خواهد شد.
 
-### Updating and Uninstalling
+### بروزرسانی و حذف
 
-After you’ve installed Rust via `rustup`, updating to the latest version is
-easy. From your shell, run the following update script:
+بعد از نصب Rust با `rustup`، بروزرسانی به آخرین نسخه بسیار آسان است. کافیست از پوسته خود دستور زیر را اجرا کنید:
 
 ```text
 $ rustup update
 ```
 
-To uninstall Rust and `rustup`, run the following uninstall script from your
-shell:
+برای حذف Rust و `rustup`، این دستور را از پوسته اجرا کنید:
 
 ```text
 $ rustup self uninstall
 ```
 
-### Troubleshooting
+### عیب‌یابی
 
-To check whether you have Rust installed correctly, open a shell and enter this
-line:
+برای بررسی درستی نصب Rust دستور زیر را وارد کنید:
 
 ```text
 $ rustc --version
 ```
 
-You should see the version number, commit hash, and commit date for the latest
-stable version that has been released in the following format:
+بعد از اجرا باید شماره نسخه، هش کامیت، و تاریخ کامیت برای آخرین نسخه پایدار را به فرمت زیر ببینید:
 
 ```text
 rustc x.y.z (abcabcabc yyyy-mm-dd)
 ```
 
-If you see this information, you have installed Rust successfully! If you don’t
-see this information and you’re on Windows, check that Rust is in your `%PATH%`
-system variable. If that’s all correct and Rust still isn’t working, there are
-a number of places you can get help. The easiest is the #beginners channel on
-[the official Rust Discord][discord]. There, you can chat with other Rustaceans
-(a silly nickname we call ourselves) who can help you out. Other great
-resources include [the Users forum][users] and [Stack Overflow][stackoverflow].
+اگر این اطلاعات را می‌بینید، نصب Rust با موفقیت انجام شده است! اگر این اطلاعات را نمی‌بینید و روی ویندوز هستید چک کنید که Rust 
+روی متغیر سیستمی `%PATH%` شما باشد. اگر همه چیز درست است اما Rust همچنان کار نمی‌کند می‌توانید از چند منبع کمک بگیرید.
+آسان‌ترین راه برای کمک گرفتن کانال #beginners در [دیسکورد رسمی Rust][discord] می‌باشد. آنجا می‌توانید با Rustaceans (اسم بامزه‌ای که ما خودمان را صدا می‌زنیم)
+های دیگر که می‌توانند به شما کمک کنند گفتگو کنید. منابع خوب دیگر میتوانند [انجمن کاربران][users] و [Stack Overflow][stackoverflow] باشند.
 
 [discord]: https://discord.gg/rust-lang
 [users]: https://users.rust-lang.org/
 [stackoverflow]: http://stackoverflow.com/questions/tagged/rust
 
-### Local Documentation
+### مستندات محلی
 
-The installation of Rust also includes a copy of the documentation locally, so
-you can read it offline. Run `rustup doc` to open the local documentation in
-your browser.
+با نصب Rust یک کپی از مستندات بصورت محلی(در کامپیوتر شما) نصب می‌شود و می‌توانید بصورت آفلاین  در مرورگرتان به آن‌ها دسترسی داشته باشید.
 
-Any time a type or function is provided by the standard library and you’re not
-sure what it does or how to use it, use the application programming interface
-(API) documentation to find out!
+اگر تابع یا نوعی در کتابخانه استاندارد ارائه می‌شود و در مورد طرز استفاده از آن یا کاری که انجام می‌دهد مطمئن نیستید از مستندات API برای یادگیری در مورد آن استفاده کنید.

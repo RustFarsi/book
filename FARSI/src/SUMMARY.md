@@ -4,10 +4,10 @@
 [پیشگفتار](foreword.md)
 [مقدمه](ch00-00-introduction.md)
 
-## Getting started
+## شروع کنید
 
-- [Getting Started](ch01-00-getting-started.md)
-    - [Installation](ch01-01-installation.md)
+- [راهنمای شروع](ch01-00-getting-started.md)
+    - [نصب](ch01-01-installation.md)
     - [Hello, World!](ch01-02-hello-world.md)
     - [Hello, Cargo!](ch01-03-hello-cargo.md)
 

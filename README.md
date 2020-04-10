@@ -4,6 +4,8 @@ This repository contains the source of the Farsi(Persian) translation of "The Ru
 
 The translated markdown files are in the FARSI directory. All other files of the project(except for this README.md) have remained intact and compatible with the original english version.
 
+[Read here](https://pouriamokhtari.ir/rust-book-fa/)(Note that translations might be incomplete)
+
 [the original book](https://github.com/rust-lang/book/)
 
 ## Requirements

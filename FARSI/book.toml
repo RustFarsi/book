@@ -1,8 +1,0 @@
-[book]
-title = "زبان برنامه نویسی Rust"
-author = "Steve Klabnik، Carol Nichols و همکاری جامعه زبان برنامه‌نویسی راست. ترجمه پوریا مختاری"
-language = "fa"
-
-[output.html]
-additional-css = ["ferris.css", "theme/2018-edition.css"]
-additional-js = ["ferris.js"]

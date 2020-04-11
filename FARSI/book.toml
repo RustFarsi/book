@@ -4,5 +4,5 @@ author = "Steve Klabnik، Carol Nichols و همکاری جامعه زبان بر
 language = "fa"
 
 [output.html]
-additional-css = ["ferris.css", "theme/2018-edition.css"]
+additional-css = ["ferris.css", "theme/2018-edition.css", "theme/farsi.css"]
 additional-js = ["ferris.js"]

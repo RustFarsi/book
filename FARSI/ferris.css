@@ -31,28 +31,3 @@ body.ayu .not_desired_behavior {
 .ferris-explain {
   width: 100px;
 }
-
-body {
-  font-family: 'Sahel', serif;
-}
-
-p, h1, h2, h3, h4, h5, h6, ul, ol {
-  direction: rtl;
-}
-
-ol, ul {
-  line-height: 2.0em !important;
-}
-
-p {
-  line-height: 2.0em !important;
-}
-
-.hljs {
-  direction: ltr;
-  unicode-bidi: embed;
-}
-
-#sidebar {
-  direction: rtl;
-}

@@ -50,6 +50,7 @@ p {
 
 .hljs {
   direction: ltr;
+  unicode-bidi: embed;
 }
 
 #sidebar {

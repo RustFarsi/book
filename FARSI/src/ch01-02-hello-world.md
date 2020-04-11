@@ -1,29 +1,24 @@
-## Hello, World!
+## سلام دنیا
+حالا که Rust را نصب کرده‌اید، اولین برنامه خود را بنویسید. مرسوم است که زمان یادگیری یک زبان جدید 
+برنامه‌ی کوچکی که عبارت `Hello, World!` را در صفحه نمایش دهد بنویسند پس ما هم این‌کار را می‌کنیم.
 
-Now that you’ve installed Rust, let’s write your first Rust program. It’s
-traditional when learning a new language to write a little program that prints
-the text `Hello, world!` to the screen, so we’ll do the same here!
 
-> Note: This book assumes basic familiarity with the command line. Rust makes
-> no specific demands about your editing or tooling or where your code lives, so
-> if you prefer to use an integrated development environment (IDE) instead of
-> the command line, feel free to use your favorite IDE. Many IDEs now have some
-> degree of Rust support; check the IDE’s documentation for details. Recently,
-> the Rust team has been focusing on enabling great IDE support, and progress
-> has been made rapidly on that front!
+> نکته: این کتاب درنظر می‌گیرد که شما آشنایی مقدماتی با خط فرمان داشته باشید. Rust انتخاب خاصی
+> درباره ویرایشگر متن یا محیط و ابزار شما ندارد. پس اگر ترجیح می‌دهید که از یک محیط توسعه IDE به جای
+> خط فرمان استفاده کنید ایرادی بر آن وارد نیست. بسیاری از IDE ها تا حدی از Rust پشتیبانی می‌کنند. 
+> برای جزئیات بیشتر باید به مستندات IDE خودتان رجوع کنید. اخیراً تیم Rust روی توسعه پشتیبانی IDE تمرکز کرده  
+> و پیشرفت زیادی در این زمینه اتفاق افتاده است!
 
-### Creating a Project Directory
+### ساخت دایرکتوری برای پروژه
 
-You’ll start by making a directory to store your Rust code. It doesn’t matter
-to Rust where your code lives, but for the exercises and projects in this book,
-we suggest making a *projects* directory in your home directory and keeping all
-your projects there.
+با ساختن یک دایرکتوری برای نگهداری کد Rust شروع کنید. برای Rust اهمیتی ندارد که کدها را کجا قرار می‌دهید، اما 
+برای تمرین‌ها و پروژه‌های این کتاب، پیشنهاد می‌کنیم یک دایرکتوری *projects* در کامپیوتر خود ساخته و کد پروژه‌هارا
+آنجا قرار دهید.
 
-Open a terminal and enter the following commands to make a *projects* directory
-and a directory for the “Hello, world!” project within the *projects* directory.
+یک ترمینال باز کرده و دستورات زیر را برای ساخت یک دایرکتوری *project* و یک دایرکتوری برای برنامه «Hello World» خود 
+درون آن وارد کنید.
 
-For Linux, macOS, and PowerShell on Windows, enter this:
-
+برای لینوکس، مک و PowerShell روی ویندوز:
 ```text
 $ mkdir ~/projects
 $ cd ~/projects
@@ -31,7 +26,7 @@ $ mkdir hello_world
 $ cd hello_world
 ```
 
-For Windows CMD, enter this:
+برای CMD روی ویندوز:
 
 ```cmd
 > mkdir "%USERPROFILE%\projects"
@@ -40,16 +35,15 @@ For Windows CMD, enter this:
 > cd hello_world
 ```
 
-### Writing and Running a Rust Program
+### نوشتن و اجرای یک برنامه Rust
 
-Next, make a new source file and call it *main.rs*. Rust files always end with
-the *.rs* extension. If you’re using more than one word in your filename, use
-an underscore to separate them. For example, use *hello_world.rs* rather than
-*helloworld.rs*.
+سپس باید یک کد منبع جدید بسازیم. نام آنرا *main.rs* می‌گذاریم. پسوند فایل‌های کد منبع Rust همیشه *.rs* می‌باشد.
+اگر در اسم فایل شما بیشتر از یک کلمه باشد باید آنها را با underscore از هم جدا کنید. مثلاً بجای *helloworld.rs* از *hello_world.rs* استفاده کنید.
 
-Now open the *main.rs* file you just created and enter the code in Listing 1-1.
 
-<span class="filename">Filename: main.rs</span>
+حال فایل *main.rs* که ساختید را باز کرده و در آن کد ۱٫۱ را قرار دهید.
+
+<span class="filename">فایل: main.rs</span>
 
 ```rust
 fn main() {
@@ -57,10 +51,9 @@ fn main() {
 }
 ```
 
-<span class="caption">Listing 1-1: A program that prints `Hello, world!`</span>
+<span class="caption">کد ۱٫۱: برنامه ای که `Hello, world!` را چاپ می‌کند.</span>
 
-Save the file and go back to your terminal window. On Linux or macOS, enter
-the following commands to compile and run the file:
+فایل را ذخیره کرده و به ترمینال بازگردید. در لینوکس یا مک، دستورات زیر را برای کامپایل و اجرای فایل وارد کنید:
 
 ```text
 $ rustc main.rs
@@ -68,7 +61,7 @@ $ ./main
 Hello, world!
 ```
 
-On Windows, enter the command `.\main.exe` instead of `./main`:
+روی ویندوز، دستور `.\main.exe`  را بجای `./main` وارد نمایید:
 
 ```powershell
 > rustc main.rs
@@ -76,18 +69,16 @@ On Windows, enter the command `.\main.exe` instead of `./main`:
 Hello, world!
 ```
 
-Regardless of your operating system, the string `Hello, world!` should print to
-the terminal. If you don’t see this output, refer back to the
-[“Troubleshooting”][troubleshooting]<!-- ignore --> part of the Installation
-section for ways to get help.
+صرف‌نظر از سیستم‌عامل، باید رشته `Hello, world!` در ترمینال چاپ شود. اگر خروجی را مشاهده نمی‌کنید،
+به [بخش عیب‌یابی][troubleshooting]<!-- ignore --> قسمت نصب برای کمک گرفتن رجوع کنید.
 
-If `Hello, world!` did print, congratulations! You’ve officially written a Rust
-program. That makes you a Rust programmer—welcome!
+اگر `Hello, world!` چاپ شد، تبریک می‌گوییم! شما رسماً یک برنامه Rust نوشته‌اید. که یعنی یک برنامه‌نویس Rust هستید.
+خوش‌آمدید!
 
-### Anatomy of a Rust Program
+### آناتومی یک برنامه Rust
 
-Let’s review in detail what just happened in your “Hello, world!” program.
-Here’s the first piece of the puzzle:
+جزئیات اتفاقاتی که در برنامه «Hello, World» شما افتاد را بررسی کنیم.
+اولین بخش پازل:
 
 ```rust
 fn main() {
@@ -95,72 +86,59 @@ fn main() {
 }
 ```
 
-These lines define a function in Rust. The `main` function is special: it is
-always the first code that runs in every executable Rust program. The first
-line declares a function named `main` that has no parameters and returns
-nothing. If there were parameters, they would go inside the parentheses, `()`.
+این چند خط در زبان Rust یک تابع را تعریف می‌کنند. تابع `main` یک تابع خاص است: همیشه اولین کدی است که 
+در یک برنامه Rust اجرا می‌شود. خط اول یک تابع به نام `main` می‌سازد که هیچ پارامتری ندارد و هیچ چیزی برنمی‌گرداند.
+اما اگر پارامتر ورودی داشت داخل پرانتز‌ها `()` وارد می‌شدند.
 
-Also, note that the function body is wrapped in curly brackets, `{}`. Rust
-requires these around all function bodies. It’s good style to place the opening
-curly bracket on the same line as the function declaration, adding one space in
-between.
+همچنین، توجه داشته باشید که بدنه تابع در `{}` محدود شده است. در Rust استفاده از این علامت‌ها برای تمام توابع الزامی است.
+شیوه خوب نوشتن کد این است که علامت `}` باز کننده را در همان خط تعریف تابع با یک فاصله (space) قرار دهیم.
 
-At the time of this writing, an automatic formatter tool called `rustfmt` is
-under development. If you want to stick to a standard style across Rust
-projects, `rustfmt` will format your code in a particular style. The Rust team
-plans to eventually include this tool with the standard Rust distribution, like
-`rustc`. So depending on when you read this book, it might already be installed
-on your computer! Check the online documentation for more details.
+در زمان نگارش این متن، یک ابزار فرمت خودکار به نام `rustfmt` در حال توسعه است. اگر می‌خواهید یک شیوه استاندارد برای
+پروژه‌ها استفاده کنید، `rustfmt` کد شما را به یک شیوه هماهنگ می‌کند. تیم Rust در نظر دارد در نهایت این ابزار را در توزیع
+استاندارد Rust وارد کند. مانند `rustc`. پس مشروط به اینکه چه زمانی این کتاب را می‌خوانید، ممکن است همین الان روی کامپیوتر
+شما نصب شده باشد! برای جزئیات بیشتر مستندات آنلاین را بیشتر بررسی کنید.
 
-Inside the `main` function is the following code:
+درون تابع `main` کد زیر وجود دارد:
 
 ```rust
     println!("Hello, world!");
 ```
 
-This line does all the work in this little program: it prints text to the
-screen. There are four important details to notice here. First, Rust style is
-to indent with four spaces, not a tab.
+این خط ساده تمام کار در این برنامه کوچک را انجام می‌دهد: متنی را روی صفحه چاپ می‌کند. چهار نکته جالب توجه وجود دارد.
+اول اینکه شیوه Rust این است که با ۴ کاراکتر فاصله (Space) indent یا مرتب سازی کد انجام شود و از tab استفاده نشود.
 
-Second, `println!` calls a Rust macro. If it called a function instead, it
-would be entered as `println` (without the `!`). We’ll discuss Rust macros in
-more detail in Chapter 19. For now, you just need to know that using a `!`
-means that you’re calling a macro instead of a normal function.
+دوم اینکه `println!` یک ماکرو در Rust صدا می‌زند. اگر یک تابع صدا زده بود به شکل `println` (بدون کاراکتر `!`) نوشته می‌شد.
+بیشتر در مورد ماکروها و جزئیات آنها در فصل ۱۹ صحبت خواهیم کرد. فعلا باید بدانید که استفاده از `!` به معنی صدا زدن یک ماکرو 
+به جای یک تابع معمولی است.
 
-Third, you see the `"Hello, world!"` string. We pass this string as an argument
-to `println!`, and the string is printed to the screen.
+سوم اینکه رشته `"Hello, world!"` را می‌بینیم. آنرا به عنوان آرگومان به `println!` داده‌ایم، و این رشته روی صفحه چاپ شد.
 
-Fourth, we end the line with a semicolon (`;`), which indicates that this
-expression is over and the next one is ready to begin. Most lines of Rust code
-end with a semicolon.
+چهارم: ما خط را با یک `;` (Semicolon) پایان داده‌ایم که نشان دهنده پایان عبارت و آمادگی شروع عبارت بعدی است.
+اکثر خطوط در Rust با این کاراکتر پایان میابند.
 
-### Compiling and Running Are Separate Steps
+### کامپایل و اجرا جداگانه هستند
 
-You’ve just run a newly created program, so let’s examine each step in the
-process.
+برنامه جدید خود را اجرا کردید. هر قدم از این روند اجرا را بررسی می‌کنیم.
 
-Before running a Rust program, you must compile it using the Rust compiler by
-entering the `rustc` command and passing it the name of your source file, like
-this:
+قبل از اجرای برنامه Rust، لازم است آنرا با استفاده از کامپایلر Rust و وارد کردن `rustc` کامپایل کنیم. اسم فایل
+کد منبع را به عنوان ورودی به این دستور می‌دهیم. به شکل زیر:
 
 ```text
 $ rustc main.rs
 ```
 
-If you have a C or C++ background, you’ll notice that this is similar to `gcc`
-or `clang`. After compiling successfully, Rust outputs a binary executable.
+اگر پس‌زمینه ای از C یا C++ داشته باشید متوجه شباهت با `gcc` یا `clang` خواهید شد. بعد از موفقیت 
+کامپایل، Rust یک فایل قابل اجرای دودویی خروجی می‌دهد.
 
-On Linux, macOS, and PowerShell on Windows, you can see the executable by
-entering the `ls` command in your shell. On Linux and macOS, you’ll see two
-files. With PowerShell on Windows, you’ll see the same three files that you
-would see using CMD.
+در لینوکس، مک، و پاورشل ویندوز، می‌توانید خروجی قابل اجرا را با وارد کردن دستور `ls` مشاهده کنید.
+در لینوکس و مک دو فایل خواهید دید. در پاورشل ویندوز یا CMD سه فایل خواهید دید.
 
 ```text
 $ ls
 main  main.rs
 ```
 
-With CMD on Windows, you would enter the following:
+با CMD در ویندوز باید دستور زیر را وارد کنید:
 
 ```cmd
 > dir /B %= the /B option says to only show the file names =%
@@ -169,30 +147,23 @@ main.pdb
 main.rs
 ```
 
-This shows the source code file with the *.rs* extension, the executable file
-(*main.exe* on Windows, but *main* on all other platforms), and, when using
-Windows, a file containing debugging information with the *.pdb* extension.
-From here, you run the *main* or *main.exe* file, like this:
+این دستور کد منبع با پسوند *.rs*، فایل خروجی قابل اجرا (*main.exe* در ویندوز و *main* در سایر) و اگر از
+ویندوز استفاده کنید فایلی حاوی اطلاعات دیباگ با پسوند *.pdb* را نشان می‌دهد.
+سپس کافیست فایل *main* یا *main.exe* را اجرا کنید، به این شکل:
 
 ```text
 $ ./main # or .\main.exe on Windows
 ```
 
-If *main.rs* was your “Hello, world!” program, this line would print `Hello,
-world!` to your terminal.
+اگر *main.rs* برنامه «Hello, World» شما باشد این کار `Hello, world!` را روی ترمینال چاپ می‌کند.
 
-If you’re more familiar with a dynamic language, such as Ruby, Python, or
-JavaScript, you might not be used to compiling and running a program as
-separate steps. Rust is an *ahead-of-time compiled* language, meaning you can
-compile a program and give the executable to someone else, and they can run it
-even without having Rust installed. If you give someone a *.rb*, *.py*, or
-*.js* file, they need to have a Ruby, Python, or JavaScript implementation
-installed (respectively). But in those languages, you only need one command to
-compile and run your program. Everything is a trade-off in language design.
+اگر با یک زبان پویا مثل Ruby ،Python یا Javascript آشنا باشید، ممکن است به کامپایل و اجرای برنامه در دو مرحله
+جداگانه عادت نداشته باشید. Rust یک زبان *ahead-of-time compiled* می‌باشد. به این معنی که می‌توانید برنامه‌ها را
+کامپایل کرده و فایل خروجی را به فرد دیگری بدهید و او می‌تواند حتی بدون نصب Rust آنرا اجرا کند. 
+اگر به کسی فایل *.rb* یا *.py* یا *.js* دهید باید برای اجرای آنها یک پیاده سازی از Ruby یا Python یا Javascript (به ترتیب) نصب داشته باشند.
+ولی در این زبان‌ها برای اجرای برنامه تنها یک دستور کافی است. همه چیز در طراحی زبان‌های برنامه‌نویسی مثل معامله می‌ماند.
 
-Just compiling with `rustc` is fine for simple programs, but as your project
-grows, you’ll want to manage all the options and make it easy to share your
-code. Next, we’ll introduce you to the Cargo tool, which will help you write
-real-world Rust programs.
+فقط استفاده از `rustc` برای کامپایل برنامه‌های ساده کافی است. ولی هرچه پروژه شما بزرگتر شود، می‌خواهید گزینه‌های مربوط را مدیریت
+کرده و کد خود را راحت‌تر به اشتراک بگذارید. در ادامه، شما را با ابزار کارگو آشنا خواهیم کرد که کمک می‌کند برنامه‌های واقعی Rust بنویسید.
 
 [troubleshooting]: ch01-01-installation.html#troubleshooting

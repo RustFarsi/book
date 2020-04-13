@@ -9,7 +9,7 @@
 - [راهنمای شروع](ch01-00-getting-started.md)
     - [نصب](ch01-01-installation.md)
     - [سلام دنیا!](ch01-02-hello-world.md)
-    - [Hello, Cargo!](ch01-03-hello-cargo.md)
+    - [سلام کارگو!](ch01-03-hello-cargo.md)
 
 - [Programming a Guessing Game](ch02-00-guessing-game-tutorial.md)
 

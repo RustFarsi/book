@@ -1,63 +1,52 @@
-## Hello, Cargo!
+## سلام کارگو!
 
-Cargo is Rust’s build system and package manager. Most Rustaceans use this tool
-to manage their Rust projects because Cargo handles a lot of tasks for you,
-such as building your code, downloading the libraries your code depends on, and
-building those libraries. (We call libraries your code needs *dependencies*.)
+کارگو ابزار ساخت و مدیر بسته Rust است. اکثر برنامه‌نویسان Rust از این ابزار برای 
+مدیریت پروژه‌های Rust استفاده می‌کنند چرا که کارگو بسیاری از کار‌ها مثل ساخت (build) کد‌ها، دانلود 
+کردن کتابخانه‌هایی که کد شما به آن نیاز دارد و ساخت آنها را انجام می‌دهد. (ما به کتابخانه‌هایی که کد شما به آن 
+نیاز دارد *پیشنیاز* می‌گوییم.)
 
-The simplest Rust programs, like the one we’ve written so far, don’t have any
-dependencies. So if we had built the “Hello, world!” project with Cargo, it
-would only use the part of Cargo that handles building your code. As you write
-more complex Rust programs, you’ll add dependencies, and if you start a project
-using Cargo, adding dependencies will be much easier to do.
+ساده‌ترین برنامه‌های Rust، مثل برنامه‌ای که نوشتیم پیشنیازی ندارند. پس اگر برنامه «Hello world» را با 
+کارگو بسازیم، تنها از بخشی از کارگو که کد شما را می‌سازد (build) استفاده می‌شود. هرچه برنامه‌های پیچیده‌تر Rust 
+بنویسید به آنها پیشنیاز اضافه خواهید کرد، و اگر پروژه‌ای را با کارگو شروع کنید، اضافه کردن پیشنیاز بسیار ساده‌تر است.
 
-Because the vast majority of Rust projects use Cargo, the rest of this book
-assumes that you’re using Cargo too. Cargo comes installed with Rust if you
-used the official installers discussed in the
-[“Installation”][installation]<!-- ignore --> section. If you installed Rust
-through some other means, check whether Cargo is installed by entering the
-following into your terminal:
+چون اکثر پروژه‌های Rust از کارگو استفاده می‌کنند، در ادامه این کتاب در نظر می‌گیریم که شما نیز از کارگو 
+استفاده می‌کنید. با نصب Rust کارگو نیز نصب می‌شود؛ البته اگر از روش‌های نصب رسمی در بخش [«نصب»][installation]<!-- ignore --> استفاده کنید.
+اگر Rust را با روش دیگری نصب کرده‌اید، با وارد کردن دستور زیر در ترمینال کنترل کنید که آیا کارگو نصب شده است:
 
 ```text
 $ cargo --version
 ```
 
-If you see a version number, you have it! If you see an error, such as `command
-not found`, look at the documentation for your method of installation to
-determine how to install Cargo separately.
+اگر یک شماره نسخه می‌بینید، شما آن را دارید! اگر یک خطا مثل `command not found` می‌بینید، به مستندات روش 
+نصب خود مراجعه کرده و نحوه نصب کارگو بصورت جداگانه را مطالعه کنید.
 
-### Creating a Project with Cargo
+### ساخت یک پروژه با کارگو
 
-Let’s create a new project using Cargo and look at how it differs from our
-original “Hello, world!” project. Navigate back to your *projects* directory (or
-wherever you decided to store your code). Then, on any operating system, run
-the following:
+بیایید یک پروژه جدید با کارگو بسازیم و تفاوت آنرا با برنامه «Hello world» سابق ببینیم. به دایرکتوری *projects* (یا هرجایی 
+که کد‌های خود را نگه می‌دارید) برگردید. سپس در همه سیستم‌عامل‌ها دستورات زیر را وارد کنید:
 
 ```text
 $ cargo new hello_cargo
 $ cd hello_cargo
 ```
 
-The first command creates a new directory called *hello_cargo*. We’ve named
-our project *hello_cargo*, and Cargo creates its files in a directory of the
-same name.
+دستور اول یک دایرکتوری جدید با عنوان *hello_cargo* می‌سازد. نام پروژه خود را *hello_cargo* گذاشته‌ایم،
+کارگو فایل‌های مربوط به آن را در یک دایرکتوری با همین اسم نگه می‌دارد. 
 
-Go into the *hello_cargo* directory and list the files. You’ll see that Cargo
-has generated two files and one directory for us: a *Cargo.toml* file and a
-*src* directory with a *main.rs* file inside.
+داخل دایرکتوری *hello_cargo* بروید و محتویات آنرا نمایش دهید. می‌بینید که کارگو برای ما دو فایل و یک دایرکتوری 
+ساخته است: یک فایل *Cargo.toml* و یک دایرکتوری *src* با یک فایل *main.rs* درون آن.
 
-It has also initialized a new Git repository along with a *.gitignore* file.
-Git files won’t be generated if you run `cargo new` within an existing Git
-repository; you can override this behavior by using `cargo new --vcs=git`.
+همچنین کارگو یک مخزن گیت با یک فایل *.gitignore* ساخته است. اگر از قبل در پوشه مربوطه یک مخزن گیت 
+وجود داشته باشد فایل های گیت با اجرای `cargo new` ساخته نخواهند شد. می‌توانید با استفاده از دستور
+`cargo new --vcs=git` این رفتار را غیرفعال کنید.
 
-> Note: Git is a common version control system. You can change `cargo new` to
-> use a different version control system or no version control system by using
-> the `--vcs` flag. Run `cargo new --help` to see the available options.
+> نکته: گیت یک سیستم کنترل نسخه پراستفاده است. شما می‌توانید `cargo new` را تغییر دهید تا از 
+> سیستم کنترل نسخه متفاوت استفاده کنید یا با دستور `--vcs` بدون کنترل نسخه ادامه دهید.
+> با اجرای `cargo new --help همه تنظیمات موجود را ببینید.
 
-Open *Cargo.toml* in your text editor of choice. It should look similar to the
-code in Listing 1-2.
+فایل *Cargo.toml* را در ویرایشگر متن خود باز کنید. باید شبیه کد ۱٫۲ باشد.
 
-<span class="filename">Filename: Cargo.toml</span>
+<span class="filename">فایل: Cargo.toml</span>
 
 ```toml
 [package]
@@ -69,32 +58,28 @@ edition = "2018"
 [dependencies]
 ```
 
-<span class="caption">Listing 1-2: Contents of *Cargo.toml* generated by `cargo
-new`</span>
+<span class="caption">کد ۱٫۲: محتوای *Cargo.toml* که توسط `cargo
+new` وارد شده است.</span>
 
-This file is in the [*TOML*][toml]<!-- ignore --> (*Tom’s Obvious, Minimal
-Language*) format, which is Cargo’s configuration format.
+این فایل به فرمت [*TOML*][toml]<!-- ignore --> (*Tom’s Obvious, Minimal Language*) نوشته 
+شده است که فرمت تنظیمات کارگو است.
 
 [toml]: https://github.com/toml-lang/toml
 
-The first line, `[package]`, is a section heading that indicates that the
-following statements are configuring a package. As we add more information to
-this file, we’ll add other sections.
+خط اول `[package]`، تیتر یک بخش است که نشان می‌دهد عبارات بعد از آن برای تنظیم یک بسته (package) آمده‌اند.
+هرچه اطلاعات بیشتر به این فایل اضافه کنیم. بخش‌های جدید هم اضافه خواهند شد.
 
-The next four lines set the configuration information Cargo needs to compile
-your program: the name, the version, who wrote it, and the edition of Rust to
-use. Cargo gets your name and email information from your environment, so if
-that information is not correct, fix the information now and then save the
-file. We’ll talk about the `edition` key in Appendix E.
+چهار خط بعدی تنظیمات اطلاعاتی که کارگو برای کامپایل برنامه شما نیاز دارد را مشخص می‌کنند: نام، نسخه، نویسنده 
+و ویرایشی از Rust که باید استفاده شود. کارگو اطلاعاتی مثل اسم و ایمیل شما را از محیط اجرا می‌گیرد، پس اگر
+اطلاعات درست نیست آن‌ها را تصحیح کرده و فایل را ذخیره کنید. در مورد کلید `edition` در ضمیمه ث صحبت خواهیم کرد.
 
-The last line, `[dependencies]`, is the start of a section for you to list any
-of your project’s dependencies. In Rust, packages of code are referred to as
-*crates*. We won’t need any other crates for this project, but we will in the
-first project in Chapter 2, so we’ll use this dependencies section then.
+خط آخر `[dependencies]`، شروع بخشی است که می‌توانید در آن هر یک از پیشنیاز‌های پروژه‌تان را وارد کنید.
+در Rust به بسته‌های کد معمولاً *crate* گفته می‌شود. برای این پروژه به crate دیگری احتیاج نداریم، اما در اولین پروژه فصل ۲ 
+نیاز خواهیم داشت. پس آن زمان از این قسمت استفاده خواهیم کرد.
 
-Now open *src/main.rs* and take a look:
+حال فایل *src/main.rs* را باز کنید و نگاهی بیاندازید:
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">فایل: src/main.rs</span>
 
 ```rust
 fn main() {
@@ -102,21 +87,16 @@ fn main() {
 }
 ```
 
-Cargo has generated a “Hello, world!” program for you, just like the one we
-wrote in Listing 1-1! So far, the differences between our previous project and
-the project Cargo generates are that Cargo placed the code in the *src*
-directory, and we have a *Cargo.toml* configuration file in the top directory.
+کارگو یک برنامه سلام دنیا برای شما نوشته مثل برنامه‌ای که در کد ۱٫۱ نوشتیم! تا اینجا تفاوت بین پروژه قبلی و پروژه 
+خروجی کارگو این است که کارگو کد‌ را در دایرکتوری *src* قرار داد. و یک فایل تنظیمات *Cargo.toml* در دایرکتوری بیرونی داریم.
 
-Cargo expects your source files to live inside the *src* directory. The
-top-level project directory is just for README files, license information,
-configuration files, and anything else not related to your code. Using Cargo
-helps you organize your projects. There’s a place for everything, and
-everything is in its place.
+کارگو از فایل‌های کد منبع شما انتظار دارد که در دایرکتوری *src* قرار گیرند. دایرکتوری بیرونی تنها برای 
+فایل‌های README، اطلاعات مجوز‌ها و گواهی‌ها، فایل‌های تنظیمات و هرچیزی که به کد ربطی نداشته باشد 
+است. استفاده از کارگو به شما کمک می‌کند پروژه‌های خود را سامان بخشید. ‌جایی مشخصی برای همه چیز وجود دارد 
+و همه چیز سر جای خود است.
 
-If you started a project that doesn’t use Cargo, as we did with the “Hello,
-world!” project, you can convert it to a project that does use Cargo. Move the
-project code into the *src* directory and create an appropriate *Cargo.toml*
-file.
+اگر پروژه‌ای شروع کردید که از کارگو استفاده نمی‌کند، مثل پروژه «سلام دنیا» قبلی، می‌توانید آنرا به پروژه‌ای که از کارگو استفاده کند تبدیل کنید.
+کافیست کد پروژه را داخل دایرکتوری *src* ببرید و یک فایل *Cargo.toml* مناسب تنظیم کنید.
 
 ### Building and Running a Cargo Project
 

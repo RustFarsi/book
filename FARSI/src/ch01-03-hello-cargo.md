@@ -98,11 +98,10 @@ fn main() {
 اگر پروژه‌ای شروع کردید که از کارگو استفاده نمی‌کند، مثل پروژه «سلام دنیا» قبلی، می‌توانید آنرا به پروژه‌ای که از کارگو استفاده کند تبدیل کنید.
 کافیست کد پروژه را داخل دایرکتوری *src* ببرید و یک فایل *Cargo.toml* مناسب تنظیم کنید.
 
-### Building and Running a Cargo Project
+### ساخت و اجرای یک پروژه با کارگو
 
-Now let’s look at what’s different when we build and run the “Hello, world!”
-program with Cargo! From your *hello_cargo* directory, build your project by
-entering the following command:
+حال تفاوت ساخت و اجرا برنامه «سلام دنیا» با کارگو را بررسی کنیم.
+از دایرکتوری *hello_cargo*، پروژه خود را با دستور زیر بسازید:
 
 ```text
 $ cargo build
@@ -110,25 +109,21 @@ $ cargo build
     Finished dev [unoptimized + debuginfo] target(s) in 2.85 secs
 ```
 
-This command creates an executable file in *target/debug/hello_cargo* (or
-*target\debug\hello_cargo.exe* on Windows) rather than in your current
-directory. You can run the executable with this command:
+این دستور یک فایل اجرایی در *target/debug/hello_cargo* (در ویندوز ‌*target/debug/hello_cargo.exe*) می‌سازد. در حالی که بدون
+استفاده از کارگو این فایل در دایرکتوری کنونی ساخته می‌شود. می‌توانید با دستور زیر برنامه را اجرا کنید:
 
 ```text
 $ ./target/debug/hello_cargo # or .\target\debug\hello_cargo.exe on Windows
 Hello, world!
 ```
 
-If all goes well, `Hello, world!` should print to the terminal. Running `cargo
-build` for the first time also causes Cargo to create a new file at the top
-level: *Cargo.lock*. This file keeps track of the exact versions of
-dependencies in your project. This project doesn’t have dependencies, so the
-file is a bit sparse. You won’t ever need to change this file manually; Cargo
-manages its contents for you.
+اگر همه چیز به خوبی پیش برود، `Hello, world!‍` باید روی صفحه ترمینال چاپ شود. اجرای
+دستور `cargo build` برای اولین بار باعث ساخت فایل جدیدی در دایرکتوری پروژه به نام *Cargo.lock* نیز می‌شود.
+این فایل شماره نسخه پیشنیاز‌های پروژه شما را نگهداری می‌کند. چون پروژه ما پیشنیازی ندارد این فایل دارای محتویات
+کمی است. هرگز لازم ندارید این فایل را بصورت دستی ویرایش کنید؛ کارگو مدیریت محتوای آن را بر عهده دارد.
 
-We just built a project with `cargo build` and ran it with
-`./target/debug/hello_cargo`, but we can also use `cargo run` to compile the
-code and then run the resulting executable all in one command:
+ما با دستور `cargo build` پروژه را ساختیم و با `./target/debug/hello_cargo` آن را اجرا کردیم، اما می‌توانیم از دستور `cargo run` 
+برای کامپایل کد و سپس اجرا کردن خروجی با یک دستور استفاده کنیم:
 
 ```text
 $ cargo run
@@ -137,10 +132,9 @@ $ cargo run
 Hello, world!
 ```
 
-Notice that this time we didn’t see output indicating that Cargo was compiling
-`hello_cargo`. Cargo figured out that the files hadn’t changed, so it just ran
-the binary. If you had modified your source code, Cargo would have rebuilt the
-project before running it, and you would have seen this output:
+توجه کنید که این دفعه ما هیچ خروجی‌ای که نشان دهنده کامپایل `hello_cargo` باشد ندیدیم. کارگو متوجه شد که فایلی
+از دفعه قبل تغییر نکرده است، پس فقط فایل اجرایی را اجرا کرد. اگر کد خود را تغییر داده بودید، کارگو بصورت خودکار ابتدا
+پروژه را کامپایل کرده و سپس آنرا اجرا می‌کرد. در این حالت خروجی زیر را مشاهده می‌کردید:
 
 ```text
 $ cargo run
@@ -150,8 +144,8 @@ $ cargo run
 Hello, world!
 ```
 
-Cargo also provides a command called `cargo check`. This command quickly checks
-your code to make sure it compiles but doesn’t produce an executable:
+کارگو همچنین دستور `cargo check` را در اختیار شما قرار می‌دهد. این دستور به سرعت کد شما را بررسی می‌کند تا از کامپایل شدن  
+آن بدون خطا مطمئن شوید. اما خروجی اجرایی ارائه نمی‌دهند:
 
 ```text
 $ cargo check
@@ -159,48 +153,37 @@ $ cargo check
     Finished dev [unoptimized + debuginfo] target(s) in 0.32 secs
 ```
 
-Why would you not want an executable? Often, `cargo check` is much faster than
-`cargo build`, because it skips the step of producing an executable. If you’re
-continually checking your work while writing the code, using `cargo check` will
-speed up the process! As such, many Rustaceans run `cargo check` periodically
-as they write their program to make sure it compiles. Then they run `cargo
-build` when they’re ready to use the executable.
+اما چه زمانی به خروجی نیاز ندارید؟ معمولا `cargo check` بسیار سریع‌تر از `cargo build` عمل می‌کند.
+زیرا از تمام پروسه ساخت فایل اجرایی صرف نظر می‌کند. اگر مدام، حین کدنویسی، درستی کار خود را کنترل می‌کنید،
+دستور `cargo check` به این پروسه سرعت می‌بخشد. به این علت برنامه‌نویس‌های Rust مداوم `cargo check` را
+اجرا می‌کنند تا از کامپایل شدن برنامه‌شان مطمئن شوند. بعد ها `cargo build` را برای ساخت و استفاده از خروجی اجرا می‌کنند.
 
-Let’s recap what we’ve learned so far about Cargo:
+مطالبی که در مورد کارگو گفتیم را مرور کنیم:
 
-* We can build a project using `cargo build` or `cargo check`.
-* We can build and run a project in one step using `cargo run`.
-* Instead of saving the result of the build in the same directory as our code,
-  Cargo stores it in the *target/debug* directory.
+* می‌توانیم با دستور `cargo build` یا `cargo check` کامپایل کنیم.
+* می‌توانیم با یک دستور `cargo run` پروژه را اول کامپایل و سپس اجرا کنیم.
+* بجای ذخیره خروجی کامپایلر در دایرکتوری کدهایمان کارگو آنرا در *target/debug* نگهداری می‌کند.
 
-An additional advantage of using Cargo is that the commands are the same no
-matter which operating system you’re working on. So, at this point, we’ll no
-longer provide specific instructions for Linux and macOS versus Windows.
+یک برتری دیگر کارگو این است که صرف نظر از سیستم عامل شما دستوراتی که باید وارد کنید یکسان هستند. پس
+از اکنون دیگر جزئیات برای سیستم‌عامل های مختلف، مثل لینوکس و مک در مقابل ویندوز، ذکر نخواهیم کرد.
 
-### Building for Release
+### ساخت برای انتشار
 
-When your project is finally ready for release, you can use `cargo build
---release` to compile it with optimizations. This command will create an
-executable in *target/release* instead of *target/debug*. The optimizations
-make your Rust code run faster, but turning them on lengthens the time it takes
-for your program to compile. This is why there are two different profiles: one
-for development, when you want to rebuild quickly and often, and another for
-building the final program you’ll give to a user that won’t be rebuilt
-repeatedly and that will run as fast as possible. If you’re benchmarking your
-code’s running time, be sure to run `cargo build --release` and benchmark with
-the executable in *target/release*.
+وقتی پروژه شما برای انتشار آماده باشد می‌توانید از `cargo build --release` برای کامپایل کردن با بهینه‌سازی استفاده کنید.
+این دستور بجای *target/debug* خروجی اجرایی را در *target/release* قرار می‌دهد. بهینه‌سازی‌ها باعث می‌شوند کد Rust سریع‌تر
+اجرا شود اما در مقابل زمانی که برنامه کامپایل می‌شود طولانی‌تر باشد. به این علت دو پروفایل متفاوت وجود دارند: یکی برای زمان توسعه، 
+وقتی که نیاز دارید با سرعت و مدام پروژه را بسازید؛ و حالتی دیگر برای ساخت برنامه نهایی که به کاربر استفاده کننده می‌دهید. که
+مدام انجام نمی‌شود و خروجی آن بیشترین سرعت ممکن را دارد. اگر قصد بنجمارک‌گیری از برنامه خود دارید باید دستور `cargo build --release` 
+را اجرا کرده و از خروجی باینری در *target/release* استفاده کنید.
 
-### Cargo as Convention
+### کارگو به عنوان قرارداد
 
-With simple projects, Cargo doesn’t provide a lot of value over just using
-`rustc`, but it will prove its worth as your programs become more intricate.
-With complex projects composed of multiple crates, it’s much easier to let
-Cargo coordinate the build.
+با پروژه‌های ساده شاید کارگو ارزش خیلی زیادی در مقابل استفاده از `rustc` نداشته باشد. ولی وقتی برنامه شما پیچیده شود و از پروژه‌های مرکب و
+با crate‌های متفاوت استفاده کند، کارگو ارزش واقعی خود را نشان خواهد داد. در این حالت استفاده از کارگو برای ساخت پروژه بسیار آسان‌تر است.
 
-Even though the `hello_cargo` project is simple, it now uses much of the real
-tooling you’ll use in the rest of your Rust career. In fact, to work on any
-existing projects, you can use the following commands to check out the code
-using Git, change to that project’s directory, and build:
+اگرچه پروژه `hello_cargo` ساده است، بسیاری از ابزارهایی که در ادامه حرفه برنامه‌نویسی Rust استفاده خواهید کرد 
+در آن کاربرد دارد. در واقع، برای کار روی پروژه‌های کنونی می‌توانید از دستورات زیر برای گرفتن کد با گیت، تغییر دایرکتوری به پروژه و
+ساخت آن استفاده کنید:
 
 ```text
 $ git clone someurl.com/someproject
@@ -208,24 +191,22 @@ $ cd someproject
 $ cargo build
 ```
 
-For more information about Cargo, check out [its documentation].
+برای اطلاعات بیشتر در مورد کارگو [مستندات آن] را ببینید.
 
-[its documentation]: https://doc.rust-lang.org/cargo/
+[مستندات آن]: https://doc.rust-lang.org/cargo/
 
-## Summary
+## خلاصه
 
-You’re already off to a great start on your Rust journey! In this chapter,
-you’ve learned how to:
+تا اینجا که شروع خیلی خوبی در سفر Rust خود داشته‌اید! در این فصل یاد گرفتید:
 
-* Install the latest stable version of Rust using `rustup`
-* Update to a newer Rust version
-* Open locally installed documentation
-* Write and run a “Hello, world!” program using `rustc` directly
-* Create and run a new project using the conventions of Cargo
+* آخرین نسخه پایدار Rust را با `rustup` نصب کنید
+* به نسخه بالاتر Rust بروزرسانی کنید
+* مستندات نصب شده محلی را باز کنید
+* یک برنامه «سلام دنیا» با `rustc` بنویسید و اجرا کنید
+* یک پروژه جدید طبق قراردادهای کارگو بسازید و اجرا کنید
 
-This is a great time to build a more substantial program to get used to reading
-and writing Rust code. So, in Chapter 2, we’ll build a guessing game program.
-If you would rather start by learning how common programming concepts work in
-Rust, see Chapter 3 and then return to Chapter 2.
+حال زمان مناسبی برای ساخت یک برنامه واقعی، برای عادت کردن به خواندن و نوشتن کد Rust، است.
+پس در فصل ۲، برنامه یک بازی حدس زدنی را می‌نویسیم. اما اگر ترجیح می‌دهید از یادگیری مفاهیم معمول برنامه‌نویسی
+در Rust شروع کنید اول فصل ۳ را مطالعه کرده و بعد به فصل ۲ بازگردید.
 
 [installation]: ch01-01-installation.html#installation

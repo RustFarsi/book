@@ -1,116 +1,111 @@
-# Programming a Guessing Game
+# برنامه یک بازی حدس‌زدنی
 
-Let’s jump into Rust by working through a hands-on project together! This
-chapter introduces you to a few common Rust concepts by showing you how to use
-them in a real program. You’ll learn about `let`, `match`, methods, associated
-functions, using external crates, and more! The following chapters will explore
-these ideas in more detail. In this chapter, you’ll practice the fundamentals.
+با یک پروژه واقعی کار با Rust را شروع کنیم! این فصل شما را با
+مفاهیم مرسوم Rust از طریق استفاده آنها در برنامه واقعی آشنا می‌کند.
+درباره `let` و `match`، متد‌ها، توابع مربوط، استفاده از crate ها و بیشتر
+یاد می‌گیرید. فصل‌های بعدی این ایده‌ها را بیشتر مورد بررسی قرار می‌دهند.
+اما در این فصل مفاهیم اولیه را برای آمادگی تمرین می‌کنید.
 
-We’ll implement a classic beginner programming problem: a guessing game. Here’s
-how it works: the program will generate a random integer between 1 and 100. It
-will then prompt the player to enter a guess. After a guess is entered, the
-program will indicate whether the guess is too low or too high. If the guess is
-correct, the game will print a congratulatory message and exit.
+یک مسئله برنامه‌نویسی کلاسیک ساده را پیاده‌سازی خواهیم کرد: یک بازی
+حدس زدن. به این شکل کار می‌کند: برنامه یک عدد تصادفی بین ۱ و ۱۰۰ می‌سازد.
+سپس از کاربر می‌خواهد که عدد را حدس بزند. بعد از وارد شدن حدس کاربر، برنامه
+باید مشخص کند که حدس وارد شده بیشتر یا کمتر از عدد تصادفی است. اگر حدس
+درست باشد برنامه یک پیام تبریک نمایش داده و اجرای آن پایان میابد.
 
-## Setting Up a New Project
+## راه‌اندازی پروژه جدید
 
-To set up a new project, go to the *projects* directory that you created in
-Chapter 1 and make a new project using Cargo, like so:
+برای راه‌اندازی یک پروژه جدید به پوشه *projects* که در فصل ۱ ساختیم مراجعه کنید
+و یک پروژه جدید با کارگو بسازید:
 
 ```text
 $ cargo new guessing_game
 $ cd guessing_game
 ```
 
-The first command, `cargo new`, takes the name of the project (`guessing_game`)
-as the first argument. The second command changes to the new project’s
-directory.
+فرمان اول `cargo new` اسم پروژه (`guessing_game`) را به عنوان
+آرگومان اولش می‌گیرد. دستور دوم دایرکتوری باز را به پروژه تازه ساخته شده
+تغییر می‌دهد.
 
-Look at the generated *Cargo.toml* file:
+به فایل *Cargo.toml* ساخته شده توجه کنید:
 
-<span class="filename">Filename: Cargo.toml</span>
+<span class="filename">فایل: Cargo.toml</span>
 
 ```toml
 {{#include ../listings/ch02-guessing-game-tutorial/no-listing-01-cargo-new/Cargo.toml}}
 ```
 
-If the author information that Cargo obtained from your environment is not
-correct, fix that in the file and save it again.
+اگر اطلاعات نویسنده که کارگو از محیط شما گرفته است صحیح نیست
+آن‌ها را اصلاح کنید و فایل را ذخیره کنید.
 
-As you saw in Chapter 1, `cargo new` generates a “Hello, world!” program for
-you. Check out the *src/main.rs* file:
+همانطور که در فصل ۱ دیدیم، `cargo new` یک برنامه «سلام دنیا» برای
+شما می‌سازد. کد فایل *src/main.rs* را بررسی کنید:
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">فایل: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/no-listing-01-cargo-new/src/main.rs}}
 ```
 
-Now let’s compile this “Hello, world!” program and run it in the same step
-using the `cargo run` command:
+حال برنامه «سلام دنیا» را با استفاده از دستور `cargo run` کامپایل کرده و آنرا اجرا می‌کنیم.
 
 ```text
 {{#include ../listings/ch02-guessing-game-tutorial/no-listing-01-cargo-new/output.txt}}
 ```
 
-The `run` command comes in handy when you need to rapidly iterate on a project,
-as we’ll do in this game, quickly testing each iteration before moving on to
-the next one.
+دستور `run` وقتی نیاز به اجرای مداوم پروژه داشته باشید، بسیار کارآمد است.
+مثل این بازی که در آن تست کردن هر قسمت پروژه قبل از ورود به قسمت بعد
+لازم است.
 
-Reopen the *src/main.rs* file. You’ll be writing all the code in this file.
+فایل *src/main.rs* را مجدداً باز می‌کنیم. تمام کد را باید در این فایل وارد کنیم.
 
-## Processing a Guess
+## پردازش یک حدس
 
-The first part of the guessing game program will ask for user input, process
-that input, and check that the input is in the expected form. To start, we’ll
-allow the player to input a guess. Enter the code in Listing 2-1 into
-*src/main.rs*.
+اولین قسمت برنامه این بازی، از کاربر ورودی می‌خواهد، آنرا پردازش می‌کند
+و چک می‌کند که ورودی به فرم مد نظر است. برای شروع اجازه می‌دهیم که بازیکن
+یک حدس وارد کند. کد ۲٫۱ را در *src/main.rs* وارد کنید.
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">فایل: src/main.rs</span>
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:all}}
 ```
 
-<span class="caption">Listing 2-1: Code that gets a guess from the user and
-prints it</span>
+<span class="caption">کد ۲٫۱: حدسی از کاربر گرفته و آن را نمایش می‌دهد.</span>
 
-This code contains a lot of information, so let’s go over it line by line. To
-obtain user input and then print the result as output, we need to bring the
-`io` (input/output) library into scope. The `io` library comes from the
-standard library (which is known as `std`):
+این کد اطلاعات زیادی در بر دارد، پس خط به خط آنرا بررسی می‌کنیم.
+برای گرفتن ورودی کاربر و چاپ آن در خروجی، باید کتابخانه `io` یا input/output (ورودی/خروجی)
+را به برنامه بیاوریم.
+کتابخانه `io` در کتابخانه استاندارد (که به آن `std` گفته می‌شود) موجود است.
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:io}}
 ```
 
-By default, Rust brings only a few types into the scope of every program in
-[the *prelude*][prelude]<!-- ignore -->. If a type you want to use isn’t in the
-prelude, you have to bring that type into scope explicitly with a `use`
-statement. Using the `std::io` library provides you with a number of useful
-features, including the ability to accept user input.
+به طور پیش‌فرض، Rust تنها چند تایپ محدود به اسکوپ هر برنامه در [ *مقدمه*][prelude]<!-- ignore --> آن می‌آورد.
+اگر تایپی که لازم دارید در مقدمه برنامه نیست، باید آن تایپ را صریح با عبارت `use` به اسکوپ برنامه وارد کنید.
+استفاده از کتابخانه `std::io` چند قابلیت جدید به برنامه شما اضافه می‌کند، که یکی از آن‌ها توانایی دریافت ورودی کاربر است.
 
 [prelude]: ../std/prelude/index.html
 
-As you saw in Chapter 1, the `main` function is the entry point into the
-program:
+همانطور که در فصل ۱ دیدیم، تابع `main` نقطه ورود به برنامه است:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:main}}
 ```
 
-The `fn` syntax declares a new function, the parentheses, `()`, indicate there
-are no parameters, and the curly bracket, `{`, starts the body of the function.
+گرامر `fn` برای تعریف توابع استفاده می‌شود، پرانتز‌ها `()` مشخص می‌کنند که هیچ
+پارامتری وجود ندارد و براکت‌ها `}` بدنه تابع را مشخص می‌کنند.
 
-As you also learned in Chapter 1, `println!` is a macro that prints a string to
-the screen:
+همانطور که در فصل ۱ هم یادگرفتید، `println!` یک ماکرو است که
+رشته‌ای را در صفحه چاپ می‌کند:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:print}}
 ```
 
-This code is printing a prompt stating what the game is and requesting input
-from the user.
+این کد پیامی را چاپ می‌کند که نشان می‌دهد بازی چگونه انجام می‌شود و
+سپس از کاربر ورودی می‌خواهد.
+
 
 ### Storing Values with Variables
 

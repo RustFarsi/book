@@ -107,71 +107,67 @@ $ cd guessing_game
 سپس از کاربر ورودی می‌خواهد.
 
 
-### Storing Values with Variables
+### ذخیره مقدار‌ها با متغیر
 
-Next, we’ll create a place to store the user input, like this:
+سپس، برای ذخیره‌سازی ورودی کاربر محلی می‌سازیم:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:string}}
 ```
 
-Now the program is getting interesting! There’s a lot going on in this little
-line. Notice that this is a `let` statement, which is used to create a
-*variable*. Here’s another example:
+حالا برنامه جالب می‌شود! اتفاقات زیادی در این خط کوتاه می‌افتند. به عبارت `let`
+توجه کنید، این عبارت برای ساخت یک *متغیر* استفاده می‌شود. یک مثال دیگر:
 
 ```rust,ignore
 let foo = bar;
 ```
 
-This line creates a new variable named `foo` and binds it to the value of the
-`bar` variable. In Rust, variables are immutable by default. We’ll be
-discussing this concept in detail in the [“Variables and
-Mutability”][variables-and-mutability]<!-- ignore --> section in Chapter 3.
-The following example shows how to use `mut` before the variable name to make
-a variable mutable:
+این خط یک متغیر به اسم `foo` می‌سازد و آنرا به مقدار متغیر `bar` متصل می‌کند.
+در Rust متغیر‌ها بصورت پیش‌فرض غیر قابل تغییر (immutable) هستند.
+این مفهوم را با جزئیات بیشتر در بخش [«متغیر‌ها و تغییر پذیری»][variables-and-mutability]<!-- ignore -->
+از فصل ۳ بررسی می‌کنیم. این مثال نشان می‌دهند که چطور از `mut` قبل از اسم
+متغیر استفاده می‌کنیم تا آنرا تغییر پذیر کنیم:
 
 ```rust,ignore
 let foo = 5; // immutable
 let mut bar = 5; // mutable
 ```
 
-> Note: The `//` syntax starts a comment that continues until the end of the
-> line. Rust ignores everything in comments, which are discussed in more detail
-> in Chapter 3.
+> نکته: نوشتن `//` درواقع شروع یک کامنت است که تا انتهای آن خط ادامه پیدا می‌کند.
+> زبان Rust هرچه در کامنت‌ها نوشته شده باشد را نادیده می‌گیرد. در مورد این مفهوم 
+> در فصل ۳ بیشتر صحبت خواهیم کرد.
 
-Let’s return to the guessing game program. You now know that `let mut guess`
-will introduce a mutable variable named `guess`. On the other side of the equal
-sign (`=`) is the value that `guess` is bound to, which is the result of
-calling `String::new`, a function that returns a new instance of a `String`.
-[`String`][string]<!-- ignore --> is a string type provided by the standard
-library that is a growable, UTF-8 encoded bit of text.
+به برنامه بازی خودمان برگردیم. حال میدانیم که `let mut guess` یک متغیر قابل تغییر
+به اسم `guess` می‌سازد. در طرف دیگر علامت مساوی ('=') مقداری است که به متغیر
+`guess` اختصاص داده ایم.
+که در واقع همان نتیجه صدا زدن تابع `String::new` است. تابعی که یک مورد (instance) جدید از
+ یک `String` باز می‌گرداند. [`String`][string]<!-- ignore --> در واقع یک تایپ رشته
+است که در کتابخانه استاندارد وجود دارد و بصورت متن UTF-8 قابل رشد(بزرگ شدن) تعریف می‌شود.
 
 [string]: ../std/string/struct.String.html
 
-The `::` syntax in the `::new` line indicates that `new` is an *associated
-function* of the `String` type. An associated function is implemented on a type,
-in this case `String`, rather than on a particular instance of a `String`. Some
-languages call this a *static method*.
+نوشتن `::` در خط `::new` نشان می‌دهد که `new` در واقع یک *تابع مرتبط*
+به `String` می‌باشد. یک تابع مرتبط روی یک تایپ پیاده‌سازی می‌شود. در این مورد
+تایپ `String`. و نه یک مورد (instance) خاص ساخته شده از آن. بعضی از زبان‌ها به چنین مفهومی
+یک *متد استاتیک* می‌گویند.
 
-This `new` function creates a new, empty string. You’ll find a `new` function
-on many types, because it’s a common name for a function that makes a new value
-of some kind.
+تابع `new` یک رشته جدید خالی می‌سازد. تابع `new` را روی تایپ‌های
+متفاوتی پیدا می‌کنید، چون اسم معمولی برای تابعی است که یک مقدار جدید
+از یک نوع را می‌سازد.
 
-To summarize, the `let mut guess = String::new();` line has created a mutable
-variable that is currently bound to a new, empty instance of a `String`. Whew!
+به عنوان خلاصه می‌توان گفت که `let mut guess = String::new();` یک متغیر 
+قابل تغییر که مقدار اختصاص یافته به آن یک مورد خالی از `String` است می‌سازد.
 
-Recall that we included the input/output functionality from the standard
-library with `use std::io;` on the first line of the program. Now we’ll call
-the `stdin` function from the `io` module:
+اگر به یاد داشته باشید ما قابلیت ورودی و خروجی را از کتابخانه استاندارد با `use std:io` 
+در خط اول برنامه اضافه کردیم. حال تابع `stdin` را از ماژول `io` صدا می‌زنیم:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:read}}
 ```
 
-If we hadn’t put the `use std::io` line at the beginning of the program, we
-could have written this function call as `std::io::stdin`. The `stdin` function
-returns an instance of [`std::io::Stdin`][iostdin]<!-- ignore -->, which is a
-type that represents a handle to the standard input for your terminal.
+اگر `use std::io` را اول برنامه اضافه نکرده بودیم، باید تابع را به شکل `std::io:stdin`
+می‌نوشتیم. تابع `stdin` یک مورد (instance) از [`std::io::Stdin`][iostdin]<!-- ignore --> برمی‌گرداند.
+که یک تایپ برای ارتباط شما با ورودی استاندارد در ترمینال است.
 
 [iostdin]: ../std/io/struct.Stdin.html
 

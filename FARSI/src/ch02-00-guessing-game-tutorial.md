@@ -171,27 +171,26 @@ let mut bar = 5; // mutable
 
 [iostdin]: ../std/io/struct.Stdin.html
 
-The next part of the code, `.read_line(&mut guess)`, calls the
-[`read_line`][read_line]<!-- ignore --> method on the standard input handle to
-get input from the user. We’re also passing one argument to `read_line`: `&mut
-guess`.
+بخش بعدی کد، `.read_line(&mut guess)`، متد [`read_line`][read_line]<!-- ignore --> را روی
+ورودی استاندارد صدا می‌زند تا ورودی را از کاربر بگیرد. همچنین یک آرگومان  دیگر به`read_line` می‌فرستیم:
+`&mutguess`.
 
 [read_line]: ../std/io/struct.Stdin.html#method.read_line
 
-The job of `read_line` is to take whatever the user types into standard input
-and place that into a string, so it takes that string as an argument. The
-string argument needs to be mutable so the method can change the string’s
-content by adding the user input.
 
-The `&` indicates that this argument is a *reference*, which gives you a way to
-let multiple parts of your code access one piece of data without needing to
-copy that data into memory multiple times. References are a complex feature,
-and one of Rust’s major advantages is how safe and easy it is to use
-references. You don’t need to know a lot of those details to finish this
-program. For now, all you need to know is that like variables, references are
-immutable by default. Hence, you need to write `&mut guess` rather than
-`&guess` to make it mutable. (Chapter 4 will explain references more
-thoroughly.)
+وظیفه `read_line` گرفتن هرچه کاربر در ورودی استاندارد وارد کند و قرار دادن
+آن در یک رشته است، به همین دلیل رشته را به عنوان آرگومان می‌گیرد.
+آرگومان رشته باید قابل تغییر باشد تا متد بتواند محتوای رشته را با قرار دادن
+ورودی کاربر تغییر دهد.
+
+کاراکتر `&` نشان می‌دهد که این آرگومان یک *مرجع* (Reference) می‌باشد و 
+راهی فراهم می‌کند که بتوان از قسمت‌های مختلفی از کد به یک داده دسترسی پیدا 
+کرد بدون اینکه لازم باشد داده را چند بار در حافظه کپی کرد. مرجع‌ها یک قابلیت پیچیده
+هستند و یکی از برتری‌های بزرگ Rust امنیت و سادگی استافده از آنها می‌باشد.
+برای نوشتن این برنامه به جزئیات زیادی نیاز ندارید. فعلا تمام چیزی که لازم دارید بدانید 
+این است که مثل متغیر‌ها، مرجع بطور پیشفرض غیرقابل تغییر است. پس باید آن‌ها
+را به صورت `&mut guess` بجای `&guess` نوشت تا قابل تغییر باشند.
+(فصل ۴ مرجع‌ها را کامل‌تر توضیح خواهد داد.)
 
 ### Handling Potential Failure with the `Result` Type
 

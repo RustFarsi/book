@@ -289,8 +289,8 @@ fn main() {
 </span></code></pre>
 <p>این کد پیامی را چاپ می‌کند که نشان می‌دهد بازی چگونه انجام می‌شود و
 سپس از کاربر ورودی می‌خواهد.</p>
-<h3><a class="header" href="#storing-values-with-variables" id="storing-values-with-variables">Storing Values with Variables</a></h3>
-<p>Next, we’ll create a place to store the user input, like this:</p>
+<h3><a class="header" href="#ذخیره-مقدارها-با-متغیر" id="ذخیره-مقدارها-با-متغیر">ذخیره مقدار‌ها با متغیر</a></h3>
+<p>سپس، برای ذخیره‌سازی ورودی کاربر محلی می‌سازیم:</p>
 <pre><code class="language-rust ignore"><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
@@ -307,43 +307,40 @@ fn main() {
 </span><span class="boring">    println!(&quot;You guessed: {}&quot;, guess);
 </span><span class="boring">}
 </span></code></pre>
-<p>Now the program is getting interesting! There’s a lot going on in this little
-line. Notice that this is a <code>let</code> statement, which is used to create a
-<em>variable</em>. Here’s another example:</p>
+<p>حالا برنامه جالب می‌شود! اتفاقات زیادی در این خط کوتاه می‌افتند. به عبارت <code>let</code>
+توجه کنید، این عبارت برای ساخت یک <em>متغیر</em> استفاده می‌شود. یک مثال دیگر:</p>
 <pre><code class="language-rust ignore">let foo = bar;
 </code></pre>
-<p>This line creates a new variable named <code>foo</code> and binds it to the value of the
-<code>bar</code> variable. In Rust, variables are immutable by default. We’ll be
-discussing this concept in detail in the <a href="ch03-01-variables-and-mutability.html#variables-and-mutability">“Variables and
-Mutability”</a><!-- ignore --> section in Chapter 3.
-The following example shows how to use <code>mut</code> before the variable name to make
-a variable mutable:</p>
+<p>این خط یک متغیر به اسم <code>foo</code> می‌سازد و آنرا به مقدار متغیر <code>bar</code> متصل می‌کند.
+در Rust متغیر‌ها بصورت پیش‌فرض غیر قابل تغییر (immutable) هستند.
+این مفهوم را با جزئیات بیشتر در بخش <a href="ch03-01-variables-and-mutability.html#variables-and-mutability">«متغیر‌ها و تغییر پذیری»</a><!-- ignore -->
+از فصل ۳ بررسی می‌کنیم. این مثال نشان می‌دهند که چطور از <code>mut</code> قبل از اسم
+متغیر استفاده می‌کنیم تا آنرا تغییر پذیر کنیم:</p>
 <pre><code class="language-rust ignore">let foo = 5; // immutable
 let mut bar = 5; // mutable
 </code></pre>
 <blockquote>
-<p>Note: The <code>//</code> syntax starts a comment that continues until the end of the
-line. Rust ignores everything in comments, which are discussed in more detail
-in Chapter 3.</p>
+<p>نکته: نوشتن <code>//</code> درواقع شروع یک کامنت است که تا انتهای آن خط ادامه پیدا می‌کند.
+زبان Rust هرچه در کامنت‌ها نوشته شده باشد را نادیده می‌گیرد. در مورد این مفهوم 
+در فصل ۳ بیشتر صحبت خواهیم کرد.</p>
 </blockquote>
-<p>Let’s return to the guessing game program. You now know that <code>let mut guess</code>
-will introduce a mutable variable named <code>guess</code>. On the other side of the equal
-sign (<code>=</code>) is the value that <code>guess</code> is bound to, which is the result of
-calling <code>String::new</code>, a function that returns a new instance of a <code>String</code>.
-<a href="../std/string/struct.String.html"><code>String</code></a><!-- ignore --> is a string type provided by the standard
-library that is a growable, UTF-8 encoded bit of text.</p>
-<p>The <code>::</code> syntax in the <code>::new</code> line indicates that <code>new</code> is an <em>associated
-function</em> of the <code>String</code> type. An associated function is implemented on a type,
-in this case <code>String</code>, rather than on a particular instance of a <code>String</code>. Some
-languages call this a <em>static method</em>.</p>
-<p>This <code>new</code> function creates a new, empty string. You’ll find a <code>new</code> function
-on many types, because it’s a common name for a function that makes a new value
-of some kind.</p>
-<p>To summarize, the <code>let mut guess = String::new();</code> line has created a mutable
-variable that is currently bound to a new, empty instance of a <code>String</code>. Whew!</p>
-<p>Recall that we included the input/output functionality from the standard
-library with <code>use std::io;</code> on the first line of the program. Now we’ll call
-the <code>stdin</code> function from the <code>io</code> module:</p>
+<p>به برنامه بازی خودمان برگردیم. حال میدانیم که <code>let mut guess</code> یک متغیر قابل تغییر
+به اسم <code>guess</code> می‌سازد. در طرف دیگر علامت مساوی ('=') مقداری است که به متغیر
+<code>guess</code> اختصاص داده ایم.
+که در واقع همان نتیجه صدا زدن تابع <code>String::new</code> است. تابعی که یک مورد (instance) جدید از
+یک <code>String</code> باز می‌گرداند. <a href="../std/string/struct.String.html"><code>String</code></a><!-- ignore --> در واقع یک تایپ رشته
+است که در کتابخانه استاندارد وجود دارد و بصورت متن UTF-8 قابل رشد(بزرگ شدن) تعریف می‌شود.</p>
+<p>نوشتن <code>::</code> در خط <code>::new</code> نشان می‌دهد که <code>new</code> در واقع یک <em>تابع مرتبط</em>
+به <code>String</code> می‌باشد. یک تابع مرتبط روی یک تایپ پیاده‌سازی می‌شود. در این مورد
+تایپ <code>String</code>. و نه یک مورد (instance) خاص ساخته شده از آن. بعضی از زبان‌ها به چنین مفهومی
+یک <em>متد استاتیک</em> می‌گویند.</p>
+<p>تابع <code>new</code> یک رشته جدید خالی می‌سازد. تابع <code>new</code> را روی تایپ‌های
+متفاوتی پیدا می‌کنید، چون اسم معمولی برای تابعی است که یک مقدار جدید
+از یک نوع را می‌سازد.</p>
+<p>به عنوان خلاصه می‌توان گفت که <code>let mut guess = String::new();</code> یک متغیر 
+قابل تغییر که مقدار اختصاص یافته به آن یک مورد خالی از <code>String</code> است می‌سازد.</p>
+<p>اگر به یاد داشته باشید ما قابلیت ورودی و خروجی را از کتابخانه استاندارد با <code>use std:io</code> 
+در خط اول برنامه اضافه کردیم. حال تابع <code>stdin</code> را از ماژول <code>io</code> صدا می‌زنیم:</p>
 <pre><code class="language-rust ignore"><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
@@ -360,30 +357,28 @@ the <code>stdin</code> function from the <code>io</code> module:</p>
 </span><span class="boring">    println!(&quot;You guessed: {}&quot;, guess);
 </span><span class="boring">}
 </span></code></pre>
-<p>If we hadn’t put the <code>use std::io</code> line at the beginning of the program, we
-could have written this function call as <code>std::io::stdin</code>. The <code>stdin</code> function
-returns an instance of <a href="../std/io/struct.Stdin.html"><code>std::io::Stdin</code></a><!-- ignore -->, which is a
-type that represents a handle to the standard input for your terminal.</p>
-<p>The next part of the code, <code>.read_line(&amp;mut guess)</code>, calls the
-<a href="../std/io/struct.Stdin.html#method.read_line"><code>read_line</code></a><!-- ignore --> method on the standard input handle to
-get input from the user. We’re also passing one argument to <code>read_line</code>: <code>&amp;mut guess</code>.</p>
-<p>The job of <code>read_line</code> is to take whatever the user types into standard input
-and place that into a string, so it takes that string as an argument. The
-string argument needs to be mutable so the method can change the string’s
-content by adding the user input.</p>
-<p>The <code>&amp;</code> indicates that this argument is a <em>reference</em>, which gives you a way to
-let multiple parts of your code access one piece of data without needing to
-copy that data into memory multiple times. References are a complex feature,
-and one of Rust’s major advantages is how safe and easy it is to use
-references. You don’t need to know a lot of those details to finish this
-program. For now, all you need to know is that like variables, references are
-immutable by default. Hence, you need to write <code>&amp;mut guess</code> rather than
-<code>&amp;guess</code> to make it mutable. (Chapter 4 will explain references more
-thoroughly.)</p>
-<h3><a class="header" href="#handling-potential-failure-with-the-result-type" id="handling-potential-failure-with-the-result-type">Handling Potential Failure with the <code>Result</code> Type</a></h3>
-<p>We’re still working on this line of code. Although we’re now discussing a third
-line of text, it’s still part of a single logical line of code. The next part
-is this method:</p>
+<p>اگر <code>use std::io</code> را اول برنامه اضافه نکرده بودیم، باید تابع را به شکل <code>std::io:stdin</code>
+می‌نوشتیم. تابع <code>stdin</code> یک مورد (instance) از <a href="../std/io/struct.Stdin.html"><code>std::io::Stdin</code></a><!-- ignore --> برمی‌گرداند.
+که یک تایپ برای ارتباط شما با ورودی استاندارد در ترمینال است.</p>
+<p>بخش بعدی کد، <code>.read_line(&amp;mut guess)</code>، متد <a href="../std/io/struct.Stdin.html#method.read_line"><code>read_line</code></a><!-- ignore --> را روی
+ورودی استاندارد صدا می‌زند تا ورودی را از کاربر بگیرد. همچنین یک آرگومان  دیگر به<code>read_line</code> می‌فرستیم:
+<code>&amp;mutguess</code>.</p>
+<p>وظیفه <code>read_line</code> گرفتن هرچه کاربر در ورودی استاندارد وارد کند و قرار دادن
+آن در یک رشته است، به همین دلیل رشته را به عنوان آرگومان می‌گیرد.
+آرگومان رشته باید قابل تغییر باشد تا متد بتواند محتوای رشته را با قرار دادن
+ورودی کاربر تغییر دهد.</p>
+<p>کاراکتر <code>&amp;</code> نشان می‌دهد که این آرگومان یک <em>مرجع</em> (Reference) می‌باشد و 
+راهی فراهم می‌کند که بتوان از قسمت‌های مختلفی از کد به یک داده دسترسی پیدا 
+کرد بدون اینکه لازم باشد داده را چند بار در حافظه کپی کرد. مرجع‌ها یک قابلیت پیچیده
+هستند و یکی از برتری‌های بزرگ Rust امنیت و سادگی استافده از آنها می‌باشد.
+برای نوشتن این برنامه به جزئیات زیادی نیاز ندارید. فعلا تمام چیزی که لازم دارید بدانید 
+این است که مثل متغیر‌ها، مرجع بطور پیشفرض غیرقابل تغییر است. پس باید آن‌ها
+را به صورت <code>&amp;mut guess</code> بجای <code>&amp;guess</code> نوشت تا قابل تغییر باشند.
+(فصل ۴ مرجع‌ها را کامل‌تر توضیح خواهد داد.)</p>
+<h3><a class="header" href="#رفتار-کردن-با-خطای-احتمالی-به-وسیله-تایپ-result" id="رفتار-کردن-با-خطای-احتمالی-به-وسیله-تایپ-result">رفتار کردن با خطای احتمالی به وسیله تایپ <code>Result</code></a></h3>
+<p>هنوز روی این خط کد کار می‌کنیم. اما بیایید در مورد بخش سوم این خط صحبت کنیم.
+با اینکه این عبارت روی خط جدید قرار گرفته، هنوز از نظر منطقی به خط قبلی وابسته است.
+بخش بعدی این متود است:</p>
 <pre><code class="language-rust ignore"><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
@@ -400,38 +395,34 @@ is this method:</p>
 </span><span class="boring">    println!(&quot;You guessed: {}&quot;, guess);
 </span><span class="boring">}
 </span></code></pre>
-<p>When you call a method with the <code>.foo()</code> syntax, it’s often wise to introduce a
-newline and other whitespace to help break up long lines. We could have
-written this code as:</p>
+<p>وقتی یک متد را با گرامر <code>.foo()</code> فراخوانی کنید، معمولاً عاقلانه است که خط جدید و فضای سفید اضافه کنید
+تا شکستن خطوط بلند راحت‌تر شود. می‌توانستیم این کد را به صورت زیر هم بنویسیم:</p>
 <pre><code class="language-rust ignore">io::stdin().read_line(&amp;mut guess).expect(&quot;Failed to read line&quot;);
 </code></pre>
-<p>However, one long line is difficult to read, so it’s best to divide it. Now
-let’s discuss what this line does.</p>
-<p>As mentioned earlier, <code>read_line</code> puts what the user types into the string
-we’re passing it, but it also returns a value—in this case, an
-<a href="../std/io/type.Result.html"><code>io::Result</code></a><!-- ignore -->. Rust has a number of types named
-<code>Result</code> in its standard library: a generic <a href="../std/result/enum.Result.html"><code>Result</code></a><!-- ignore -->
-as well as specific versions for submodules, such as <code>io::Result</code>.</p>
-<p>The <code>Result</code> types are <a href="ch06-00-enums.html"><em>enumerations</em></a><!-- ignore -->, often referred
-to as <em>enums</em>. An enumeration is a type that can have a fixed set of values,
-and those values are called the enum’s <em>variants</em>. Chapter 6 will cover enums
-in more detail.</p>
-<p>For <code>Result</code>, the variants are <code>Ok</code> or <code>Err</code>. The <code>Ok</code> variant indicates the
-operation was successful, and inside <code>Ok</code> is the successfully generated value.
-The <code>Err</code> variant means the operation failed, and <code>Err</code> contains information
-about how or why the operation failed.</p>
-<p>The purpose of these <code>Result</code> types is to encode error-handling information.
-Values of the <code>Result</code> type, like values of any type, have methods defined on
-them. An instance of <code>io::Result</code> has an <a href="../std/result/enum.Result.html#method.expect"><code>expect</code> method</a><!-- ignore
---> that you can call. If this instance of <code>io::Result</code> is an <code>Err</code> value,
-<code>expect</code> will cause the program to crash and display the message that you
-passed as an argument to <code>expect</code>. If the <code>read_line</code> method returns an <code>Err</code>,
-it would likely be the result of an error coming from the underlying operating
-system. If this instance of <code>io::Result</code> is an <code>Ok</code> value, <code>expect</code> will take
-the return value that <code>Ok</code> is holding and return just that value to you so you
-can use it. In this case, that value is the number of bytes in what the user
-entered into standard input.</p>
-<p>If you don’t call <code>expect</code>, the program will compile, but you’ll get a warning:</p>
+<p>اما خواندن یک خط بلند می‌تواند سخت باشد. پس آنرا تقسیم می‌کنیم. حال ببینیم این خط 
+چه کاری انجام می‌دهد.</p>
+<p>همانطور که قبلا گفته شد، <code>read_line</code> هرچه کاربر تایپ کند در رشته‌ای که به آن می‌دهیم
+قرار می‌دهد. اما در این مورد خاص یک مقدار هم بر‌می‌گرداند. یک مقدار <a href="../std/io/type.Result.html"><code>io::Result</code></a><!-- ignore -->.
+زبان Rust چند تایپ به اسم <code>Result</code> در کتابخانه استاندارد خود دارد: یک <a href="../std/result/enum.Result.html"><code>Result</code></a><!-- ignore --> عمومی
+و چند نسخه خاص آن برای ساب‌ماژول‌ها مثل: <code>io::Result</code>.</p>
+<p>تایپ‌های <code>Result</code> در واقع <a href="ch06-00-enums.html"><em>شمارش</em></a><!-- ignore --> یا <em>enumeration</em> هستند 
+که <em>enum</em> هم عنوان می‌شوند. شمارش تایپی است که می‌تواند مجموعه مقادیر مشخصی بپذیرد و 
+این مجموعه مقدارها <em>حالت</em> نامیده می‌شوند. فصل ۶ به جزئیات بیشتری در مورد شمارش‌ها می‌پردازد.</p>
+<p>برای <code>Result</code>، حالت‌های مختلف <code>Ok</code> یا <code>Err</code> هستند.
+حالت <code>Ok</code> نشان می‌دهد که عملیات موفق بوده و داخل <code>Ok</code> 
+مقدار خروجی موفقیت آمیز ذخیره می‌شود. حالت <code>Err</code> اما نشان‌دهنده
+شکست عملیات است. این حالت نیز اطلاعاتی در مورد چگونگی و چرایی اتفاق افتادن
+خطا در بردارد.</p>
+<p>هدف تایپ <code>Result</code> در واقع کدگذاری اطلاعات خطایابی است.
+مقادیر تایپ <code>Result</code>، مثل مقادیر هر تایپ دیگری، دارای متد هستند.
+یک نمونه از <code>io::Result</code> متد <a href="../std/result/enum.Result.html#method.expect"><code>expect</code></a><!-- ignore--> را
+دارد که می‌توانید صدا بزنید. اگر این نمونه از <code>io::Result</code> حالت <code>Err</code> داشته باشد،
+صدازدن <code>expect</code> باعث کرش برنامه و نمایش پیامی که به عنوان آرگومان به <code>expect</code> بدهید
+می‌شود. اگر متد <code>read_line</code> یک <code>Err</code> برگرداند، احتمالاً مشکل خطایی در سیستم‌عامل
+خواهد بود. در این نمونه از <code>io::Result</code> حالت <code>Ok</code> است، پس <code>expect</code> مقداری که <code>Ok</code>
+نگه داشته برای شما بر‌می‌گرداند تا بتوانید آنرا استفاده کنید. در این حالت آن مقدار در واقع
+تعداد بایت‌هایی است که کاربر در ورودی استاندارد وارد کرده.</p>
+<p>اگر <code>expect</code> را صدا نزنید اما، با اینکه برنامه کامپایل می‌شود، حین آن خطایی نمایش داده می‌شود:</p>
 <pre><code class="language-text">$ cargo build
    Compiling guessing_game v0.1.0 (file:///projects/guessing_game)
 warning: unused `std::result::Result` that must be used
@@ -445,11 +436,11 @@ warning: unused `std::result::Result` that must be used
 
     Finished dev [unoptimized + debuginfo] target(s) in 0.59s
 </code></pre>
-<p>Rust warns that you haven’t used the <code>Result</code> value returned from <code>read_line</code>,
-indicating that the program hasn’t handled a possible error.</p>
-<p>The right way to suppress the warning is to actually write error handling, but
-because you just want to crash this program when a problem occurs, you can use
-<code>expect</code>. You’ll learn about recovering from errors in Chapter 9.</p>
+<p>کامپایلر Rust هشدار می‌دهد که از مقدار <code>Result</code> برگردانده شده از <code>read_line</code> هیچ استفاده‌ای نکرده‌اید 
+و این نشان دهنده رفتار نامشخص برنامه با یک خطای احتمالی است.</p>
+<p>روش درست برای عدم نمایش این خطا، نوشتن رفتار مورد نظر در صورت بروز این خطا است.
+اما چون شما فقط می‌خواهید در صورت اتفاق افتادن مشکل برنامه را متوقف سازید می‌توانید از <code>expect</code> 
+استفاده کنید. اما نوشتن نحوه رفتار و بازیابی برنامه در صورت خطا را در فصل ۹ خواهید آموخت.</p>
 <h3><a class="header" href="#printing-values-with-println-placeholders" id="printing-values-with-println-placeholders">Printing Values with <code>println!</code> Placeholders</a></h3>
 <p>Aside from the closing curly bracket, there’s only one more line to discuss in
 the code added so far, which is the following:</p>

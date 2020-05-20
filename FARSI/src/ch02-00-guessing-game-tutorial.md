@@ -192,74 +192,69 @@ let mut bar = 5; // mutable
 را به صورت `&mut guess` بجای `&guess` نوشت تا قابل تغییر باشند.
 (فصل ۴ مرجع‌ها را کامل‌تر توضیح خواهد داد.)
 
-### Handling Potential Failure with the `Result` Type
+### رفتار کردن با خطای احتمالی به وسیله تایپ `Result`
 
-We’re still working on this line of code. Although we’re now discussing a third
-line of text, it’s still part of a single logical line of code. The next part
-is this method:
+هنوز روی این خط کد کار می‌کنیم. اما بیایید در مورد بخش سوم این خط صحبت کنیم.
+با اینکه این عبارت روی خط جدید قرار گرفته، هنوز از نظر منطقی به خط قبلی وابسته است.
+بخش بعدی این متود است:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:expect}}
 ```
-
-When you call a method with the `.foo()` syntax, it’s often wise to introduce a
-newline and other whitespace to help break up long lines. We could have
-written this code as:
+وقتی یک متد را با گرامر `.foo()` فراخوانی کنید، معمولاً عاقلانه است که خط جدید و فضای سفید اضافه کنید
+تا شکستن خطوط بلند راحت‌تر شود. می‌توانستیم این کد را به صورت زیر هم بنویسیم:
 
 ```rust,ignore
 io::stdin().read_line(&mut guess).expect("Failed to read line");
 ```
 
-However, one long line is difficult to read, so it’s best to divide it. Now
-let’s discuss what this line does.
+اما خواندن یک خط بلند می‌تواند سخت باشد. پس آنرا تقسیم می‌کنیم. حال ببینیم این خط 
+چه کاری انجام می‌دهد.
 
-As mentioned earlier, `read_line` puts what the user types into the string
-we’re passing it, but it also returns a value—in this case, an
-[`io::Result`][ioresult]<!-- ignore -->. Rust has a number of types named
-`Result` in its standard library: a generic [`Result`][result]<!-- ignore -->
-as well as specific versions for submodules, such as `io::Result`.
+همانطور که قبلا گفته شد، `read_line` هرچه کاربر تایپ کند در رشته‌ای که به آن می‌دهیم
+قرار می‌دهد. اما در این مورد خاص یک مقدار هم بر‌می‌گرداند. یک مقدار [`io::Result`][ioresult]<!-- ignore -->.
+زبان Rust چند تایپ به اسم `Result` در کتابخانه استاندارد خود دارد: یک [`Result`][result]<!-- ignore --> عمومی
+و چند نسخه خاص آن برای ساب‌ماژول‌ها مثل: `io::Result`.
 
 [ioresult]: ../std/io/type.Result.html
 [result]: ../std/result/enum.Result.html
 
-The `Result` types are [*enumerations*][enums]<!-- ignore -->, often referred
-to as *enums*. An enumeration is a type that can have a fixed set of values,
-and those values are called the enum’s *variants*. Chapter 6 will cover enums
-in more detail.
+تایپ‌های `Result` در واقع [*شمارش*][enums]<!-- ignore --> یا *enumeration* هستند 
+که *enum* هم عنوان می‌شوند. شمارش تایپی است که می‌تواند مجموعه مقادیر مشخصی بپذیرد و 
+این مجموعه مقدارها *حالت* نامیده می‌شوند. فصل ۶ به جزئیات بیشتری در مورد شمارش‌ها می‌پردازد.
 
 [enums]: ch06-00-enums.html
 
-For `Result`, the variants are `Ok` or `Err`. The `Ok` variant indicates the
-operation was successful, and inside `Ok` is the successfully generated value.
-The `Err` variant means the operation failed, and `Err` contains information
-about how or why the operation failed.
+برای `Result`، حالت‌های مختلف `Ok` یا `Err` هستند.
+حالت `Ok` نشان می‌دهد که عملیات موفق بوده و داخل `Ok` 
+مقدار خروجی موفقیت آمیز ذخیره می‌شود. حالت `Err` اما نشان‌دهنده
+شکست عملیات است. این حالت نیز اطلاعاتی در مورد چگونگی و چرایی اتفاق افتادن
+خطا در بردارد.
 
-The purpose of these `Result` types is to encode error-handling information.
-Values of the `Result` type, like values of any type, have methods defined on
-them. An instance of `io::Result` has an [`expect` method][expect]<!-- ignore
---> that you can call. If this instance of `io::Result` is an `Err` value,
-`expect` will cause the program to crash and display the message that you
-passed as an argument to `expect`. If the `read_line` method returns an `Err`,
-it would likely be the result of an error coming from the underlying operating
-system. If this instance of `io::Result` is an `Ok` value, `expect` will take
-the return value that `Ok` is holding and return just that value to you so you
-can use it. In this case, that value is the number of bytes in what the user
-entered into standard input.
+هدف تایپ `Result` در واقع کدگذاری اطلاعات خطایابی است.
+مقادیر تایپ `Result`، مثل مقادیر هر تایپ دیگری، دارای متد هستند.
+یک نمونه از `io::Result` متد [`expect`][expect]<!-- ignore--> را
+دارد که می‌توانید صدا بزنید. اگر این نمونه از `io::Result` حالت `Err` داشته باشد،
+صدازدن `expect` باعث کرش برنامه و نمایش پیامی که به عنوان آرگومان به `expect` بدهید
+می‌شود. اگر متد `read_line` یک `Err` برگرداند، احتمالاً مشکل خطایی در سیستم‌عامل
+خواهد بود. در این نمونه از `io::Result` حالت `Ok` است، پس `expect` مقداری که `Ok`
+نگه داشته برای شما بر‌می‌گرداند تا بتوانید آنرا استفاده کنید. در این حالت آن مقدار در واقع
+تعداد بایت‌هایی است که کاربر در ورودی استاندارد وارد کرده.
 
 [expect]: ../std/result/enum.Result.html#method.expect
 
-If you don’t call `expect`, the program will compile, but you’ll get a warning:
+اگر `expect` را صدا نزنید اما، با اینکه برنامه کامپایل می‌شود، حین آن خطایی نمایش داده می‌شود:
 
 ```text
 {{#include ../listings/ch02-guessing-game-tutorial/no-listing-02-without-expect/output.txt}}
 ```
 
-Rust warns that you haven’t used the `Result` value returned from `read_line`,
-indicating that the program hasn’t handled a possible error.
+کامپایلر Rust هشدار می‌دهد که از مقدار `Result` برگردانده شده از `read_line` هیچ استفاده‌ای نکرده‌اید 
+و این نشان دهنده رفتار نامشخص برنامه با یک خطای احتمالی است.
 
-The right way to suppress the warning is to actually write error handling, but
-because you just want to crash this program when a problem occurs, you can use
-`expect`. You’ll learn about recovering from errors in Chapter 9.
+روش درست برای عدم نمایش این خطا، نوشتن رفتار مورد نظر در صورت بروز این خطا است.
+اما چون شما فقط می‌خواهید در صورت اتفاق افتادن مشکل برنامه را متوقف سازید می‌توانید از `expect` 
+استفاده کنید. اما نوشتن نحوه رفتار و بازیابی برنامه در صورت خطا را در فصل ۹ خواهید آموخت.
 
 ### Printing Values with `println!` Placeholders
 

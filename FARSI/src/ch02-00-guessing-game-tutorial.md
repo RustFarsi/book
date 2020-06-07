@@ -107,164 +107,154 @@ $ cd guessing_game
 سپس از کاربر ورودی می‌خواهد.
 
 
-### Storing Values with Variables
+### ذخیره مقدار‌ها با متغیر
 
-Next, we’ll create a place to store the user input, like this:
+سپس، برای ذخیره‌سازی ورودی کاربر محلی می‌سازیم:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:string}}
 ```
 
-Now the program is getting interesting! There’s a lot going on in this little
-line. Notice that this is a `let` statement, which is used to create a
-*variable*. Here’s another example:
+حالا برنامه جالب می‌شود! اتفاقات زیادی در این خط کوتاه می‌افتند. به عبارت `let`
+توجه کنید، این عبارت برای ساخت یک *متغیر* استفاده می‌شود. یک مثال دیگر:
 
 ```rust,ignore
 let foo = bar;
 ```
 
-This line creates a new variable named `foo` and binds it to the value of the
-`bar` variable. In Rust, variables are immutable by default. We’ll be
-discussing this concept in detail in the [“Variables and
-Mutability”][variables-and-mutability]<!-- ignore --> section in Chapter 3.
-The following example shows how to use `mut` before the variable name to make
-a variable mutable:
+این خط یک متغیر به اسم `foo` می‌سازد و آنرا به مقدار متغیر `bar` متصل می‌کند.
+در Rust متغیر‌ها بصورت پیش‌فرض غیر قابل تغییر (immutable) هستند.
+این مفهوم را با جزئیات بیشتر در بخش [«متغیر‌ها و تغییر پذیری»][variables-and-mutability]<!-- ignore -->
+از فصل ۳ بررسی می‌کنیم. این مثال نشان می‌دهند که چطور از `mut` قبل از اسم
+متغیر استفاده می‌کنیم تا آنرا تغییر پذیر کنیم:
 
 ```rust,ignore
 let foo = 5; // immutable
 let mut bar = 5; // mutable
 ```
 
-> Note: The `//` syntax starts a comment that continues until the end of the
-> line. Rust ignores everything in comments, which are discussed in more detail
-> in Chapter 3.
+> نکته: نوشتن `//` درواقع شروع یک کامنت است که تا انتهای آن خط ادامه پیدا می‌کند.
+> زبان Rust هرچه در کامنت‌ها نوشته شده باشد را نادیده می‌گیرد. در مورد این مفهوم 
+> در فصل ۳ بیشتر صحبت خواهیم کرد.
 
-Let’s return to the guessing game program. You now know that `let mut guess`
-will introduce a mutable variable named `guess`. On the other side of the equal
-sign (`=`) is the value that `guess` is bound to, which is the result of
-calling `String::new`, a function that returns a new instance of a `String`.
-[`String`][string]<!-- ignore --> is a string type provided by the standard
-library that is a growable, UTF-8 encoded bit of text.
+به برنامه بازی خودمان برگردیم. حال میدانیم که `let mut guess` یک متغیر قابل تغییر
+به اسم `guess` می‌سازد. در طرف دیگر علامت مساوی ('=') مقداری است که به متغیر
+`guess` اختصاص داده ایم.
+که در واقع همان نتیجه صدا زدن تابع `String::new` است. تابعی که یک مورد (instance) جدید از
+ یک `String` باز می‌گرداند. [`String`][string]<!-- ignore --> در واقع یک تایپ رشته
+است که در کتابخانه استاندارد وجود دارد و بصورت متن UTF-8 قابل رشد(بزرگ شدن) تعریف می‌شود.
 
 [string]: ../std/string/struct.String.html
 
-The `::` syntax in the `::new` line indicates that `new` is an *associated
-function* of the `String` type. An associated function is implemented on a type,
-in this case `String`, rather than on a particular instance of a `String`. Some
-languages call this a *static method*.
+نوشتن `::` در خط `::new` نشان می‌دهد که `new` در واقع یک *تابع مرتبط*
+به `String` می‌باشد. یک تابع مرتبط روی یک تایپ پیاده‌سازی می‌شود. در این مورد
+تایپ `String`. و نه یک مورد (instance) خاص ساخته شده از آن. بعضی از زبان‌ها به چنین مفهومی
+یک *متد استاتیک* می‌گویند.
 
-This `new` function creates a new, empty string. You’ll find a `new` function
-on many types, because it’s a common name for a function that makes a new value
-of some kind.
+تابع `new` یک رشته جدید خالی می‌سازد. تابع `new` را روی تایپ‌های
+متفاوتی پیدا می‌کنید، چون اسم معمولی برای تابعی است که یک مقدار جدید
+از یک نوع را می‌سازد.
 
-To summarize, the `let mut guess = String::new();` line has created a mutable
-variable that is currently bound to a new, empty instance of a `String`. Whew!
+به عنوان خلاصه می‌توان گفت که `let mut guess = String::new();` یک متغیر 
+قابل تغییر که مقدار اختصاص یافته به آن یک مورد خالی از `String` است می‌سازد.
 
-Recall that we included the input/output functionality from the standard
-library with `use std::io;` on the first line of the program. Now we’ll call
-the `stdin` function from the `io` module:
+اگر به یاد داشته باشید ما قابلیت ورودی و خروجی را از کتابخانه استاندارد با `use std:io` 
+در خط اول برنامه اضافه کردیم. حال تابع `stdin` را از ماژول `io` صدا می‌زنیم:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:read}}
 ```
 
-If we hadn’t put the `use std::io` line at the beginning of the program, we
-could have written this function call as `std::io::stdin`. The `stdin` function
-returns an instance of [`std::io::Stdin`][iostdin]<!-- ignore -->, which is a
-type that represents a handle to the standard input for your terminal.
+اگر `use std::io` را اول برنامه اضافه نکرده بودیم، باید تابع را به شکل `std::io:stdin`
+می‌نوشتیم. تابع `stdin` یک مورد (instance) از [`std::io::Stdin`][iostdin]<!-- ignore --> برمی‌گرداند.
+که یک تایپ برای ارتباط شما با ورودی استاندارد در ترمینال است.
 
 [iostdin]: ../std/io/struct.Stdin.html
 
-The next part of the code, `.read_line(&mut guess)`, calls the
-[`read_line`][read_line]<!-- ignore --> method on the standard input handle to
-get input from the user. We’re also passing one argument to `read_line`: `&mut
-guess`.
+بخش بعدی کد، `.read_line(&mut guess)`، متد [`read_line`][read_line]<!-- ignore --> را روی
+ورودی استاندارد صدا می‌زند تا ورودی را از کاربر بگیرد. همچنین یک آرگومان  دیگر به`read_line` می‌فرستیم:
+`&mutguess`.
 
 [read_line]: ../std/io/struct.Stdin.html#method.read_line
 
-The job of `read_line` is to take whatever the user types into standard input
-and place that into a string, so it takes that string as an argument. The
-string argument needs to be mutable so the method can change the string’s
-content by adding the user input.
 
-The `&` indicates that this argument is a *reference*, which gives you a way to
-let multiple parts of your code access one piece of data without needing to
-copy that data into memory multiple times. References are a complex feature,
-and one of Rust’s major advantages is how safe and easy it is to use
-references. You don’t need to know a lot of those details to finish this
-program. For now, all you need to know is that like variables, references are
-immutable by default. Hence, you need to write `&mut guess` rather than
-`&guess` to make it mutable. (Chapter 4 will explain references more
-thoroughly.)
+وظیفه `read_line` گرفتن هرچه کاربر در ورودی استاندارد وارد کند و قرار دادن
+آن در یک رشته است، به همین دلیل رشته را به عنوان آرگومان می‌گیرد.
+آرگومان رشته باید قابل تغییر باشد تا متد بتواند محتوای رشته را با قرار دادن
+ورودی کاربر تغییر دهد.
 
-### Handling Potential Failure with the `Result` Type
+کاراکتر `&` نشان می‌دهد که این آرگومان یک *مرجع* (Reference) می‌باشد و 
+راهی فراهم می‌کند که بتوان از قسمت‌های مختلفی از کد به یک داده دسترسی پیدا 
+کرد بدون اینکه لازم باشد داده را چند بار در حافظه کپی کرد. مرجع‌ها یک قابلیت پیچیده
+هستند و یکی از برتری‌های بزرگ Rust امنیت و سادگی استافده از آنها می‌باشد.
+برای نوشتن این برنامه به جزئیات زیادی نیاز ندارید. فعلا تمام چیزی که لازم دارید بدانید 
+این است که مثل متغیر‌ها، مرجع بطور پیشفرض غیرقابل تغییر است. پس باید آن‌ها
+را به صورت `&mut guess` بجای `&guess` نوشت تا قابل تغییر باشند.
+(فصل ۴ مرجع‌ها را کامل‌تر توضیح خواهد داد.)
 
-We’re still working on this line of code. Although we’re now discussing a third
-line of text, it’s still part of a single logical line of code. The next part
-is this method:
+### رفتار کردن با خطای احتمالی به وسیله تایپ `Result`
+
+هنوز روی این خط کد کار می‌کنیم. اما بیایید در مورد بخش سوم این خط صحبت کنیم.
+با اینکه این عبارت روی خط جدید قرار گرفته، هنوز از نظر منطقی به خط قبلی وابسته است.
+بخش بعدی این متود است:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:expect}}
 ```
-
-When you call a method with the `.foo()` syntax, it’s often wise to introduce a
-newline and other whitespace to help break up long lines. We could have
-written this code as:
+وقتی یک متد را با گرامر `.foo()` فراخوانی کنید، معمولاً عاقلانه است که خط جدید و فضای سفید اضافه کنید
+تا شکستن خطوط بلند راحت‌تر شود. می‌توانستیم این کد را به صورت زیر هم بنویسیم:
 
 ```rust,ignore
 io::stdin().read_line(&mut guess).expect("Failed to read line");
 ```
 
-However, one long line is difficult to read, so it’s best to divide it. Now
-let’s discuss what this line does.
+اما خواندن یک خط بلند می‌تواند سخت باشد. پس آنرا تقسیم می‌کنیم. حال ببینیم این خط 
+چه کاری انجام می‌دهد.
 
-As mentioned earlier, `read_line` puts what the user types into the string
-we’re passing it, but it also returns a value—in this case, an
-[`io::Result`][ioresult]<!-- ignore -->. Rust has a number of types named
-`Result` in its standard library: a generic [`Result`][result]<!-- ignore -->
-as well as specific versions for submodules, such as `io::Result`.
+همانطور که قبلا گفته شد، `read_line` هرچه کاربر تایپ کند در رشته‌ای که به آن می‌دهیم
+قرار می‌دهد. اما در این مورد خاص یک مقدار هم بر‌می‌گرداند. یک مقدار [`io::Result`][ioresult]<!-- ignore -->.
+زبان Rust چند تایپ به اسم `Result` در کتابخانه استاندارد خود دارد: یک [`Result`][result]<!-- ignore --> عمومی
+و چند نسخه خاص آن برای ساب‌ماژول‌ها مثل: `io::Result`.
 
 [ioresult]: ../std/io/type.Result.html
 [result]: ../std/result/enum.Result.html
 
-The `Result` types are [*enumerations*][enums]<!-- ignore -->, often referred
-to as *enums*. An enumeration is a type that can have a fixed set of values,
-and those values are called the enum’s *variants*. Chapter 6 will cover enums
-in more detail.
+تایپ‌های `Result` در واقع [*شمارش*][enums]<!-- ignore --> یا *enumeration* هستند 
+که *enum* هم عنوان می‌شوند. شمارش تایپی است که می‌تواند مجموعه مقادیر مشخصی بپذیرد و 
+این مجموعه مقدارها *حالت* نامیده می‌شوند. فصل ۶ به جزئیات بیشتری در مورد شمارش‌ها می‌پردازد.
 
 [enums]: ch06-00-enums.html
 
-For `Result`, the variants are `Ok` or `Err`. The `Ok` variant indicates the
-operation was successful, and inside `Ok` is the successfully generated value.
-The `Err` variant means the operation failed, and `Err` contains information
-about how or why the operation failed.
+برای `Result`، حالت‌های مختلف `Ok` یا `Err` هستند.
+حالت `Ok` نشان می‌دهد که عملیات موفق بوده و داخل `Ok` 
+مقدار خروجی موفقیت آمیز ذخیره می‌شود. حالت `Err` اما نشان‌دهنده
+شکست عملیات است. این حالت نیز اطلاعاتی در مورد چگونگی و چرایی اتفاق افتادن
+خطا در بردارد.
 
-The purpose of these `Result` types is to encode error-handling information.
-Values of the `Result` type, like values of any type, have methods defined on
-them. An instance of `io::Result` has an [`expect` method][expect]<!-- ignore
---> that you can call. If this instance of `io::Result` is an `Err` value,
-`expect` will cause the program to crash and display the message that you
-passed as an argument to `expect`. If the `read_line` method returns an `Err`,
-it would likely be the result of an error coming from the underlying operating
-system. If this instance of `io::Result` is an `Ok` value, `expect` will take
-the return value that `Ok` is holding and return just that value to you so you
-can use it. In this case, that value is the number of bytes in what the user
-entered into standard input.
+هدف تایپ `Result` در واقع کدگذاری اطلاعات خطایابی است.
+مقادیر تایپ `Result`، مثل مقادیر هر تایپ دیگری، دارای متد هستند.
+یک نمونه از `io::Result` متد [`expect`][expect]<!-- ignore--> را
+دارد که می‌توانید صدا بزنید. اگر این نمونه از `io::Result` حالت `Err` داشته باشد،
+صدازدن `expect` باعث کرش برنامه و نمایش پیامی که به عنوان آرگومان به `expect` بدهید
+می‌شود. اگر متد `read_line` یک `Err` برگرداند، احتمالاً مشکل خطایی در سیستم‌عامل
+خواهد بود. در این نمونه از `io::Result` حالت `Ok` است، پس `expect` مقداری که `Ok`
+نگه داشته برای شما بر‌می‌گرداند تا بتوانید آنرا استفاده کنید. در این حالت آن مقدار در واقع
+تعداد بایت‌هایی است که کاربر در ورودی استاندارد وارد کرده.
 
 [expect]: ../std/result/enum.Result.html#method.expect
 
-If you don’t call `expect`, the program will compile, but you’ll get a warning:
+اگر `expect` را صدا نزنید اما، با اینکه برنامه کامپایل می‌شود، حین آن خطایی نمایش داده می‌شود:
 
 ```text
 {{#include ../listings/ch02-guessing-game-tutorial/no-listing-02-without-expect/output.txt}}
 ```
 
-Rust warns that you haven’t used the `Result` value returned from `read_line`,
-indicating that the program hasn’t handled a possible error.
+کامپایلر Rust هشدار می‌دهد که از مقدار `Result` برگردانده شده از `read_line` هیچ استفاده‌ای نکرده‌اید 
+و این نشان دهنده رفتار نامشخص برنامه با یک خطای احتمالی است.
 
-The right way to suppress the warning is to actually write error handling, but
-because you just want to crash this program when a problem occurs, you can use
-`expect`. You’ll learn about recovering from errors in Chapter 9.
+روش درست برای عدم نمایش این خطا، نوشتن رفتار مورد نظر در صورت بروز این خطا است.
+اما چون شما فقط می‌خواهید در صورت اتفاق افتادن مشکل برنامه را متوقف سازید می‌توانید از `expect` 
+استفاده کنید. اما نوشتن نحوه رفتار و بازیابی برنامه در صورت خطا را در فصل ۹ خواهید آموخت.
 
 ### Printing Values with `println!` Placeholders
 

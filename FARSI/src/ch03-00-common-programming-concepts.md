@@ -1,23 +1,16 @@
-# Common Programming Concepts
+# مفاهیم برنامه‌نویسی متداول
 
-This chapter covers concepts that appear in almost every programming language
-and how they work in Rust. Many programming languages have much in common at
-their core. None of the concepts presented in this chapter are unique to Rust,
-but we’ll discuss them in the context of Rust and explain the conventions
-around using these concepts.
+این فصل مفاهیمی را شامل می‌شود که تقریباً در هر زبان برنامه‌نویسی پدیدار می‌شود و نحوه عملکرد آنها در Rust مشاهده می‌شود. 
+بسیاری از زبان‌های برنامه‌نویسی در سطح هسته اشتراکات بسیار زیادی دارند. هیچ یک از مفاهیم ارائه شده در این فصل مختص Rust نیست، 
+اما ما در مورد Rust بحث خواهیم کرد و توافق‌های پیرامون استفاده از این مفاهیم را توضیح خواهیم داد.
 
-Specifically, you’ll learn about variables, basic types, functions, comments,
-and control flow. These foundations will be in every Rust program, and learning
-them early will give you a strong core to start from.
+به طور خاص، شما در مورد متغیرها، انواع داده‌ای اصلی، توابع، توضیحات و کنترل جریان یاد خواهید گرفت.
+این پایه‌ها در هر برنامه Rust خواهد بود ، و یادگیری زودهنگام آنها یک پایه‌ی محکم را برای شروع به شما می‌دهد.
 
-> #### Keywords
->
-> The Rust language has a set of *keywords* that are reserved for use by
-> the language only, much as in other languages. Keep in mind that you cannot
-> use these words as names of variables or functions. Most of the keywords have
-> special meanings, and you’ll be using them to do various tasks in your Rust
-> programs; a few have no current functionality associated with them but have
-> been reserved for functionality that might be added to Rust in the future. You
-> can find a list of the keywords in [Appendix A][appendix_a].
+> نکته: زبان Rust دارای مجموعه‌ای از *کلمات کلیدی* است که همچون سایر زبان‌ها برای این زبان رزرو شده است. 
+> به خاطر داشته باشید که شما نمی‌توانید از این کلمات به عنوان نام متغیرها یا توابع استفاده کنید. بسیاری از 
+> کلمات کلیدی دارای معانی ویژه‌ای هستند ، و از آنها برای انجام کارهای مختلف در برنامه های Rust استفاده خواهید کرد.
+> تعداد معدودی از آنها عملکردی ندارند اما برای عملکردهایی که ممکن است در آینده به Rust اضافه شود رزرو شده‌اند.
+> شما می‌توانید لیستی از کلمات کلیدی را در [ضمیمه آ] پیدا کنید.
 
-[appendix_a]: appendix-01-keywords.md
+[ضمیمه آ]: appendix-01-keywords.md

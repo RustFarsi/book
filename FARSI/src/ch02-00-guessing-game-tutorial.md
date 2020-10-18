@@ -256,21 +256,19 @@ io::stdin().read_line(&mut guess).expect("Failed to read line");
 اما چون شما فقط می‌خواهید در صورت اتفاق افتادن مشکل برنامه را متوقف سازید می‌توانید از `expect` 
 استفاده کنید. اما نوشتن نحوه رفتار و بازیابی برنامه در صورت خطا را در فصل ۹ خواهید آموخت.
 
-### Printing Values with `println!` Placeholders
+### چاپ کردن مقادیر و جانشانی با `println!`
 
-Aside from the closing curly bracket, there’s only one more line to discuss in
-the code added so far, which is the following:
+به‌جز براکت‌ها، باید در مورد یک خط دیگر هم صحبت کنیم:
+
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:print_guess}}
 ```
 
-This line prints the string we saved the user’s input in. The set of curly
-brackets, `{}`, is a placeholder: think of `{}` as little crab pincers that
-hold a value in place. You can print more than one value using curly brackets:
-the first set of curly brackets holds the first value listed after the format
-string, the second set holds the second value, and so on. Printing multiple
-values in one call to `println!` would look like this:
+این خط رشته‌ای که ورودی کاربر در آن ذخیره شد را چاپ می‌کند. به کاری که مجموع کارکترهای ‌`{}` انجام می‌دهند جانشانی می‌گوییم: 
+این کارکترها را می‌توان به عنوان نمایشگر یک متغیر در نظر گرفت که قرار است مقداری را به جای خودش قرار دهد. می‌توانید بیشتر از یک مقدار را هم با این
+روش چاپ کنید: اولین کارکترهای `{}` اولین مقدار وارد شده بعد از رشته را نگهداری می‌کنند، دومین آن‌ها مقدار دوم و به همین ترتیب ادامه
+می‌یابد. در نهایت کدی به شکل زیر خواهیم داشت:
 
 ```rust
 let x = 5;
@@ -279,11 +277,11 @@ let y = 10;
 println!("x = {} and y = {}", x, y);
 ```
 
-This code would print `x = 5 and y = 10`.
+نتیجه این کد چاپ عبارت `x = 5 and y = 10` خواهد بود.
 
-### Testing the First Part
+### بررسی کردن قسمت‌اول
 
-Let’s test the first part of the guessing game. Run it using `cargo run`:
+اولین بخش برنامه حدس‌زدن را بررسی کنیم. با دستور `cargo run` آنرا اجرا می‌کنیم:
 
 <!-- manual-regeneration
 cd listings/ch02-guessing-game-tutorial/listing-02-01/
@@ -302,31 +300,27 @@ Please input your guess.
 You guessed: 6
 ```
 
-At this point, the first part of the game is done: we’re getting input from the
-keyboard and then printing it.
+تا اینجا قسمت اول کار می‌کند: ما می‌توانیم از کیبورد ورودی بگیریم و آنرا چاپ کنیم.
 
-## Generating a Secret Number
+## ساخت یک عدد مخفی
 
-Next, we need to generate a secret number that the user will try to guess. The
-secret number should be different every time so the game is fun to play more
-than once. Let’s use a random number between 1 and 100 so the game isn’t too
-difficult. Rust doesn’t yet include random number functionality in its standard
-library. However, the Rust team does provide a [`rand` crate][randcrate].
+باید یک عدد مخفی از کاربر بسازیم تا بتواند آنرا حدس بزند. این عدد باید هربار متفاوت باشد 
+تا بتوانیم آن‌را بیشتر از یک دفعه بازی کنیم. پس یک عدد تصادفی بین ۱ تا ۱۰۰ باید انتخاب کنیم
+تا بازی خیلی سخت هم نباشد. Rust هم اکنون قابلیت ساخت عدد تصادفی در کتابخانه استاندارد خود
+ را ندارد. اما تیم Rust یک crate برای این کار ارائه می‌دهند به اسم [`rand`][randcrate].
 
 [randcrate]: https://crates.io/crates/rand
 
-### Using a Crate to Get More Functionality
+### استفاده از Crate برای افزودن قابلیت به برنامه‌های Rust
 
-Remember that a crate is a collection of Rust source code files.
-The project we’ve been building is a *binary crate*, which is an executable.
-The `rand` crate is a *library crate*, which contains code intended to be
-used in other programs.
+حتماً به یاد دارید که یک Crate یک مجموعه از فایل‌های کد منبع به زبان Rust است.
+پروژه‌ای که مشغول ساخت آن هستیم یک *Binary Crate* نامید می‌شود که یعنی برنامه قابل اجرا است.
+اما `rand` از نوع *Library Crate* می‌باشد که یک کتابخانه است و حاوی کدهایی است که می‌توان
+در برنامه‌های دیگر از آن‌ها استفاده کرد.
 
-Cargo’s use of external crates is where it really shines. Before we can write
-code that uses `rand`, we need to modify the *Cargo.toml* file to include the
-`rand` crate as a dependency. Open that file now and add the following line to
-the bottom beneath the `[dependencies]` section header that Cargo created for
-you:
+استفاده راحت از Crate های خارجی یکی از نقات قوت Cargo است. قبل از اینکه کدی بنویسیم که از `rand`
+استفاده کند باید فایل *Cargo.toml* را تغییر دهیم که `rand` را به عنوان پیشنیاز برای این پروژه بشناسد.
+فایل را باز کنید و این خط را به آخر قسمت `[dependencies]` که قبلا Cargo برای شما ساخته اضافه کنید:
 
 <!-- When updating the version of `rand` used, also update the version of
 `rand` used in these files so they all match:

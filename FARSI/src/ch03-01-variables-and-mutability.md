@@ -1,11 +1,7 @@
-## Variables and Mutability
+## متغییرها و قابلیت تغییرپذیری
 
-As mentioned in Chapter 2, by default variables are immutable. This is one of
-many nudges Rust gives you to write your code in a way that takes advantage of
-the safety and easy concurrency that Rust offers. However, you still have the
-option to make your variables mutable. Let’s explore how and why Rust
-encourages you to favor immutability and why sometimes you might want to opt
-out.
+همانطور که در بخش 2 گفته شد متغییرها بصورت پیش‌فرض غیر قابل تغغیر هستند.این موضوع یکی از اقداماتی است که در Rust تعبیه شده تا کد خود را بنحوی بنویسید که از امتیاز کد امن که در Rust عرضه شده و همچنین از همزمانی (concurrency) راحت بهره ببرید.با این حال امکان اینکه متغییرعا را بنحوی تعریف کنید که قابل تغییر باشد وجود دارد.بگذارید بررسی کنیم چرا و چگونه Rust شما را به استفاده از متغییرعای غیر قابل تغییر (immutable) ترغیب می‌کند و چرا گاهی اوقات ممکن است بخواعید از متغییرهای تغییر پذیر(mutable) استفاده کنید.
+
 
 When a variable is immutable, once a value is bound to a name, you can’t change
 that value. To illustrate this, let’s generate a new project called *variables*

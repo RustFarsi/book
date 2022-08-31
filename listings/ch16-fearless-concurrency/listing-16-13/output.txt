@@ -4,16 +4,12 @@ error[E0382]: use of moved value: `counter`
   --> src/main.rs:9:36
    |
 5  |     let counter = Mutex::new(0);
-   |         ------- move occurs because `counter` has type `std::sync::Mutex<i32>`, which does not implement the `Copy` trait
+   |         ------- move occurs because `counter` has type `Mutex<i32>`, which does not implement the `Copy` trait
 ...
 9  |         let handle = thread::spawn(move || {
    |                                    ^^^^^^^ value moved into closure here, in previous iteration of loop
 10 |             let mut num = counter.lock().unwrap();
    |                           ------- use occurs due to use in closure
 
-error: aborting due to previous error
-
 For more information about this error, try `rustc --explain E0382`.
-error: could not compile `shared-state`.
-
-To learn more, run the command again with --verbose.
+error: could not compile `shared-state` due to previous error

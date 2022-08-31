@@ -10,7 +10,7 @@ The translated markdown files are in the FARSI directory. All other files of the
 
 ## Requirements
 
-Building the book requires [mdBook], ideally the same 0.3.x version that
+Building the book requires [mdBook], ideally the same version that
 rust-lang/rust uses in [this file][rust-mdbook]. To get it:
 
 [mdBook]: https://github.com/rust-lang-nursery/mdBook
@@ -54,7 +54,7 @@ To run the tests:
 $ mdbook test
 ```
 
-## Contributing
+## Contribution
 
 Send a pull request with your modifications to the **FARSI/** directory.
 The translations must be intelligible.

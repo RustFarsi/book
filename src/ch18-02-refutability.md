@@ -40,18 +40,18 @@ only accept an irrefutable pattern because there is nothing valid the code can
 do with a `None` value. At compile time, Rust will complain that we’ve tried to
 use a refutable pattern where an irrefutable pattern is required:
 
-```text
+```console
 {{#include ../listings/ch18-patterns-and-matching/listing-18-08/output.txt}}
 ```
 
 Because we didn’t cover (and couldn’t cover!) every valid value with the
 pattern `Some(x)`, Rust rightfully produces a compiler error.
 
-To fix the problem where we have a refutable pattern where an irrefutable
-pattern is needed, we can change the code that uses the pattern: instead of
-using `let`, we can use `if let`. Then if the pattern doesn’t match, the code
-will just skip the code in the curly brackets, giving it a way to continue
-validly. Listing 18-9 shows how to fix the code in Listing 18-8.
+If we have a refutable pattern where an irrefutable pattern is needed, we can
+fix it by changing the code that uses the pattern: instead of using `let`, we
+can use `if let`. Then if the pattern doesn’t match, the code will just skip
+the code in the curly brackets, giving it a way to continue validly. Listing
+18-9 shows how to fix the code in Listing 18-8.
 
 ```rust
 {{#rustdoc_include ../listings/ch18-patterns-and-matching/listing-18-09/src/main.rs:here}}
@@ -75,7 +75,7 @@ with `if let`</span>
 Rust complains that it doesn’t make sense to use `if let` with an irrefutable
 pattern:
 
-```text
+```console
 {{#include ../listings/ch18-patterns-and-matching/listing-18-10/output.txt}}
 ```
 

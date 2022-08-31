@@ -153,11 +153,13 @@ more about lifetimes, traits, types, functions, and closures.
 In Chapter 20, we’ll complete a project in which we’ll implement a low-level
 multithreaded web server!
 
-Finally, some appendixes contain useful information about the language in a
+Finally, some appendices contain useful information about the language in a
 more reference-like format. Appendix A covers Rust’s keywords, Appendix B
 covers Rust’s operators and symbols, Appendix C covers derivable traits
 provided by the standard library, Appendix D covers some useful development
-tools, and Appendix E explains Rust editions.
+tools, and Appendix E explains Rust editions. In Appendix F, you can find
+translations of the book, and in Appendix G we’ll cover how Rust is made and
+what nightly Rust is.
 
 There is no wrong way to read this book: if you want to skip ahead, go for it!
 You might have to jump back to earlier chapters if you experience any
@@ -173,12 +175,11 @@ and run a random example, it may not compile! Make sure you read the
 surrounding text to see whether the example you’re trying to run is meant to
 error. Ferris will also help you distinguish code that isn’t meant to work:
 
-| Ferris                                                                 | Meaning                                          |
-|------------------------------------------------------------------------|--------------------------------------------------|
-| <img src="img/ferris/does_not_compile.svg" class="ferris-explain"/>    | This code does not compile!                      |
-| <img src="img/ferris/panics.svg" class="ferris-explain"/>              | This code panics!                                |
-| <img src="img/ferris/unsafe.svg" class="ferris-explain"/>              | This code block contains unsafe code.            |
-| <img src="img/ferris/not_desired_behavior.svg" class="ferris-explain"/>| This code does not produce the desired behavior. |
+| Ferris                                                                                                           | Meaning                                          |
+|------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| <img src="img/ferris/does_not_compile.svg" class="ferris-explain" alt="Ferris with a question mark"/>            | This code does not compile!                      |
+| <img src="img/ferris/panics.svg" class="ferris-explain" alt="Ferris throwing up their hands"/>                   | This code panics!                                |
+| <img src="img/ferris/not_desired_behavior.svg" class="ferris-explain" alt="Ferris with one claw up, shrugging"/> | This code does not produce the desired behavior. |
 
 In most situations, we’ll lead you to the correct version of any code that
 doesn’t compile.
@@ -188,4 +189,4 @@ doesn’t compile.
 The source files from which this book is generated can be found on
 [GitHub][book].
 
-[book]: https://github.com/rust-lang/book/tree/master/src
+[book]: https://github.com/rust-lang/book/tree/main/src

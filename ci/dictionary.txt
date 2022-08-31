@@ -6,6 +6,7 @@ adaptor
 adaptors
 AddAssign
 Addr
+adfb
 afdc
 aggregator
 AGraph
@@ -13,6 +14,7 @@ aliasability
 alignof
 alloc
 allocator
+AlwaysEqual
 Amir
 anotherusername
 APIs
@@ -49,18 +51,24 @@ BitXorAssign
 Bjarne
 Boehm
 bool
+boolean
 Boolean
 Booleans
 Bors
 BorrowMutError
 BoxMeUp
 BTreeSet
+BufRead
+BufReader
 BuildHasher
 Cacher
+cacher
 Cagain
 callsite
 CamelCase
 cargodoc
+centric
+chacha
 ChangeColor
 ChangeColorMessage
 charset
@@ -69,11 +77,13 @@ chXX
 chYY
 clippy
 clippy's
+cmdlet
 coercions
 combinator
 ConcreteType
 config
 Config
+confignew
 const
 consts
 constant's
@@ -113,6 +123,7 @@ dereferences
 dereferencing
 DerefMut
 DeriveInput
+Dest
 destructor
 destructure
 destructured
@@ -121,6 +132,7 @@ destructuring
 Destructuring
 deterministically
 DevOps
+devtools
 didn
 Dobrý
 doccargo
@@ -147,7 +159,9 @@ Enums
 eprintln
 Erlang
 ErrorKind
+eval
 executables
+ExitCode
 expr
 extern
 favicon
@@ -162,6 +176,7 @@ filesystem
 Filesystem
 filesystem's
 filesystems
+filmmaking
 Firefox
 FnMut
 FnOnce
@@ -169,8 +184,11 @@ formatter
 formatters
 FrenchToast
 FromIterator
+FromResidual
 frontend
+getrandom
 getter
+getters
 GGraph
 GitHub
 gitignore
@@ -198,6 +216,8 @@ Hoare
 Hola
 homogenous
 html
+http
+https
 hyperoptimize
 hypotheticals
 Iceburgh
@@ -262,6 +282,7 @@ login
 lookup
 loopback
 lossy
+Lukas
 lval
 macOS
 Matsakis
@@ -316,6 +337,7 @@ nonadministrators
 nondeterministic
 nonequality
 nongeneric
+noplayground
 NotFound
 nsprust
 null's
@@ -329,6 +351,9 @@ OptionalNumber
 OsStr
 OsString
 other's
+otherinstall
+OtherError
+OurError
 OutlinePrint
 overloadable
 overread
@@ -357,6 +382,8 @@ PrimaryColor
 println
 priv
 proc
+proto
+pseudocode
 pthreads
 pushups
 QuitMessage
@@ -388,6 +415,7 @@ representable
 request's
 resizes
 resizing
+ReturnedError
 retweet
 rewordings
 rint
@@ -412,11 +440,13 @@ SelectBox
 semver
 SemVer
 serde
+ShirtColor
 ShlAssign
 ShrAssign
 shouldn
 Simula
 siphash
+SipHash
 situps
 sizeof
 SliceIndex
@@ -455,6 +485,7 @@ subdirectory
 submodule
 submodules
 Submodules
+submodule’s
 suboptimal
 subpath
 substring
@@ -472,10 +503,12 @@ TextField
 That'd
 there'd
 ThreadPool
+threadpool
 timestamp
 Tiếng
 timeline
 tlborm
+tlsv
 TODO
 TokenStream
 toml
@@ -511,6 +544,7 @@ UnsafeCell
 unsafety
 unsized
 unsynchronized
+Unyank
 URIs
 UsefulType
 username
@@ -537,6 +571,7 @@ WebSocket
 whitespace
 wildcard
 wildcards
+Wirth
 workflow
 workspace
 workspaces
@@ -544,6 +579,7 @@ Workspaces
 wouldn
 writeln
 WriteMessage
+xcode
 xpression
 yyyy
 ZipImpl

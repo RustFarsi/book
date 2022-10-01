@@ -1,25 +1,24 @@
-## پیوست آ: واژه‌های کلیدی
+## پیوست آ: کلیدواژه‌ها
 
 فهرست زیر حاوی کلمات کلیدی است که برای استفاده کنونی یا آینده توسط زبان Rust اختصاص‌داده شده‌اند. به این ترتیب، این واژگان نمی‌توانند به عنوان شناسه استفاده شوند (به جز به عنوان شناسه‌های خام که در بخش «[Raw Identifiers][raw-identifier]<!-- ignore -->» بحث خواهیم کرد)، از جمله نام تابع‌ها، متغیرها، مقدارهای ورودی، مشخصه‌های ساختاری، مؤلفه‌ها، جعبه‌ها، ثابت‌ها، ماکروها، مقدارهای ثابت، ویژگی‌ها، نوع‌ها، صفت‌ها یا طول عمر.
 
 [raw-identifiers]: #raw-identifiers
 
-### واژگان کلیدی مورد استفاده‌ی حال حاضر
+### کلیدواژه‌های که در حال حاضر استفاده می‌شوند
 
 واژگان کلیدی زیر در حال حاضر دارای عملکرد توصیف‌‌شده‌ی زیر هستند.
 
 * `as` - تغییر نوع اولیه (primitive casting) را انجام می‌دهد، صفت مشخصی از دارنده‌ی آن شامل یک مورد (Item) را ابهام‌زدایی می‌کند،
   یا نام موارد را در دستورات `use` و `extern crate` تغییر می‌دهد.
-* `async` -  به جای این‌که نخ کنونی را متوقف کند، نوع `Future` را باز می‌گرداند.
+* `async` - به جای این‌که نخ کنونی را متوقف کند، نوع `Future` را باز می‌گرداند.
 * `await` - روند اجرای کد را تا زمانی‌که نتیجه‌ی یک `Future` آماده باشد، متوقف می‌کند.
-* `break` - exit a loop immediately
-* `const` - define constant items or constant raw pointers
-* `continue` - continue to the next loop iteration
-* `crate` - link an external crate or a macro variable representing the crate in
-  which the macro is defined
-* `dyn` - dynamic dispatch to a trait object
-* `else` - fallback for `if` and `if let` control flow constructs
-* `enum` - define an enumeration
+* `break` - مستقیماً از حلقه خارج می‌شود.
+* `const` - موارد ثابت یا اشاره‌گرهای خام ثابت را تعریف می‌کند.
+* `continue` - به تکرار حلقه‌ی بعد ادامه می‌دهد.
+* `crate` - یک کتابخانه‌ی خارجی یا یک متغیر ماکرو را که نشان دهنده کتابخانه‌ای که ماکرو در آن تعریف شده است، پیوند می‌دهد.
+* `dyn` - ارسال پویا به یک شئ اشاره‌گر
+* `else` - بازتعریفی برای ساختارهای کنترل جریان کد `if` و `if let` ارائه می‌دهد.
+* `enum` - یک نوع داده‌ی شمارش‌پذیر را تعریف می‌کند.
 * `extern` - link an external crate, function, or variable
 * `false` - Boolean false literal
 * `fn` - define a function or the function pointer type
@@ -50,10 +49,9 @@
 * `where` - denote clauses that constrain a type
 * `while` - loop conditionally based on the result of an expression
 
-### Keywords Reserved for Future Use
+### کلیدواژه‌هایی که برای آینده اختصاص یافته‌اند
 
-The following keywords do not have any functionality but are reserved by Rust
-for potential future use.
+کلیدواژه‌های زیر هیچ گونه عملکردی ندارند، اما توسط Rust برای استفاده‌ی احتمالی در آینده محفوظ هستند.
 
 * `abstract`
 * `become`
@@ -69,7 +67,7 @@ for potential future use.
 * `virtual`
 * `yield`
 
-### Raw Identifiers
+### شناسه‌های خام
 
 *Raw identifiers* are the syntax that lets you use keywords where they wouldn’t
 normally be allowed. You use a raw identifier by prefixing a keyword with `r#`.
@@ -103,11 +101,11 @@ identifier syntax, like this:
 
 ```rust
 fn r#match(needle: &str, haystack: &str) -> bool {
-    haystack.contains(needle)
+  haystack.contains(needle)
 }
 
 fn main() {
-    assert!(r#match("foo", "foobar"));
+  assert!(r#match("foo", "foobar"));
 }
 ```
 

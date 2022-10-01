@@ -19,35 +19,34 @@
 * `dyn` - ارسال پویا به یک شئ اشاره‌گر
 * `else` - بازتعریفی برای ساختارهای کنترل جریان کد `if` و `if let` ارائه می‌دهد.
 * `enum` - یک نوع داده‌ی شمارش‌پذیر را تعریف می‌کند.
-* `extern` - link an external crate, function, or variable
-* `false` - Boolean false literal
-* `fn` - define a function or the function pointer type
-* `for` - loop over items from an iterator, implement a trait, or specify a
-  higher-ranked lifetime
-* `if` - branch based on the result of a conditional expression
-* `impl` - implement inherent or trait functionality
-* `in` - part of `for` loop syntax
-* `let` - bind a variable
-* `loop` - loop unconditionally
-* `match` - match a value to patterns
-* `mod` - define a module
-* `move` - make a closure take ownership of all its captures
-* `mut` - denote mutability in references, raw pointers, or pattern bindings
-* `pub` - denote public visibility in struct fields, `impl` blocks, or modules
-* `ref` - bind by reference
-* `return` - return from function
-* `Self` - a type alias for the type we are defining or implementing
-* `self` - method subject or current module
-* `static` - global variable or lifetime lasting the entire program execution
-* `struct` - define a structure
-* `super` - parent module of the current module
-* `trait` - define a trait
-* `true` - Boolean true literal
-* `type` - define a type alias or associated type
-* `unsafe` - denote unsafe code, functions, traits, or implementations
-* `use` - bring symbols into scope
-* `where` - denote clauses that constrain a type
-* `while` - loop conditionally based on the result of an expression
+* `extern` - یک کتابخانه‌ی خارجی، تابع یا متغیر را پیوند می‌دهد.
+* `false` - مقدار نادرست (false) در منطق بولی را نشان می‌کند.
+* `fn` - یک تابع و یا نوع اشاره‌گر تابع را تعریف می‌کند.
+* `for` - موارد یک تکرارکننده که یک ویژگی را پیاده‌سازی می‌کند یا طول عمر بالاتری را مشخص می‌کند، پیمایش می‌کند.
+* `if` - بر اساس نتیجه یک عبارت شرطی ایجاد شاخه می‌کند.
+* `impl` - عملکرد ذاتی یا ویژگی خاص (trait) را پیاده می‌کند.
+* `in` - بخشی از حلقه‌ی `for` می‌باشد.
+* `let` - یک متغیر را تغریف می‌کند.
+* `loop` - حلقه‌ی بدون شرط را اجرا می‌کند.
+* `match` - یک مقدار را با الگو تطبیق می‌دهد.
+* `mod` - یک ماژول را تعریف می‌کند.
+* `move` - یک بسته مالکیت تمام ضبط آن را می‌سازد.
+* `mut` - تغییرپذیری در مراجع، اشاره گرهای خام یا پیوندهای الگو را نشان می دهد
+* `pub` - قابلیت استفاده‌ی عمومی در فیلدهای ساختار (struct)، بلوک‌های «impl» یا ماژول‌ها را نشان می‌دهد
+* `ref` - یک ارجاع را تعریف می‌کند.
+* `return` - مقدار تابع را باز می‌گرداند.
+* `Self` - یک نام مستعار برای نوع داده‌ای که در حال تعریف یا پیاده‌سازی آن هستیم، تعریف می‌کند.
+* `self` - دارنده‌ی تابع و یا ماژول کنونی را نشان می‌دهد.
+* `static` - متغیر سراسری یا طول عمری که کل اجرای برنامه را دوام می آورد
+* `struct` - یک نوع داده‌ی ساختار (struct) را تعریف می‌کند.
+* `super` - به ماژول والد ماژول جاری اشاره می‌کند.
+* `trait` - یک نوع داده‌ی اشاره‌گر را تعریف می‌کند.
+* `true` - مقدار درست (true) در منطق بولی را نشان می‌کند.
+* `type` - یک نوع مستعار یا نوع مرتبط را تعریف ‌می‌کند.
+* `unsafe` - کد، توابع، اشاره‌گرها یا پیاده‌سازی‌های ناامن را نشان می دهد.
+* `use` - نام‌ (symbol) کتابخانه‌ها را در یک دامنه بازتعریف می‌کند.
+* `where` - عبارت هایی را نشان می دهد که یک نوع را محدود می کند
+* `while` - یک حلقه را با توجه به نتیجه‌ی عبارت شرطی تکرار می‌کند.
 
 ### کلیدواژه‌هایی که برای آینده اختصاص یافته‌اند
 
@@ -69,11 +68,10 @@
 
 ### شناسه‌های خام
 
-*Raw identifiers* are the syntax that lets you use keywords where they wouldn’t
-normally be allowed. You use a raw identifier by prefixing a keyword with `r#`.
+*شناسه‌های خام* روشی هستند که به شما امکان می‌دهند از کلمات کلیدی در جایی استفاده کنید که معمولاً مجاز نیستند. شما با قرار دادن پیشوند کلمه کلیدی با `r#` از یک شناسه‌ی خام استفاده می‌کنید.
 
-For example, `match` is a keyword. If you try to compile the following function
-that uses `match` as its name:
+به عنوان نمونه، `match` یک کلیدواژه است. اگر تلاش کنید تابع زیر را کامپایل کنید
+که از `match` به عنوان نام خود استفاده می کند:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -83,7 +81,7 @@ fn match(needle: &str, haystack: &str) -> bool {
 }
 ```
 
-you’ll get this error:
+این خطا را دریافت خواهید کرد:
 
 ```text
 error: expected identifier, found keyword `match`
@@ -93,9 +91,7 @@ error: expected identifier, found keyword `match`
   |    ^^^^^ expected identifier, found keyword
 ```
 
-The error shows that you can’t use the keyword `match` as the function
-identifier. To use `match` as a function name, you need to use the raw
-identifier syntax, like this:
+خطا نشان می دهد که نمی توانید از کلیدواژه‌ی `match` به عنوان شناسه‌ی تابع استفاده کنید. برای استفاده از `match` به عنوان نام تابع، باید از شناسایی خام استفاده کنید، مانند این:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -109,16 +105,8 @@ fn main() {
 }
 ```
 
-This code will compile without any errors. Note the `r#` prefix on the function
-name in its definition as well as where the function is called in `main`.
+این کد بدون هیچ خطایی کامپایل می شود. به پیشوند "r#" روی نام تابع در تعریف آن و همچنین جایی که تابع در "main" فراخوانی می شود، توجه کنید.
 
-Raw identifiers allow you to use any word you choose as an identifier, even if
-that word happens to be a reserved keyword. In addition, raw identifiers allow
-you to use libraries written in a different Rust edition than your crate uses.
-For example, `try` isn’t a keyword in the 2015 edition but is in the 2018
-edition. If you depend on a library that’s written using the 2015 edition and
-has a `try` function, you’ll need to use the raw identifier syntax, `r#try` in
-this case, to call that function from your 2018 edition code. See [Appendix
-E][appendix-e]<!-- ignore --> for more information on editions.
+شناسه های خام به شما امکان می دهند از هر واژه‌ای که برمی‌گزینید، به عنوان شناسه استفاده کنید، حتی اگر آن واژه، یک کلیدواژه‌ی اختصاص یافته باشد. علاوه بر این، شناسه‌های خام به شما امکان می‌دهند از کتابخانه‌های نوشته شده در نسخه Rust متفاوتی نسبت به موارد استفاده در کتابخانه‌های خود استفاده کنید. به عنوان مثال، `try` در نسخه ۲۱۰۵ یک کلیدواژه نیست، ولی در نسخه ۲۰۱۸ یک کلیدواژه است.  اگر به کتابخانه‌ای وابسته هستید که با استفاده از نسخه ۲۰۱۵ نوشته شده است و تابع `try` دارد، باید از نحو شناسایی خام، `r#try` در این مورد استفاده کنید تا آن تابع را از کد نسخه ۲۰۱۸ خود فراخوانی کنید. برای آگاهی بیشتر به پیوست  [Appendix E][appendix-e]<!-- ignore --> مراجعه کنید.
 
 [appendix-e]: appendix-05-editions.html

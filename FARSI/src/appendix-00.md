@@ -1,4 +1,3 @@
-# Appendix
+# پیوست
 
-The following sections contain reference material you may find useful in your
-Rust journey.
+بخش‌های زیر دارای مطالب مرجعی هستند که ممکن است در مسیر یادگیری Rust مفید باشند.

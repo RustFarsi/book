@@ -1,20 +1,15 @@
-## Appendix A: Keywords
+## پیوست آ: واژه‌های کلیدی
 
-The following list contains keywords that are reserved for current or future
-use by the Rust language. As such, they cannot be used as identifiers (except
-as raw identifiers as we’ll discuss in the “[Raw
-Identifiers][raw-identifiers]<!-- ignore -->” section), including names of
-functions, variables, parameters, struct fields, modules, crates, constants,
-macros, static values, attributes, types, traits, or lifetimes.
+فهرست زیر حاوی کلمات کلیدی است که برای استفاده کنونی یا آینده توسط زبان Rust اختصاص‌داده‌شده‌‌اند. به این ترتیب، این واژگان نمی‌توانند به عنوان شناسه استفاده شوند (به جز به عنوان شناسه های خام که در بخش "[Raw Identifiers][raw-identifier]<!-- ignore -->" بحث خواهیم کرد)، از جمله نام توابع، متغیرها، پارامترها، فیلدهای ساختاری، ماژول‌ها، جعبه‌ها، ثابت‌ها، ماکروها، مقادیر استاتیک، ویژگی‌ها، انواع، صفات یا طول عمر.
 
 [raw-identifiers]: #raw-identifiers
 
-### Keywords Currently in Use
+### واژگان کلیدی مورد استفاده‌ی حال حاضر
 
-The following keywords currently have the functionality described.
+واژگان کلیدی زیر در حال حاضر دارای عملکرد توصیف‌‌شده‌ی زیر هستند.
 
-* `as` - perform primitive casting, disambiguate the specific trait containing
-  an item, or rename items in `use` and `extern crate` statements
+* `as` - تغییر نوع اولیه () را انجام می‌دهد، صفت مشخصی از دارنده‌ی آن شامل یک مورد را ابهام‌زدایی می‌کند، 
+یا نام موارد را در دستورات `use` و `extern crate` تغییر می‌دهد.
 * `async` -  return a `Future` instead of blocking the current thread
 * `await` - suspend execution until the result of a `Future` is ready
 * `break` - exit a loop immediately

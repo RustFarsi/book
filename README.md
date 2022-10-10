@@ -1,14 +1,13 @@
-# The Rust Programming Language (Farsi Translation)
+# زبان برنامه‌نویسی Rust (برگردان فارسی)
 
-This repository contains the source of the Farsi(Persian) translation of "The Rust Programming Language" book.
+این مخزن منبع برگردان فارسی کتاب «زبان برنامه نویسی Rust» است.
 
-The translated markdown files are in the FARSI directory. All other files of the project(except for this README.md) have remained intact and compatible with the original english version.
-
-[Read here](https://pouriamokhtari.ir/rust-book-fa/)(Note that translations might be incomplete)
+پرونده‌های برگردان‌شده‌ی فارسی در پوشه‌ی FARSI قرار دارند. همه‌ی  پرونده‌های دیگر پروژه (به جز این README.md) دست نخورده باقی مانده‌اند و با نسخه اصلی انگلیسی سازگار هستند.
+[اینجا را بخوانید](https://pouriamokhtari.ir/rust-book-fa/)(توجه داشته‌باشید که ممکن است برگردان ناقص باشد)
 
 [the original book](https://github.com/rust-lang/book/)
 
-## Requirements
+## نیازمندی‌ها
 
 Building the book requires [mdBook], ideally the same version that
 rust-lang/rust uses in [this file][rust-mdbook]. To get it:

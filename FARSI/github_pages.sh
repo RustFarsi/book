@@ -9,5 +9,5 @@ git add -A
 git commit -m "Update book"
 git push origin gh-pages
 git checkout master
-cd FARSI
+cd FARSI || exit
 mdbook clean

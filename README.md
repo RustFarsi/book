@@ -1,17 +1,16 @@
-# The Rust Programming Language (Farsi Translation)
+# زبان برنامه‌نویسی Rust (برگردان فارسی)
 
-This repository contains the source of the Farsi(Persian) translation of "The Rust Programming Language" book.
+این مخزن منبع برگردان فارسی کتاب «زبان برنامه نویسی Rust» است.
 
-The translated markdown files are in the FARSI directory. All other files of the project(except for this README.md) have remained intact and compatible with the original english version.
-
-[Read here](https://pouriamokhtari.ir/rust-book-fa/)(Note that translations might be incomplete)
+پرونده‌های برگردان‌شده‌ی فارسی در پوشه‌ی FARSI قرار دارند. همه‌ی  پرونده‌های دیگر پروژه (به جز این README.md) دست نخورده باقی مانده‌اند و با نسخه اصلی انگلیسی سازگار هستند.
+(توجه داشته‌باشید که ممکن است برگردان ناقص باشد)
 
 [the original book](https://github.com/rust-lang/book/)
 
-## Requirements
+## نیازمندی‌ها
 
-Building the book requires [mdBook], ideally the same version that
-rust-lang/rust uses in [this file][rust-mdbook]. To get it:
+ساخت کتاب نیاز به [mdBook] دارد که حالت ایدآل آن استفاده از همان نگارشی 
+که rust-lang/rust در [this file][rust-mdbook] استفاده می‌کند. برای دریافت آن:
 
 [mdBook]: https://github.com/rust-lang-nursery/mdBook
 [rust-mdbook]: https://github.com/rust-lang/rust/blob/master/src/tools/rustbook/Cargo.toml
@@ -20,17 +19,16 @@ rust-lang/rust uses in [this file][rust-mdbook]. To get it:
 $ cargo install mdbook --vers [version-num]
 ```
 
-## Building
+## ساخت
 
-To build the farsi version of the book, type:
+برای ساخت نگارش فارسی کتاب بنویسید:
 
 ```bash
 $ cd FARSI
 $ mdbook build
 ```
 
-The output will be in the `FARSI/book` subdirectory. To check it out, open it in
-your web browser.
+خروجی در زیرپوشه‌ی `FARSI/book` قرار خواهد گرفت. برای بررسی، آن را در مرورگر باز کنید.
 
 _Firefox:_
 ```bash
@@ -48,15 +46,15 @@ $ Start-Process "chrome.exe" .\FARSI\book\index.html  # Windows (PowerShell)
 $ start chrome.exe .\FARSI\book\index.html            # Windows (Cmd)
 ```
 
-To run the tests:
+برای اجرای آزمون‌ها:
 
 ```bash
 $ mdbook test
 ```
 
-## Contribution
+## مشارکت
 
-Send a pull request with your modifications to the **FARSI/** directory.
-The translations must be intelligible.
+یک درخواست pull request با تغییرات خود در پوشه‌ی **FARSI/** بفرستید.
+برگردان‌ها باید قابل فهم باشند.
 
-Please do not modify anything outside of the FARSI directory.
+لطفاً چیزی خارج از پوشه‌ی **FARSI/** را تغییر ندهید.

@@ -1,15 +1,13 @@
-## Appendix B: Operators and Symbols
+## پیوست ب: عملگرها و نمادها
 
-This appendix contains a glossary of Rust’s syntax, including operators and
-other symbols that appear by themselves or in the context of paths, generics,
-trait bounds, macros, attributes, comments, tuples, and brackets.
+این پیوست دربردارنده‌ی واژه‌نامه‌ی Rust، یعنی عملگرها و
+نمادهای دیگری که به خودی خود یا در زمینه مسیرها، ژنریک‌ها،
+مرزهای صفت، ماکروها، ویژگی‌ها، دیدگاه‌ها، چندتایی‌ها و براکت‌ها است.
 
-### Operators
+### عملگرها
 
-Table B-1 contains the operators in Rust, an example of how the operator would
-appear in context, a short explanation, and whether that operator is
-overloadable. If an operator is overloadable, the relevant trait to use to
-overload that operator is listed.
+جدول B-1 شامل عملگرهای Rust است، مثالی از نحوه انجام عملگر
+در متن ظاهر می شود، توضیحی کوتاه، و اینکه آیا آن عملگر قابل بازتعریف‌کردن (overloadable) است یا خیر. اگر یک اپراتور قابلیت بازتعریف کردن را داشته باشد، ویژگی مربوطه برای استفاده بازتعریف آن عملگر فهرست شده است.
 
 <span class="caption">Table B-1: Operators</span>
 

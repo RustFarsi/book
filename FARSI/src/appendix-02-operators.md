@@ -96,22 +96,21 @@
 
 <span class="caption">جدول ب-۳: نحو مرتبط با مسیر</span>
 
-| شرح                                                                                              | نماد                                    |
-|--------------------------------------------------------------------------------------------------|-----------------------------------------|
-| مسیر فضای نام (namespace)                                                                        | `ident::ident`                          |
-| مسیر نسبت به کتابخانه ی ریشه (یعنی یک مسیر مطلق)                                                 | `::path`                                |
-| Path relative to the current module (i.e., an explicitly relative path).                         | `self::path`                            |
-| Path relative to the parent of the current module                                                | `super::path`                           |
-| Associated constants, functions, and types                                                       | `type::ident`, `<type as trait>::ident` |
-| Associated item for a type that cannot be directly named (e.g., `<&T>::...`, `<[T]>::...`, etc.) | `<type>::...`                           |
-| Disambiguating a method call by naming the trait that defines it                                 | `trait::method(...)`                    |
-| Disambiguating a method call by naming the type for which it’s defined                           | `type::method(...)`                     |
-| Disambiguating a method call by naming the trait and type                                        | `<type as trait>::method(...)`          |
+| شرح                                                                                                        | نماد                                    |
+|------------------------------------------------------------------------------------------------------------|-----------------------------------------|
+| مسیر فضای نام (namespace)                                                                                  | `ident::ident`                          |
+| مسیر نسبت به کتابخانه ی ریشه (یعنی یک مسیر مطلق)                                                           | `::path`                                |
+| مسیر نسبت به مؤلفه ی جاری (یعنی به طور صریح مسیر نسبی)                                                     | `self::path`                            |
+| مسیر نسبت به والد مؤلفه ی جاری                                                                             | `super::path`                           |
+| ثابت ها، تابع ها و نوع داده های وابسته                                                                     | `type::ident`, `<type as trait>::ident` |
+| مورد وابسته برای یک نوع داده که به طور مستقیم قابل نام گذاری نیست (نمونه `<&T>::...`, `<[T]>::...` و غیره) | `<type>::...`                           |
+| ابهام زدایی از فراخوانی تابع با نام ‌گذاری صفتی که آن را تعریف می کند                                      | `trait::method(...)`                    |
+| ابهام زدایی از فراخوانی تابع با نام ‌گذاری نوعی که برای آن تعریف شده است                                   | `type::method(...)`                     |
+| رفع ابهام از فراخوانی تابع با نام گذاری صفت و نوع                                                          | `<type as trait>::method(...)`          |
 
-Table B-4 shows symbols that appear in the context of using generic type
-parameters.
+جدول ب-۴ نمادهایی را نشان می دهد که در زمینه ی استفاده از پارامترهای نوع عمومی ظاهر می شوند.
 
-<span class="caption">Table B-4: Generics</span>
+<span class="caption">جدول ب-۴: نوع عمومی</span>
 
 | Symbol                         | Explanation                                                                                                                              |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|

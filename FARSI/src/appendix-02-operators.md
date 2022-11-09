@@ -112,21 +112,21 @@
 
 <span class="caption">جدول ب-۴: نوع عمومی</span>
 
-| Symbol                         | Explanation                                                                                                                              |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| `path<...>`                    | Specifies parameters to generic type in a type (e.g., `Vec<u8>`)                                                                         |
-| `path::<...>`, `method::<...>` | Specifies parameters to generic type, function, or method in an expression; often referred to as turbofish (e.g., `"42".parse::<i32>()`) |
-| `fn ident<...> ...`            | Define generic function                                                                                                                  |
-| `struct ident<...> ...`        | Define generic structure                                                                                                                 |
-| `enum ident<...> ...`          | Define generic enumeration                                                                                                               |
-| `impl<...> ...`                | Define generic implementation                                                                                                            |
-| `for<...> type`                | Higher-ranked lifetime bounds                                                                                                            |
-| `type<ident=type>`             | A generic type where one or more associated types have specific assignments (e.g., `Iterator<Item=T>`)                                   |
+| شرح                                                                                                                                        | نماد                           |
+|--------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| پارامترهای نوع عمومی را در یک نوع داده مشخص می کند (نمونه `Vec<u8>`)                                                                       | `path<...>`                    |
+| پارامترهای نوع عمومی، تابع یا تابع عضو کلاس را در یک عبارت مشخص می کند. اغلب به عنوان توربوفیش شناخته می شود (نمونه `"42".parse::<i32>()`) | `path::<...>`, `method::<...>` |
+| تعریف یک تابع نوع عمومی                                                                                                                    | `fn ident<...> ...`            |
+| تعریف یک نوع داده‌ ساختار (struct) عمومی                                                                                                   | `struct ident<...> ...`        |
+| تعریف یک نوع داده ی شمارشی عمومی                                                                                                           | `enum ident<...> ...`          |
+| تعریف نوع عمومی پیاده سازی                                                                                                                 | `impl<...> ...`                |
+| محدوده ی طول عمر با رتبه ی بالاتر                                                                                                          | `for<...> type`                |
+| یک نوع عمومی که در آن یک یا چند نوع مرتبط دارای تخصیص خاص هستند (نمونه `Iterator<Item=T>`)                                                 | `type<ident=type>`             |
 
-Table B-5 shows symbols that appear in the context of constraining generic type
-parameters with trait bounds.
+جدول ب-۵ نمادهایی را نشان می دهد که در زمینه ی محدود کردن پارامترهای نوع عمومی با 
+مرزهای نوع صفت ظاهر می شوند.
 
-<span class="caption">Table B-5: Trait Bound Constraints</span>
+<span class="caption">جدول ب-۵: مرزهای محدودیت صفت</span>
 
 | Symbol                        | Explanation                                                                                                                                |
 |-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|

@@ -142,27 +142,27 @@
 
 <span class="caption">جدول ب-۶: ماکروها و ویژگی‌ها</span>
 
-| Symbol                                      | Explanation        |
-|---------------------------------------------|--------------------|
-| `#[meta]`                                   | Outer attribute    |
-| `#![meta]`                                  | Inner attribute    |
-| `$ident`                                    | Macro substitution |
-| `$ident:kind`                               | Macro capture      |
-| `$(…)…`                                     | Macro repetition   |
-| `ident!(...)`, `ident!{...}`, `ident![...]` | Macro invocation   |
+| شرح            | نماد                                        |
+|----------------|---------------------------------------------|
+| صفت بیرونی     | `#[meta]`                                   |
+| صفت درونی      | `#![meta]`                                  |
+| جایگزینی ماکرو | `$ident`                                    |
+| ضبط ماکرو      | `$ident:kind`                               |
+| تکرار ماکرو    | `$(…)…`                                     |
+| فراخوانی ماکرو | `ident!(...)`, `ident!{...}`, `ident![...]` |
 
-Table B-7 shows symbols that create comments.
+جدول ب-۷ نمادهایی را نشان می‌دهد که دیدگاه (comment) ایجاد می‌کنند.
 
-<span class="caption">Table B-7: Comments</span>
+<span class="caption">جدول ب-۷: دیدگاه‌ها</span>
 
-| Symbol     | Explanation             |
-|------------|-------------------------|
-| `//`       | Line comment            |
-| `//!`      | Inner line doc comment  |
-| `///`      | Outer line doc comment  |
-| `/*...*/`  | Block comment           |
-| `/*!...*/` | Inner block doc comment |
-| `/**...*/` | Outer block doc comment |
+| شرح                       | نماد       |
+|---------------------------|------------|
+| دیدگاه تک خطی             | `//`       |
+| دیدگاه سندی درونی         | `//!`      |
+| دیدگاه سندی بیرونی        | `///`      |
+| دیدگاه چندخطی             | `/*...*/`  |
+| دیدگاه سندی چندخطی درونی  | `/*!...*/` |
+| دیدگاه سندی چندخطی بیرونی | `/**...*/` |
 
 Table B-8 shows symbols that appear in the context of using tuples.
 

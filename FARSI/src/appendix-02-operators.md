@@ -164,20 +164,20 @@
 | دیدگاه سندی چندخطی درونی  | `/*!...*/` |
 | دیدگاه سندی چندخطی بیرونی | `/**...*/` |
 
-Table B-8 shows symbols that appear in the context of using tuples.
+جدول ب-۸ نمادهایی را نشان می‌دهد که زمینه‌ی استفاده از چندتایی (tuple) ها ظاهر می‌شوند.
 
-<span class="caption">Table B-8: Tuples</span>
+<span class="caption">جدول ب-۸: چندتایی‌ها</span>
 
-| Symbol                   | Explanation                                                                                 |
-|--------------------------|---------------------------------------------------------------------------------------------|
-| `()`                     | Empty tuple (aka unit), both literal and type                                               |
-| `(expr)`                 | Parenthesized expression                                                                    |
-| `(expr,)`                | Single-element tuple expression                                                             |
-| `(type,)`                | Single-element tuple type                                                                   |
-| `(expr, ...)`            | Tuple expression                                                                            |
-| `(type, ...)`            | Tuple type                                                                                  |
-| `expr(expr, ...)`        | Function call expression; also used to initialize tuple `struct`s and tuple `enum` variants |
-| `expr.0`, `expr.1`, etc. | Tuple indexing                                                                              |
+| شرح                                                                                  | نماد                     |
+|--------------------------------------------------------------------------------------|--------------------------|
+| چندتایی خالی (یا واحد)، هم نحو و هم نوع                                              | `()`                     |
+| عبارت داخل کمانه                                                                     | `(expr)`                 |
+|  عبارت چندتایی تک‌ عنصری                                                             | `(expr,)`                |
+| نوع داده ی چندتایی تک عنصری                                                          | `(type,)`                |
+| عبارت چندتایی                                                                        | `(expr, ...)`            |
+| نوع داده ی چندتایی                                                                   | `(type, ...)`            |
+| بیان فراخوانی تابع. همچنین برای مقداردهی اولیه `struct` و تاپل `enum` استفاده می شود | `expr(expr, ...)`        |
+| نمایه‌سازی چندتایی                                                                   | `expr.0`, `expr.1`, etc. |
 
 Table B-9 shows the contexts in which curly braces are used.
 

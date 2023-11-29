@@ -62,49 +62,37 @@
 تغییر دادن یک شئ سریعتر از آن است که یک کپی از آن بگیریم. درمورد ساختارهای داده‌ای کوچک‌تر، ایجاد نمونه‌های جدید و نوشتن به سبک برنامه‌نویسی
 کاربردی‌ ممکن است آسان‌تر باشد، بنابراین عملکرد پایین‌تر ممکن است بهایی ارزشمند برای به دست آوردن این تمیزی کد باشد.
 
-### Differences Between Variables and Constants
+### تفاوت‌های بین متغیرها و مقادیر ثابت
 
-Being unable to change the value of a variable might have reminded you of
-another programming concept that most other languages have: *constants*. Like
-immutable variables, constants are values that are bound to a name and are not
-allowed to change, but there are a few differences between constants and
-variables.
+تغییرناپذیر بودن متغیرها ممکن است شما را به یاد یک مفهوم دیگر بیندازد که در اکثر زبان‌های برنامه نویسی وجود دارد: *مقادیر ثابت* (Constants).
+مقادیر ثابت نیز مانند متغیرهای تغییرناپذیر، مقادیری هستند که با یک نام شناخته می‌شوند و اجازه تغییر دادن آن‌ها را نداریم. با این حال مقادیر ثابت و متغیرهای
+تغییرناپذیر تفاوت‌هایی با هم دارند.
 
-First, you aren’t allowed to use `mut` with constants. Constants aren’t just
-immutable by default—they’re always immutable.
+اول آنکه شما نمی‌توانید از `mut` برای مقادیرثابت استفاده کنید. مقادیرثابت یک متغیر عادی که به صورت پیشفرض ثابت است، نیست - آن‌ها همیشه
+ثابت و تغییرناپذیر هستند.
 
-You declare constants using the `const` keyword instead of the `let` keyword,
-and the type of the value *must* be annotated. We’re about to cover types and
-type annotations in the next section, [“Data Types,”][data-types]<!-- ignore
---> so don’t worry about the details right now. Just know that you must always
-annotate the type.
+مقادیر ثابت به جای `let`، با استفاده از کلمه کلیدی `const` تعریف می‌شوند . نوع آن‌ها *باید* مشخص شود. درمورد انواع داده‌ها در قسمت‌های بعد،
+ [“انواع داده‌ها”][data-types]<!-- ignore--> 
+ صحبت خواهیم کرد پس فعلا درمورد جزئیات نگران نباشید. تنها بدانید که نوع داده را باید مشخص کنید.
+ 
+مقادیر ثابت می‌توانند در هر حوزه‌ای (Scope) تعریف شوند، حتی در حوزه سراسری (Global Scope)، که در این صورت هر قسمتی از کد می‌تواند
+از آن‌ها استفاده کند.
 
-Constants can be declared in any scope, including the global scope, which makes
-them useful for values that many parts of code need to know about.
+تفاوت آخر این است که مقادیر ثابت تنها می‌توانند به نتیجه یک عبارت ثابت (عبارتی که چه در زمان کامپایل و چه در زمان اجرا نتیجه ثابتی خواهد داشت.
+مانند عبارت `1+2`) نسبت داده شوند، نه به عنوان مثال، مقدار برگشتی یک تابع یا هر مقدار دیگری که تنها در زمان اجرا مشخص می‌شود.
 
-The last difference is that constants may be set only to a constant expression,
-not the result of a function call or any other value that could only be
-computed at runtime.
-
-Here’s an example of a constant declaration where the constant’s name is
-`MAX_POINTS` and its value is set to 100,000. (Rust’s naming convention for
-constants is to use all uppercase with underscores between words, and
-underscores can be inserted in numeric literals to improve readability):
+به عنوان یک مثال، تعریف کردن یک مقدار ثابت که نام آن `MAX_POINTS` و مقدار آن برابر 100,000 است به صورت زیر است (الگو نام گذاری (Naming Convention)
+زبان Rust برای مقادیر ثابت، استفاده از حروف بزرگ و زیرخط بین کلمات است، و زیرخط جهت خوانایی بیشتر می‌تواند بین اعداد استفاده شود):
 
 ```rust
 const MAX_POINTS: u32 = 100_000;
 ```
 
-Constants are valid for the entire time a program runs, within the scope they
-were declared in, making them a useful choice for values in your application
-domain that multiple parts of the program might need to know about, such as the
-maximum number of points any player of a game is allowed to earn or the speed
-of light.
+مقادیر ثابت در کل زمان اجرای برنامه، در حوزه‌ای که تعریف شده‌اند معتبر خواهند بود که این خاصیت باعث می‌شود آن‌ها  گزینه مناسبی برای مقادیری  باشند که
+قسمت‌های مختلف برنامه باید به آن دسترسی داشته باشند. مانند حداکثر مقدار امتیازی که یک گیمر می‌تواند بدست بیاورد یا مقدار سرعت نور.
 
-Naming hardcoded values used throughout your program as constants is useful in
-conveying the meaning of that value to future maintainers of the code. It also
-helps to have only one place in your code you would need to change if the
-hardcoded value needed to be updated in the future.
+تعریف کردن مقادیر درون‌ساختی (Hardcoded) برنامه به عنوان مقادیر ثابت، معنی و مفهوم آن مقدار را به نگهدارنده‌های (Maintainer) کد می‌رساند.
+همچنین این کار باعث می‌شود که اگر آن مقدار در آینده نیاز به تغییر داشته باشد، تنها در یک نقطه از کد نیاز به تغییر دادن داشته باشید.
 
 ### Shadowing
 

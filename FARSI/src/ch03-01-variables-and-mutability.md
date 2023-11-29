@@ -1,128 +1,98 @@
-## Variables and Mutability
+## متغیرها و تغییرپذیری
 
-As mentioned in Chapter 2, by default variables are immutable. This is one of
-many nudges Rust gives you to write your code in a way that takes advantage of
-the safety and easy concurrency that Rust offers. However, you still have the
-option to make your variables mutable. Let’s explore how and why Rust
-encourages you to favor immutability and why sometimes you might want to opt
-out.
+همانطور که در فصل 2 گفتیم, متغیرها به صورت پیشفرض غیر قابل تغییر (Immutable) هستند. غیر قابل تغییر بودن متغیرها یکی از راهکارهای
+خوب Rust است که برنامه نویس را مجبور می‌کند تا کد خود را تمیز بنویسد و درنتیجه از امکانات خاص Rust (مانند همزمانی) به بهترین شکل استفاده کند.
+با این حال شما همچنان این قدرت را دارید که متغیرهای خود را تغییرپذیر کنید. بیایید بررسی کنیم که Rust چرا و چگونه شما را تشویق می‌کند که از غیرقابل
+تغییر بودن متغیرها طرفداری کنید و اینکه چرا ممکن است شما بخواهید این حالت را دور بزنید.
 
-When a variable is immutable, once a value is bound to a name, you can’t change
-that value. To illustrate this, let’s generate a new project called *variables*
-in your *projects* directory by using `cargo new variables`.
+وقتی یک متغیر تغییرپذیر نیست، هنگامی که یک مقدار به آن نسبت دهید، دیگر نمی‌توانید آن مقدار را تغییر دهید. برای آنکه این موضوع را بهتر متوجه بشوید،
+اجازه بدهید یک پروژه جدید در پوشه *projects* ایجاد کنیم و آن را *variables* بنامیم. برای این کار این دستور را اجرا می‌کنیم: `cargo new variables`.
 
-Then, in your new *variables* directory, open *src/main.rs* and replace its
-code with the following code that won’t compile just yet:
+سپس در پوشه *variables*، فایل *src/main.rs* را باز کنید و کد آن را با کد زیر (که فعلا کامپایل نخواهد شد) عوض کنید:
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">نام فایل: src/main.rs</span>
 
 ```rust,ignore,does_not_compile
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-01-variables-are-immutable/src/main.rs}}
 ```
 
-Save and run the program using `cargo run`. You should receive an error
-message, as shown in this output:
+فایل را ذخیره کنید و برنامه را با استفاده از دستور `cargo run` اجرا کنید. در این حالت شما یک پیام خطا به این شکل دریافت خواهید کرد:
 
 ```text
 {{#include ../listings/ch03-common-programming-concepts/no-listing-01-variables-are-immutable/output.txt}}
 ```
 
-This example shows how the compiler helps you find errors in your programs.
-Even though compiler errors can be frustrating, they only mean your program
-isn’t safely doing what you want it to do yet; they do *not* mean that you’re
-not a good programmer! Experienced Rustaceans still get compiler errors.
+این مثال نشان می دهد که چگونه کامپایلر به شما کمک می‌کند تا خطاهای برنامه خود را پیدا کنید. ممکن است پیام‌های کامپایلر ناامید کننده و پیچیده باشند، ولی
+بدین معنا هستند که برنامه شما هنوز کاری که میخواهید را با اطمینان انجام نمی‌دهد؛ این پیام‌ها به هیچ وجه به معنی این نیست که شما برنامه نویس بدی هستید!
+برنامه نویسان حرفه‌ای Rust هم همچنان پیام‌های خطا را دریافت می‌کنند.
 
-The error message indicates that the cause of the error is that you `cannot
-assign twice to immutable variable x`, because you tried to assign a second
-value to the immutable `x` variable.
+پیام خطا به ما می‌گوید که دلیل خطا این است: `cannot assign twice to immutable variable x`؛ نمی‌توان دوبار به متغیر تغییرناپذیر `x`
+مقدار داد، زیرا شما سعی کرده‌اید که به متغیر تغییرناپذیر `x` یک بار دیگر مقدار بدهید.
 
-It’s important that we get compile-time errors when we attempt to change a
-value that we previously designated as immutable because this very situation
-can lead to bugs. If one part of our code operates on the assumption that a
-value will never change and another part of our code changes that value, it’s
-possible that the first part of the code won’t do what it was designed to do.
-The cause of this kind of bug can be difficult to track down after the fact,
-especially when the second piece of code changes the value only *sometimes*.
+از آنجایی که سعی کرده‌ایم به یک متغیر تغییرناپذیر دوباره مقدار دهیم، بهتر است که در این مورد خطای زمان کامپایل (compile-time error) دریافت کنیم
+زیرا این کار ممکن است باعث به وجود آمدن باگ شود. اگر یک قسمت از کد ما با این تصور که فلان مقدار هیچوقت تغییر نخواهد کرد، عمل کند و قسمت دیگری
+از کد آن مقدار را تغییر دهد، ممکن است که قسمت اول نتواند به درستی کاری که برایش طراحی شده را انجام دهد. ردیابی این گونه خطاها بسیار دشوار است،
+خصوصا وقتی که قسمت دوم کد تنها *گاهی* آن مقدار را تغییر دهد.
 
-In Rust, the compiler guarantees that when you state that a value won’t change,
-it really won’t change. That means that when you’re reading and writing code,
-you don’t have to keep track of how and where a value might change. Your code
-is thus easier to reason through.
+در زبان Rust، کامپایلر تضمین می‌کند که اگر شما یک مقدار را تغییرناپذیر عنوان کنید، آن مقدار هرگز تغییر نخواهد کرد. این بدین معناست که وقتی شما کد را
+می‌خوانید و می‌نویسید، لازم نیست که نگران این موضوع باشید که یک مقدار کی و کجا تغییر می‌کند. بنابراین کد شما منطقی‌تر خواهد بود.
 
-But mutability can be very useful. Variables are immutable only by default; as
-you did in Chapter 2, you can make them mutable by adding `mut` in front of the
-variable name. In addition to allowing this value to change, `mut` conveys
-intent to future readers of the code by indicating that other parts of the code
-will be changing this variable’s value.
+با این حال تغییر پذیری می تواند بسیار مفید باشد. متغیرها فقط به صورت پیشفرض تغییرناپذیر هستند. همانطور که در فصل ۲ دیدیم، شما می‌توانید با اضافه
+کردن `mut` قبل از نام متغیر آن را تغییرپذیر کنید. علاوه بر تغییرپذیر کردن مقدار، `mut` به خوانندگان کد می‌گوید که قسمت‌های دیگر کد می‌توانند
+مقدار این متغیر را تغییر دهند.
 
-For example, let’s change *src/main.rs* to the following:
+به عنوان مثال اجاره دهید *src/main.rs* را به این صورت تغییر دهیم:
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">نام فایل: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-02-adding-mut/src/main.rs}}
 ```
 
-When we run the program now, we get this:
+اگر حالا برنامه را اجرا کنیم خواهیم داشت:
 
 ```text
 {{#include ../listings/ch03-common-programming-concepts/no-listing-02-adding-mut/output.txt}}
 ```
 
-We’re allowed to change the value that `x` binds to from `5` to `6` when `mut`
-is used. In some cases, you’ll want to make a variable mutable because it makes
-the code more convenient to write than if it had only immutable variables.
+هنگامی که از `mut` استفاده کنیم می‌توانیم مقداری که در متغیر `x` ذخیره شده را از `5` به `6` تغییر دهیم. گاهی نیز ممکن است بخواهید
+یک متغیر را تغییرپذیر تعریف کنید زیرا نوشتن برنامه راحت تر می‌شود.
 
-There are multiple trade-offs to consider in addition to the prevention of
-bugs. For example, in cases where you’re using large data structures, mutating
-an instance in place may be faster than copying and returning newly allocated
-instances. With smaller data structures, creating new instances and writing in
-a more functional programming style may be easier to think through, so lower
-performance might be a worthwhile penalty for gaining that clarity.
+علاوه بر جلوگیری از باگ، چند نکته دیگر نیز وجود دارد که باید درنظر گرفت. برای مثال در مواردی که از ساختار داده‌های بزرگ استفاده می‌کنید،
+تغییر دادن یک شئ سریعتر از آن است که یک کپی از آن بگیریم. درمورد ساختارهای داده‌ای کوچک‌تر، ایجاد نمونه‌های جدید و نوشتن به سبک برنامه‌نویسی
+کاربردی‌ ممکن است آسان‌تر باشد، بنابراین عملکرد پایین‌تر ممکن است بهایی ارزشمند برای به دست آوردن این تمیزی کد باشد.
 
-### Differences Between Variables and Constants
+### تفاوت‌های بین متغیرها و مقادیر ثابت
 
-Being unable to change the value of a variable might have reminded you of
-another programming concept that most other languages have: *constants*. Like
-immutable variables, constants are values that are bound to a name and are not
-allowed to change, but there are a few differences between constants and
-variables.
+تغییرناپذیر بودن متغیرها ممکن است شما را به یاد یک مفهوم دیگر بیندازد که در اکثر زبان‌های برنامه نویسی وجود دارد: *مقادیر ثابت* (Constants).
+مقادیر ثابت نیز مانند متغیرهای تغییرناپذیر، مقادیری هستند که با یک نام شناخته می‌شوند و اجازه تغییر دادن آن‌ها را نداریم. با این حال مقادیر ثابت و متغیرهای
+تغییرناپذیر تفاوت‌هایی با هم دارند.
 
-First, you aren’t allowed to use `mut` with constants. Constants aren’t just
-immutable by default—they’re always immutable.
+اول آنکه شما نمی‌توانید از `mut` برای مقادیرثابت استفاده کنید. مقادیرثابت یک متغیر عادی که به صورت پیشفرض ثابت است، نیست - آن‌ها همیشه
+ثابت و تغییرناپذیر هستند.
 
-You declare constants using the `const` keyword instead of the `let` keyword,
-and the type of the value *must* be annotated. We’re about to cover types and
-type annotations in the next section, [“Data Types,”][data-types]<!-- ignore
---> so don’t worry about the details right now. Just know that you must always
-annotate the type.
+مقادیر ثابت به جای `let`، با استفاده از کلمه کلیدی `const` تعریف می‌شوند . نوع آن‌ها *باید* مشخص شود. درمورد انواع داده‌ها در قسمت‌های بعد،
+ [“انواع داده‌ها”][data-types]<!-- ignore--> 
+ صحبت خواهیم کرد پس فعلا درمورد جزئیات نگران نباشید. تنها بدانید که نوع داده را باید مشخص کنید.
+ 
+مقادیر ثابت می‌توانند در هر حوزه‌ای (Scope) تعریف شوند، حتی در حوزه سراسری (Global Scope)، که در این صورت هر قسمتی از کد می‌تواند
+از آن‌ها استفاده کند.
 
-Constants can be declared in any scope, including the global scope, which makes
-them useful for values that many parts of code need to know about.
+تفاوت آخر این است که مقادیر ثابت تنها می‌توانند به نتیجه یک عبارت ثابت (عبارتی که چه در زمان کامپایل و چه در زمان اجرا نتیجه ثابتی خواهد داشت.
+مانند عبارت `1+2`) نسبت داده شوند، نه به عنوان مثال، مقدار برگشتی یک تابع یا هر مقدار دیگری که تنها در زمان اجرا مشخص می‌شود.
 
-The last difference is that constants may be set only to a constant expression,
-not the result of a function call or any other value that could only be
-computed at runtime.
-
-Here’s an example of a constant declaration where the constant’s name is
-`MAX_POINTS` and its value is set to 100,000. (Rust’s naming convention for
-constants is to use all uppercase with underscores between words, and
-underscores can be inserted in numeric literals to improve readability):
+به عنوان یک مثال، تعریف کردن یک مقدار ثابت که نام آن `MAX_POINTS` و مقدار آن برابر 100,000 است به صورت زیر است (الگو نام گذاری (Naming Convention)
+زبان Rust برای مقادیر ثابت، استفاده از حروف بزرگ و زیرخط بین کلمات است، و زیرخط جهت خوانایی بیشتر می‌تواند بین اعداد استفاده شود):
 
 ```rust
 const MAX_POINTS: u32 = 100_000;
 ```
 
-Constants are valid for the entire time a program runs, within the scope they
-were declared in, making them a useful choice for values in your application
-domain that multiple parts of the program might need to know about, such as the
-maximum number of points any player of a game is allowed to earn or the speed
-of light.
+مقادیر ثابت در کل زمان اجرای برنامه، در حوزه‌ای که تعریف شده‌اند معتبر خواهند بود که این خاصیت باعث می‌شود آن‌ها  گزینه مناسبی برای مقادیری  باشند که
+قسمت‌های مختلف برنامه باید به آن دسترسی داشته باشند. مانند حداکثر مقدار امتیازی که یک گیمر می‌تواند بدست بیاورد یا مقدار سرعت نور.
 
-Naming hardcoded values used throughout your program as constants is useful in
-conveying the meaning of that value to future maintainers of the code. It also
-helps to have only one place in your code you would need to change if the
-hardcoded value needed to be updated in the future.
+تعریف کردن مقادیر درون‌ساختی (Hardcoded) برنامه به عنوان مقادیر ثابت، معنی و مفهوم آن مقدار را به نگهدارنده‌های (Maintainer) کد می‌رساند.
+همچنین این کار باعث می‌شود که اگر آن مقدار در آینده نیاز به تغییر داشته باشد، تنها در یک نقطه از کد نیاز به تغییر دادن داشته باشید.
 
 ### Shadowing
 

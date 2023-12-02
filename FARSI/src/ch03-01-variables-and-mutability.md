@@ -94,68 +94,57 @@ const MAX_POINTS: u32 = 100_000;
 تعریف کردن مقادیر درون‌ساختی (Hardcoded) برنامه به عنوان مقادیر ثابت، معنی و مفهوم آن مقدار را به نگهدارنده‌های (Maintainer) کد می‌رساند.
 همچنین این کار باعث می‌شود که اگر آن مقدار در آینده نیاز به تغییر داشته باشد، تنها در یک نقطه از کد نیاز به تغییر دادن داشته باشید.
 
-### Shadowing
+### متغیرهای همنام
 
-As you saw in the guessing game tutorial in the [“Comparing the Guess to the
+همانطور که در بازی حدس زنی در بخش [“Comparing the Guess to the
 Secret Number”][comparing-the-guess-to-the-secret-number]<!-- ignore -->
-section in Chapter 2, you can declare a new variable with the same name as a
-previous variable, and the new variable shadows the previous variable.
-Rustaceans say that the first variable is *shadowed* by the second, which means
-that the second variable’s value is what appears when the variable is used. We
-can shadow a variable by using the same variable’s name and repeating the use
-of the `let` keyword as follows:
+از قصل 2 دیدیم، می‌توانیم یک متغیر جدید با نامی یکسان با متغیری که قبلا تعریف کرده‌ایم، مجددا تعریف کنیم و این متغیر جدید با متغیر قبلی همپوشانی (Shadowing)
+خواهد داشت. برنامه نویسان Rust در این شرایط می‌گویند «متغیر اول توسط متغیر دوم، *نادیده* گرفته شده است». معنی این اصطلاح این است که اگر مقدار متغیری
+با آن نام لازم باشد، این مقدار متغیر دوم است که در دسترس قرار خواهد گرفت، نه متغیر اول. برای نادیده گرفتن یک متغیر، تنها کافیست یک متغیر دیگر با همان نام با
+کلمه کلیدی `let` تعریف کنیم:
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">نام فایل: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-03-shadowing/src/main.rs}}
 ```
 
-This program first binds `x` to a value of `5`. Then it shadows `x` by
-repeating `let x =`, taking the original value and adding `1` so the value of
-`x` is then `6`. The third `let` statement also shadows `x`, multiplying the
-previous value by `2` to give `x` a final value of `12`. When we run this
-program, it will output the following:
+در این برنامه، ابتدا نام `x` به مقدار `5` داده خواهد شد (‌Bind). سپس با `let x =`، این مقدار نادیده گرفته شده و مقدار آن برابر با مقدار قبلی
+به اضافه `1` خواهد شد، در نتیجه مقدار `x` برابر خواهد بود با `6`. همچنین `let` سوم دوباره `x` را نادیده میگیرد و مقدار قبلی آن را در `2`
+ضرب می‌کند تا مقدار نهایی `x` برابر با `12` شود. اگر این برنامه را اجرا کنیم خروجی زیر را خواهیم داشت:
 
 ```text
 {{#include ../listings/ch03-common-programming-concepts/no-listing-03-shadowing/output.txt}}
 ```
 
-Shadowing is different from marking a variable as `mut`, because we’ll get a
-compile-time error if we accidentally try to reassign to this variable without
-using the `let` keyword. By using `let`, we can perform a few transformations
-on a value but have the variable be immutable after those transformations have
-been completed.
+نادیده گرفتن با تعریف یک متفیر با `mut` (متغیر تغییرپذیر)  یکسان نیست، زیرا اگر به همین متغیر بدون استفاده از `let` دوباره مقدار بدهیم،
+یک خطای زمان کامپایل دریافت خواهیم کرد. با استفاده از `let`، ما می‌توانیم تغییراتی را در مقدار یک متغیر ایجاد کنیم و بعد از این تغییرات
+دوباره متغیر تغییرناپذیر خواهد بود.
 
-The other difference between `mut` and shadowing is that because we’re
-effectively creating a new variable when we use the `let` keyword again, we can
-change the type of the value but reuse the same name. For example, say our
-program asks a user to show how many spaces they want between some text by
-inputting space characters, but we really want to store that input as a number:
+تفاوت دیگری که بین نادیده گرفتن و استفاده از `mut` وجود دارد این است که با استفاده از `let` ما دوباره یک متغیر تعریف می‌کنیم و در این صورت
+می‌توانیم نوع آن را نیز تغییر دهیم اما در مورد متغیر تغییر ناپذیر اینگونه نیست. مثلا فرض کنید برنامه ما میخواهد از کاربر درخواست کند که تعداد فاصله‌های
+بین کلمات را با وارد کردن کاراکتر فاصله به همان میزان نشان دهد، اما ما این تعداد را با یک عدد ذخیره کنیم:
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-04-shadowing-can-change-types/src/main.rs:here}}
 ```
 
-This construct is allowed because the first `spaces` variable is a string type
-and the second `spaces` variable, which is a brand-new variable that happens to
-have the same name as the first one, is a number type. Shadowing thus spares us
-from having to come up with different names, such as `spaces_str` and
-`spaces_num`; instead, we can reuse the simpler `spaces` name. However, if we
-try to use `mut` for this, as shown here, we’ll get a compile-time error:
+این کد صحیح است زیرا متغیر `spaces` اول، از نوع رشته (string) است و متغیر `spaces` دوم، که یک متغیر جدید است دارای نوع
+عددی خواهد بود. بنابراین نادیده گیری متغیرها به ما این امکان را می‌دهد که برای هر نوع، متغیر جدید مانند `spaces_str` و `spaces_num`
+تعریف نکنیم. در عوض از همان نام `spaces` برای هر دو نوع استفاده کنیم. با این حال اگر از `mut` برای نادیده گیری استفاده کنیم،
+مانند کد زیر، یک خطای کامپایلر خواهیم داشت:
 
 ```rust,ignore,does_not_compile
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-05-mut-cant-change-types/src/main.rs:here}}
 ```
 
-The error says we’re not allowed to mutate a variable’s type:
+خطا به ما می‌گوید که نمی‌توانیم *نوع* یک متغیر را عوص کنیم:
 
 ```text
 {{#include ../listings/ch03-common-programming-concepts/no-listing-05-mut-cant-change-types/output.txt}}
 ```
 
-Now that we’ve explored how variables work, let’s look at more data types they
-can have.
+اکنون که توضیح دادیم متغیرها چگونه کار می‌کنند، اجازه دهید بیشتر به انواع داده‌هایی که می‌توانند داشته باشند بپردازیم.
 
 [comparing-the-guess-to-the-secret-number]:
 ch02-00-guessing-game-tutorial.html#comparing-the-guess-to-the-secret-number

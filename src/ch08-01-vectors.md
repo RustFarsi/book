@@ -1,83 +1,53 @@
-## Storing Lists of Values with Vectors
+## ذخیره فهرست مقادیر با وکتورها
 
-The first collection type we’ll look at is `Vec<T>`, also known as a *vector*.
-Vectors allow you to store more than one value in a single data structure that
-puts all the values next to each other in memory. Vectors can only store values
-of the same type. They are useful when you have a list of items, such as the
-lines of text in a file or the prices of items in a shopping cart.
+اولین نوع مجموعه‌ای که بررسی می‌کنیم `Vec<T>` است که با نام *وکتور* نیز شناخته می‌شود.
+وکتورها این امکان را فراهم می‌کنند که بیش از یک مقدار را در یک ساختار داده ذخیره کنید؛ به گونه‌ای که همه مقادیر در حافظه پشت سر هم قرار بگیرند. وکتورها تنها می‌توانند مقادیری از یک نوع را نگه دارند. آن‌ها زمانی مفید هستند که یک فهرست از اقلام داشته باشید، مانند خطوط متن در یک فایل یا قیمت کالاها در یک سبد خرید.
 
-### Creating a New Vector
+### ایجاد یک وکتور جدید
 
-To create a new empty vector, we call the `Vec::new` function, as shown in
-Listing 8-1.
+برای ساخت یک وکتور خالی جدید، تابع `Vec::new` را فراخوانی می‌کنیم، همان‌طور که در لیست ۸-۱ نشان داده شده است.
 
 ```rust
 {{#rustdoc_include ../listings/ch08-common-collections/listing-08-01/src/main.rs:here}}
 ```
 
-<span class="caption">Listing 8-1: Creating a new, empty vector to hold values
-of type `i32`</span>
+<span class="caption">لیست ۸-۱: ایجاد یک وکتور خالی جدید برای نگه‌داری مقادیر از نوع `i32`</span>
 
-Note that we added a type annotation here. Because we aren’t inserting any
-values into this vector, Rust doesn’t know what kind of elements we intend to
-store. This is an important point. Vectors are implemented using generics;
-we’ll cover how to use generics with your own types in Chapter 10. For now,
-know that the `Vec<T>` type provided by the standard library can hold any type.
-When we create a vector to hold a specific type, we can specify the type within
-angle brackets. In Listing 8-1, we’ve told Rust that the `Vec<T>` in `v` will
-hold elements of the `i32` type.
+توجه کنید که در اینجا یک حاشیه‌نویسی نوع اضافه کرده‌ایم. چون هیچ مقداری را وارد این وکتور نکرده‌ایم، زبان Rust نمی‌داند چه نوع عناصری را قصد داریم ذخیره کنیم. این نکته مهمی است. وکتورها با استفاده از جنریک‌ها پیاده‌سازی شده‌اند؛ در فصل ۱۰ یاد خواهیم گرفت چگونه از جنریک‌ها در انواع خودمان استفاده کنیم. فعلاً بدانید که نوع `Vec<T>` که توسط کتابخانه استاندارد ارائه شده است می‌تواند هر نوعی را نگه دارد. وقتی وکتوری برای نگهداری یک نوع خاص ایجاد می‌کنیم، می‌توانیم نوع را در داخل علامت‌های زاویه‌ای مشخص کنیم. در لیست ۸-۱ به Rust گفته‌ایم که `Vec<T>` در متغیر `v` شامل عناصری از نوع `i32` خواهد بود.
 
-More often, you’ll create a `Vec<T>` with initial values and Rust will infer
-the type of value you want to store, so you rarely need to do this type
-annotation. Rust conveniently provides the `vec!` macro, which will create a
-new vector that holds the values you give it. Listing 8-2 creates a new
-`Vec<i32>` that holds the values `1`, `2`, and `3`. The integer type is `i32`
-because that’s the default integer type, as we discussed in the [“Data
-Types”][data-types]<!-- ignore --> section of Chapter 3.
+اغلب، شما یک `Vec<T>` را با مقادیر اولیه ایجاد می‌کنید و Rust نوع مقداری را که می‌خواهید ذخیره کنید استنتاج می‌کند، بنابراین به ندرت نیاز به این حاشیه‌نویسی پیدا می‌کنید. Rust به‌طور مناسب ماکروی `vec!` را فراهم کرده است که یک وکتور جدید می‌سازد و مقادیری را که به آن می‌دهید ذخیره می‌کند. لیست ۸-۲ یک `Vec<i32>` جدید ایجاد می‌کند که شامل مقادیر `1`، `2` و `3` است. نوع عدد صحیح `i32` است زیرا این نوع پیش‌فرض عدد صحیح در Rust است؛ همان‌طور که در بخش \[“Data Types”]\[data-types] فصل ۳ توضیح دادیم.
 
 ```rust
 {{#rustdoc_include ../listings/ch08-common-collections/listing-08-02/src/main.rs:here}}
 ```
 
-<span class="caption">Listing 8-2: Creating a new vector containing
-values</span>
+<span class="caption">لیست ۸-۲: ایجاد یک وکتور جدید شامل مقادیر</span>
 
-Because we’ve given initial `i32` values, Rust can infer that the type of `v`
-is `Vec<i32>`, and the type annotation isn’t necessary. Next, we’ll look at how
-to modify a vector.
+چون مقادیر اولیه `i32` داده‌ایم، Rust می‌تواند استنتاج کند که نوع `v` برابر با `Vec<i32>` است و نیازی به حاشیه‌نویسی نوع نیست. در ادامه، به بررسی نحوه تغییر یک وکتور می‌پردازیم.
 
-### Updating a Vector
+### به‌روزرسانی یک وکتور
 
-To create a vector and then add elements to it, we can use the `push` method,
-as shown in Listing 8-3.
+برای ایجاد یک وکتور و سپس افزودن عناصر به آن، می‌توانیم از متد `push` استفاده کنیم؛ همان‌طور که در لیست ۸-۳ نشان داده شده است.
 
 ```rust
 {{#rustdoc_include ../listings/ch08-common-collections/listing-08-03/src/main.rs:here}}
 ```
 
-<span class="caption">Listing 8-3: Using the `push` method to add values to a
-vector</span>
+<span class="caption">لیست ۸-۳: استفاده از متد `push` برای افزودن مقادیر به وکتور</span>
 
-As with any variable, if we want to be able to change its value, we need to
-make it mutable using the `mut` keyword, as discussed in Chapter 3. The numbers
-we place inside are all of type `i32`, and Rust infers this from the data, so
-we don’t need the `Vec<i32>` annotation.
+همان‌طور که برای هر متغیری صدق می‌کند، اگر بخواهیم مقدارش تغییر کند باید آن را با کلیدواژه `mut` قابل تغییر کنیم؛ همان‌طور که در فصل ۳ توضیح داده شد. اعدادی که در اینجا قرار داده‌ایم همگی از نوع `i32` هستند و Rust این را از داده‌ها استنتاج می‌کند، بنابراین نیازی به حاشیه‌نویسی `Vec<i32>` نیست.
 
-### Reading Elements of Vectors
+### خواندن عناصر یک وکتور
 
-There are two ways to reference a value stored in a vector: via indexing or
-using the `get` method. In the following examples, we’ve annotated the types of
-the values that are returned from these functions for extra clarity.
+دو روش برای دسترسی به مقداری که در یک وکتور ذخیره شده وجود دارد: استفاده از ایندکس یا استفاده از متد `get`. در مثال‌های زیر، نوع مقادیری را که این توابع بازمی‌گردانند برای وضوح بیشتر مشخص کرده‌ایم.
 
-Listing 8-4 shows both methods of accessing a value in a vector, with indexing
-syntax and the `get` method.
+لیست ۸-۴ هر دو روش دسترسی به مقدار در یک وکتور را نشان می‌دهد: با استفاده از سینتکس ایندکس و با استفاده از متد `get`.
 
 ```rust
 {{#rustdoc_include ../listings/ch08-common-collections/listing-08-04/src/main.rs:here}}
 ```
 
-<span class="caption">Listing 8-4: Using indexing syntax or the `get` method to
-access an item in a vector</span>
+<span class="caption">لیست ۸-۴: استفاده از سینتکس ایندکس یا متد `get` برای دسترسی به یک عنصر در وکتور</span>
 
 Note a few details here. We use the index value of `2` to get the third element
 because vectors are indexed by number, starting at zero. Using `&` and `[]`

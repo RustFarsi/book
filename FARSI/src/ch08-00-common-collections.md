@@ -1,25 +1,11 @@
-# Common Collections
+کتابخانه‌ی استاندارد زبان **Rust** مجموعه‌ای از ساختارهای داده بسیار کاربردی به نام **مجموعه‌ها (Collections)** را در بر می‌گیرد. بیشتر انواع داده‌های دیگر تنها یک مقدار مشخص را نمایش می‌دهند، اما مجموعه‌ها می‌توانند شامل چندین مقدار باشند. برخلاف انواع داخلی مانند آرایه (array) و تاپل (tuple)، داده‌هایی که مجموعه‌ها به آن اشاره می‌کنند در **heap** ذخیره می‌شود. این ویژگی باعث می‌شود که اندازه‌ی داده‌ها در زمان کامپایل نیاز به مشخص بودن نداشته باشد و بتواند هنگام اجرای برنامه بزرگ‌تر یا کوچک‌تر شود. هر نوع از مجموعه‌ها توانایی‌ها و هزینه‌های متفاوتی دارند و انتخاب نوع مناسب در شرایط گوناگون مهارتی است که به مرور زمان آن را کسب خواهید کرد.
 
-Rust’s standard library includes a number of very useful data structures called
-*collections*. Most other data types represent one specific value, but
-collections can contain multiple values. Unlike the built-in array and tuple
-types, the data these collections point to is stored on the heap, which means
-the amount of data does not need to be known at compile time and can grow or
-shrink as the program runs. Each kind of collection has different capabilities
-and costs, and choosing an appropriate one for your current situation is a
-skill you’ll develop over time. In this chapter, we’ll discuss three
-collections that are used very often in Rust programs:
+در این فصل، ما به بررسی سه نوع مجموعه که در برنامه‌های Rust بسیار پرکاربرد هستند می‌پردازیم:
 
-* A *vector* allows you to store a variable number of values next to each other.
-* A *string* is a collection of characters. We’ve mentioned the `String` type
-  previously, but in this chapter we’ll talk about it in depth.
-* A *hash map* allows you to associate a value with a particular key. It’s a
-  particular implementation of the more general data structure called a *map*.
+1. **وکتور (Vector):** امکانی برای ذخیره‌ی تعدادی متغیر از مقادیر کنار یکدیگر فراهم می‌کند.
+2. **رشته (String):** مجموعه‌ای از کاراکترهاست. پیش‌تر به نوع `String` اشاره کرده‌ایم، اما در این فصل آن را به صورت عمیق‌تر بررسی خواهیم کرد.
+3. **هش‌مپ (Hash Map):** این ساختار داده امکان ارتباط دادن یک مقدار به یک کلید خاص را می‌دهد. در واقع نوعی پیاده‌سازی ویژه از ساختار داده‌ی کلی‌تری به نام **map** است.
 
-To learn about the other kinds of collections provided by the standard library,
-see [the documentation][collections].
+برای آشنایی با سایر مجموعه‌هایی که کتابخانه‌ی استاندارد Rust ارائه می‌دهد، می‌توانید به مستندات آن مراجعه کنید.
 
-[collections]: ../std/collections/index.html
-
-We’ll discuss how to create and update vectors, strings, and hash maps, as well
-as what makes each special.
+در ادامه، چگونگی **ایجاد و به‌روزرسانی وکتورها، رشته‌ها و هش‌مپ‌ها** و همچنین ویژگی‌های خاص هر کدام را بررسی خواهیم کرد.
